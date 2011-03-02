@@ -1,0 +1,5 @@
+Open BlueDragon is released under the GPLv3:
+http://www.gnu.org/licenses/gpl-3.0.html
+
+Visit us online at:
+http://www.openbluedragon.org/

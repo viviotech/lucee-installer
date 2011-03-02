@@ -1,0 +1,64 @@
+<!-- saved from url=(0026)http://www.macromedia.com/ -->
+<HTML>
+	<head>
+		<script language="VBScript">
+			Sub GoToNonFlash()
+				window.location.replace(sAltPage)
+			End Sub
+			Sub CheckFlash()
+				If FlashInstalled() Then
+					window.clearInterval(timeoutID)
+					' Flash 6 is loaded, so go to the correct page
+					window.location.replace(sContentPage)
+				End If
+			End Sub
+			
+			Function FlashInstalled()
+				Dim flashObj
+				FlashInstalled = False
+				On Error Resume Next
+				Set flashObj = CreateObject("ShockwaveFlash.ShockwaveFlash.6")
+				FlashInstalled = IsObject(flashObj)
+			End Function
+
+			' Set the pages we will jump to
+			sContentPage = "wf_startfs.htm"
+			sAltPage = "wf_njs.htm"
+			
+			' Set up a timer to check for loading Flash 6
+			timeoutID = window.setInterval("CheckFlash", 500, "VBSCRIPT")
+		</script>		
+	</head>
+	<body>
+		<BR>
+		<BLOCKQUOTE>
+			<TABLE WIDTH="60%">
+				<tr>
+					<TD><OBJECT classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' codebase='http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0' WIDTH='50' HEIGHT='50' id='waitSWF' ALIGN='top' VIEWASTEXT>
+						<PARAM NAME='movie' VALUE='wf_waitv6.swf'>
+						<PARAM NAME=quality VALUE=high>
+						<EMBED src='wf_waitv6.swf' quality=high WIDTH='50' HEIGHT='50' NAME='waitSWF' swLiveConnect='true' ALIGN=''
+								TYPE='application/x-shockwave-flash' PLUGINSPAGE='http://www.macromedia.com/go/getflashplayer'>
+						</EMBED>
+					</OBJECT>
+					</TD>
+					<TD><h3><font face="Arial, Helvetica, sans-serif">You don't have Macromedia Flash Player 6.0 or later!</font></h3>
+					</TD>
+				<TR>
+					<TD COLSPAN="2">
+						<P><font face="Arial, Helvetica, sans-serif">This help system makes use of <A HREF="http://www.macromedia.com/software/flash/" TARGET="_new">
+									Macromedia<SUP><FONT SIZE="-1">&#174;</FONT></SUP> Flash<SUP><FONT SIZE="-2">TM</FONT></SUP></A>
+								software, and we are trying to automatically update your Flash Player to the latest version.</font></P>
+				<TR>
+					<TD COLSPAN="2">
+						<FORM NAME="preferences" ID="Form2" ACTION="post">
+							<P><font face="Arial, Helvetica, sans-serif">If you would prefer not to update right now, you can view a non-Flash version of the help system by clicking the button below.</font></p>
+							<P><INPUT id="SubmitCmd" type="button" value="Non-Flash" name="SubmitCmd" language="VBscript" onclick="GoToNonFlash()"></P>
+						</FORM>
+				</TR>
+			</TABLE>
+			<P><FONT FACE="Verdana, Arial, Helvetica, sans-serif" SIZE="-2">Macromedia and Flash 
+					are trademarks of Macromedia, Inc.</FONT></P>
+		</BLOCKQUOTE>
+	</body>
+<HTML>

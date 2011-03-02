@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module codename="org.openide.dialogs">
+    <module_version install_time="1228400589495" last="true" origin="installer" specification_version="7.8.1">
+        <file crc="1093066869" name="config/Modules/org-openide-dialogs.xml"/>
+        <file crc="2208166309" name="modules/org-openide-dialogs.jar"/>
+    </module_version>
+</module>

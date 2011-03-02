@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module codename="org.netbeans.modules.profiler/1">
+    <module_version install_time="1228400879017" last="true" origin="installer" specification_version="1.9.1">
+        <file crc="1234751172" name="config/Modules/org-netbeans-modules-profiler.xml"/>
+        <file crc="3038956824" name="config/Services/filters-default.xml"/>
+        <file crc="2070331124" name="config/Services/filtersets-default.xml"/>
+        <file crc="2975060140" name="modules/org-netbeans-modules-profiler.jar"/>
+    </module_version>
+</module>

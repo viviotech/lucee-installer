@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server>
+  <system>
+    <resourcepath>$@@installdir@@\webresources\</resourcepath>
+    <licensekey></licensekey>
+    <component-cfc>@@installdir@@\bluedragon\component.cfc</component-cfc>
+    <whitespacecomp>false</whitespacecomp>
+    <nativelibdir>@@installdir@@\bin</nativelibdir>
+    <missingtemplatehandler></missingtemplatehandler>
+    <lastfile>@@installdir@@\bluedragon\bluedragon.xml.bak.1</lastfile>
+    <errorhandler></errorhandler>
+    <buffersize>0</buffersize>
+    <tempdirectory>@@installdir@@\bluedragon\work\temp</tempdirectory>
+    <password>@@myOpenBDAdminPassword@@</password>
+    <defaultcharset>utf-8</defaultcharset>
+    <lastupdated>17/Sep/2009 17:46.56</lastupdated>
+    <allowedips></allowedips>
+    <deniedips></deniedips>
+  </system>
+  <file>
+    <maxfiles>1000</maxfiles>
+    <trustcache>false</trustcache>
+  </file>
+  <javacustomtags>
+    <classes>@@installdir@@\classes</classes>
+    <mapping name="cfx_javabluedragonhello">
+      <name>cfx_javabluedragonhello</name>
+      <displayname>CFX_JavaBlueDragonHello</displayname>
+      <description>A simple Java CFX tag example</description>
+      <class>com.newatlanta.BlueDragonHello</class>
+    </mapping>
+  </javacustomtags>
+  <nativecustomtags>
+    <mapping name="cfx_nativebluedragonhello">
+      <function>ProcessTagRequest</function>
+      <keeploaded>true</keeploaded>
+      <name>cfx_nativebluedragonhello</name>
+      <displayname>CFX_NativeBlueDragonHello</displayname>
+      <module>@@installdir@@\customtags\BlueDragonHello.dll</module>
+      <description>A simple C++ CFX tag example</description>
+    </mapping>
+  </nativecustomtags>
+  <fonts>
+    <dirs>C:\Windows\Fonts,C:\Windows\Fonts,C:\Windows\Fonts,C:\Windows\Fonts,C:\Windows\Fonts,C:\Windows\Fonts,C:\Windows\Fonts,C:\Windows\Fonts,C:\Windows\Fonts,C:\Windows\Fonts,C:\Windows\Fonts</dirs>
+  </fonts>
+  <cfquery>
+    <cache>true</cache>
+  </cfquery>
+  <openbdadminapi>
+    <version>1.1</version>
+    <lastupdated>16/Sep/2009 16:23:44</lastupdated>
+  </openbdadminapi>
+  <cfapplication>
+    <clientstorage>cookie</clientstorage>
+    <enabled>true</enabled>
+    <sessiontimeout>#CreateTimeSpan(0,0,20,0)#</sessiontimeout>
+    <applicationtimeout>#CreateTimeSpan(2,0,0,0)#</applicationtimeout>
+    <j2eesession>false</j2eesession>
+  </cfapplication>
+  <cfmail>
+    <interval>240</interval>
+    <smtpserver>127.0.0.1</smtpserver>
+    <smtpport>25</smtpport>
+    <charset>UTF-8</charset>
+  </cfmail>
+  <cfmlcustomtags>
+    <mapping name="cf">
+      <directory>$@@installdir@@\customtags</directory>
+      <name>cf</name>
+    </mapping>
+  </cfmlcustomtags>
+</server>

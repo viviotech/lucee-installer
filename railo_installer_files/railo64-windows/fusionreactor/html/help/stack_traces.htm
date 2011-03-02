@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0026)http://www.macromedia.com/ -->
+<html>
+<head>
+<meta http-equiv="content-style-type" content="text/css">
+<title>Stack traces</title>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<meta name="generator" content="RoboHelp by eHelp Corporation www.ehelp.com">
+<link rel="stylesheet" href="default_ns.css" type="text/css">
+<script type="text/javascript" language="JavaScript">
+<!--
+if (navigator.appName !="Netscape")
+{   document.write("<link rel='stylesheet' href='default.css'>");}
+//-->
+</script>
+<style type="text/css">
+<!--
+p.whs1 { color:#ff0000; }
+-->
+</style>
+
+<script type="text/javascript" language="JavaScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+        origWidth = innerWidth;
+        origHeight = innerHeight;
+        onresize = reDo;
+}
+onerror = null; 
+//-->
+</script>
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute; left:0px; top:0px; z-index:4; visibility:hidden; }
+-->
+</style>
+
+<script type="text/javascript" language="javascript1.2" src="whtopic.js">
+</script>
+<script type="text/javascript" language="javascript1.2" src="whutils.js">
+</script>
+<script type="text/javascript" language="javascript" src="whver.js">
+</script>
+<script type="text/javascript" language="javascript1.2">
+<!--
+    var linkedScrollbarStyle = "<link rel='stylesheet' href='wf_topics.css'>";
+    if( (!isTopicOnly()) &&(parent.gbFHPureHtml == null) )
+    {
+        document.write(linkedScrollbarStyle);
+    }
+    //-->
+</script>
+</head>
+<body>
+<script type="text/javascript" language="javascript1.2">
+<!--
+if (window.addTocInfo)
+{
+addTocInfo("Request Detail\nStack Tracing");
+
+  addShowButton();
+}
+if (window.setRelStartPage)
+{
+setRelStartPage("help.htm");
+
+        sendTopicLoaded();
+        autoSync(1);
+        sendSyncInfo();
+        sendAveInfo();
+        sendBgColorInfo();
+}
+//-->
+</script>
+<h1>Stack Tracing</h1>
+<p>Stack traces are split into two sections. Firstly comes a set of information associated with this thread, or request. Please note that you will see more information here when Stack Tracing a request rather than a thread.<br>
+<br>
+After these information fields you will see the Stack Trace itself. Note that the format of Stack Traces may alter depending on your operating system or Java version. Generally you will see a list of class names, method calls and line numbers. The most current list item will be listed first.</p>
+<h4>Killing a Thread or Request</h4>
+<p>If you click on the "Kill" button then you will see a prompt asking if you are sure. OK this dialog box to kill the request or thread.</p>
+<p>&#160;</p>
+<p class="whs1"><span style="font-weight:bold;"><b>WARNING</b></span>: The "Kill" button does not give the requests time to complete in their own time. Using this feature can cause the JVM to become unstable. Also, while FusionReactor does allows you to stop any thread, it is highly inadvisable to stop any threads in the ‘system’ thread group, or any threads integral to the running of your J2EE container.</p>
+<h4>Refreshing the Page</h4>
+<p>Clicking on the "Refresh" button will update the screen to display the latest log entries.</p>
+<p>&#160;</p>
+</body>
+</html>

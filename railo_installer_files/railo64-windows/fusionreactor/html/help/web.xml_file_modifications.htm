@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0026)http://www.macromedia.com/ -->
+<html>
+<head>
+<meta http-equiv="content-style-type" content="text/css">
+<title>web.xml file modifications</title>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<meta name="generator" content="RoboHelp by eHelp Corporation www.ehelp.com">
+<link rel="stylesheet" href="default_ns.css" type="text/css">
+<script type="text/javascript" language="JavaScript">
+<!--
+if (navigator.appName !="Netscape")
+{   document.write("<link rel='stylesheet' href='default.css'>");}
+//-->
+</script>
+<style type="text/css">
+<!--
+table.whs1 { width:100%; border-spacing:0px; }
+col.whs2 { width:100%; }
+tr.whs3 {  }
+td.whs4 { width:100%; border-left-width:1px; border-left-color:#000000; border-left-style:Solid; border-top-style:Solid; border-top-color:#000000; border-top-width:1px; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; }
+p.whs5 { font-family:'Courier New'  , monospace; }
+col.whs6 { width:27.953%; }
+col.whs7 { width:72.047%; }
+tr.whs8 { height:20px; }
+td.whs9 { width:27.953%; border-left-width:1px; border-left-color:#000000; border-left-style:Solid; border-top-style:Solid; border-top-color:#000000; border-top-width:1px; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; }
+td.whs10 { width:72.047%; border-top-style:Solid; border-top-color:#000000; border-top-width:1px; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; }
+tr.whs11 { height:19px; }
+td.whs12 { width:27.953%; border-left-width:1px; border-left-color:#000000; border-left-style:Solid; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; }
+td.whs13 { width:72.047%; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; }
+p.whs14 { font-style:italic; }
+-->
+</style>
+
+<script type="text/javascript" language="JavaScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+        origWidth = innerWidth;
+        origHeight = innerHeight;
+        onresize = reDo;
+}
+onerror = null; 
+//-->
+</script>
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute; left:0px; top:0px; z-index:4; visibility:hidden; }
+-->
+</style>
+
+<script type="text/javascript" language="javascript1.2" src="whtopic.js">
+</script>
+<script type="text/javascript" language="javascript1.2" src="whutils.js">
+</script>
+<script type="text/javascript" language="javascript" src="whver.js">
+</script>
+<script type="text/javascript" language="javascript1.2">
+<!--
+    var linkedScrollbarStyle = "<link rel='stylesheet' href='wf_topics.css'>";
+    if( (!isTopicOnly()) &&(parent.gbFHPureHtml == null) )
+    {
+        document.write(linkedScrollbarStyle);
+    }
+    //-->
+</script>
+</head>
+<body>
+<script type="text/javascript" language="javascript1.2">
+<!--
+if (window.addTocInfo)
+{
+addTocInfo("Installation\ndefault-web.xml File Modifications");
+
+  addShowButton();
+}
+if (window.setRelStartPage)
+{
+setRelStartPage("help.htm");
+
+        sendTopicLoaded();
+        autoSync(1);
+        sendSyncInfo();
+        sendAveInfo();
+        sendBgColorInfo();
+}
+//-->
+</script>
+<h1>default-web.xml File Modifications</h1>
+<p>The following extract of the default-web.xml file will enable you to see the changes made by the FusionReactor Installer in the web descriptor.</p>
+<p>&#160;</p>
+<table cellspacing="0" width="100%" class="whs1">
+<col class="whs2">
+<tr valign="top" class="whs3">
+<td width="100%" class="whs4">
+<p class="whs5"><span style="font-family:'Courier New' , monospace;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></p>
+<p class="whs5">&lt;web-app&gt;</p>
+<p class="whs5">&#160;&#160;&#160;&#160;&lt;!--FusionReactor filter - created Thu Jan 10 17:50:57 CET 2008--&gt;</p>
+<p class="whs5">&#160;&#160;&#160;&#160;&lt;filter&gt;</p>
+<p class="whs5">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;filter-name&gt;FusionReactor&lt;/filter-name&gt;</p>
+<p class="whs5">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;filter-class&gt;com.intergral.fusionreactor.filter.FusionReactorFilter&lt;/filter-class&gt;</p>
+<p class="whs5">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;init-param&gt;</p>
+<p class="whs5">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;param-name&gt;config&lt;/param-name&gt;</p>
+<p class="whs5">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;param-value&gt;C:/FusionReactor/instance/coldfusion.cfmx8.int000b/conf/reactor.conf&lt;/param-value&gt;</p>
+<p class="whs5">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;/init-param&gt;</p>
+<p class="whs5">&#160;&#160;&#160;&#160;&lt;/filter&gt;</p>
+<p class="whs5">&#160;&#160;&#160;&#160;&lt;filter-mapping&gt;</p>
+<p class="whs5">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;filter-name&gt;FusionReactor&lt;/filter-name&gt;</p>
+<p class="whs5">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;url-pattern&gt;/*&lt;/url-pattern&gt;</p>
+<p class="whs5">&#160;&#160;&#160;&#160;&lt;/filter-mapping&gt;</p>
+<p class="whs5">.</p>
+<p class="whs5">.</p>
+<p class="whs5">.</p>
+<p class="whs5">&#160;</p>
+<p class="whs5">&lt;/web-app&gt;</p>
+<p class="whs5">&#160;</p>
+</td>
+</tr>
+</table>
+<p>&#160;</p>
+<p>Examples of where the default-web.xml file is typically located :<br>
+&#160;</p>
+<table cellspacing="0" width="100%" class="whs1">
+<col class="whs6">
+<col class="whs7">
+<tr valign="top" class="whs8">
+<td width="27.953%" class="whs9">
+<p>ColdFusion 6 (Windows)</p>
+</td>
+<td width="72.047%" class="whs10">
+<p>/CFusionMX/runtime/servers/coldfusion/SERVER-INF/default-web.xml</p>
+</td>
+</tr>
+<tr valign="top" class="whs11">
+<td width="27.953%" class="whs12">
+<p>ColdFusion 7 (Windows)</p>
+</td>
+<td width="72.047%" class="whs13">
+<p>/CFusionMX7/runtime/servers/coldfusion/SERVER-INF/default-web.xml</p>
+</td>
+</tr>
+<tr valign="top" class="whs11">
+<td width="27.953%" class="whs12">
+<p>ColdFusion 8 (Windows)</p>
+</td>
+<td width="72.047%" class="whs13">
+<p>/ColdFusion8/runtime/servers/coldfusion/SERVER-INF/default-web.xml</p>
+</td>
+</tr>
+</table>
+<p>&#160;</p>
+<p class="whs14"><span style="font-weight:bold;"><b>NOTE</b></span>: If FusionReactor stops working you should check that the web descriptor contains correct settings similar to the ones above.</p>
+<p class="whs14"><span style="font-weight:bold;"><b>NOTE</b></span>: On some J2EE servers you may have to look in the web.xml and not the default-web.xml file. See the <a href="installation_guide.htm">Installation Guide</a> for further details..</p>
+</body>
+</html>

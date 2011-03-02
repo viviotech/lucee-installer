@@ -1,0 +1,32 @@
+Open BlueDragon Admin Console/API Release Notes 
+__________________________________
+
+$Date: 2009/04/25 06:17:00 $
+__________________________________
+
+-- Stable Release 1.1 [25th April 2009]
+
+- fix for #45--ability to enable/disable legacy form validation (legacy form validation causes issues with Faceboook applications)
+- fix for #43--change default for cacheResultSetMetadata on MySQL datasources to false; a setting of true causes issues (yellow error screen) for most users
+- fix for #41--mail server admin page throws an error due to change in default xml file
+- fix for #40--add connectionstring field to datasource forms
+- fix for #39--allow additional parameters to be added to datasources (see #40)
+- fix for #38--email server usernames containing @ improperly parsed
+- fix for #36--allow setting of cfcachecontent cache size and datasource
+- fix for #34--don't show debug output in openbd administrator even if debug output is turned on
+- fix for #30--H2 datasource information not parsed properly when using non-default pass and username/password
+- fix for #21--"other" datasource types lose their "other" association after being edited
+
+-- Stable Release 1.0.1 [19th January 2009]
+
+- added ability to turn path/file verification on and off on settings screen
+- fix for #33--issues with setting paths on certain installations/configurations
+- fix for #29--remove user name/password from H2 hoststrings
+- fix for #31--add cacheResultSetMetadata setting as checkbox on MySQL datasource configuration screen
+- fix for #32--add "autoReconnect=true" at end of MySQL hoststring
+- added favorite icon
+- removed functionality to set password in setInitialSecurity()--all distros will come with default password of "admin" in XML
+- added functionality to respool undelivered mail and trigger the mail spool
+- fixed bug with setInitialSecurity() since empty password node is now present in bluedragon.xml by default
+
+--- Stable Release 1.0 [2nd December 2008]

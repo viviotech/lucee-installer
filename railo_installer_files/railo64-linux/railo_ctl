@@ -1,0 +1,145 @@
+#!/bin/bash
+# chkconfig: 345 22 78
+# description: Tomcat/Railo Control Script
+
+# switch the subshell to the tomcat directory so that any relative
+# paths specified in any configs are interpreted from this directory.
+cd @@installdir@@/tomcat/
+
+# set base params for subshell
+CATALINA_BASE=@@installdir@@/tomcat; export CATALINA_BASE
+CATALINA_HOME=@@installdir@@/tomcat; export CATALINA_HOME
+CATALINA_PID=@@installdir@@/tomcat/work/tomcat.pid; export CATALINA_PID
+CATALINA_TMPDIR=@@installdir@@/tomcat/temp; export CATALINA_TMPDIR
+JRE_HOME=@@installdir@@/jdk/jre; export JRE_HOME
+JAVA_HOME=@@installdir@@/jdk; export JAVA_HOME
+
+findpid() {
+	PID_FOUND=0
+	if [ -f "$CATALINA_PID" ] ; then
+                PIDNUMBER=`cat "$CATALINA_PID"`
+                TEST_RUNNING=`ps -p ${PIDNUMBER} | grep ${PIDNUMBER}`
+	        if [ -z "${TEST_RUNNING}" ]
+        	        then
+                	        # echo "PID file exists but PID [$PIDNUMBER] is not running... removing PID file [$CATALINA_PID]"
+	                        rm -rf $CATALINA_PID
+	        else
+			# PID is found and running
+			PID_FOUND=1
+		fi
+	fi
+}
+
+start() {
+        echo -n " * Starting Railo: "
+        findpid
+	# only actually run the start command if the PID isn't found
+	if [ $PID_FOUND -eq 0 ] ; then
+		$CATALINA_HOME/bin/startup.sh
+		COUNT=0
+		while [ $COUNT -lt 3 ] ; do
+			COUNT=$(($COUNT+1))
+			echo -n ". "
+			sleep 1
+		done
+		echo "[DONE]"
+	        echo "--------------------------------------------------------"
+	        echo "It may take a few moments for Railo to start processing"
+	        echo "CFML templates. This is normal."
+	        echo "--------------------------------------------------------"
+	else
+		echo "[ALREADY RUNNING]"
+	fi
+}
+
+stop() {
+        echo -n " * Shutting down Railo: "
+	findpid
+	if [ $PID_FOUND -eq 1 ] ; then
+        	$CATALINA_HOME/bin/shutdown.sh
+		COUNT=0
+        	while [ $PID_FOUND -eq 1 ] ; do
+			findpid
+			COUNT=$(($COUNT+1))
+			if [ $COUNT -gt 20 ] ; then
+				break
+			fi
+			echo -n ". "
+			# pause while we wait to try again
+			sleep 1
+		done
+		findpid
+		if [ $PID_FOUND -eq 1 ] ; then
+			echo "[FAIL]"
+			echo " * The Tomcat/Railo process is not responding. Shutting down uncleanly..."
+			forcequit
+		else
+			echo "[DONE]"
+		fi
+	elif [ ! -f $CATALINA_PID ] ; then
+		# if the pid file doesn't exist, just say "okay"
+		echo "[DONE]"
+	else
+		echo "[Cannot locate Tomcat PID (`cat $CATALINA_PID`) ]"
+		echo "--------------------------------------------------------"
+	        echo "If the Tomcat process is still running, either kill the"
+       	 	echo "PID directly or use the 'killall' command."
+		echo "IE: # killall java"
+        	echo "--------------------------------------------------------"
+	fi
+}
+
+forcequit() {
+        echo -n " * Forcing Railo Shutdown: "
+	findpid
+	if [ $PID_FOUND -eq 1 ] ; then
+		# if the PID is still running, force it to die
+	        # $CATALINA_HOME/bin/shutdown.sh -force
+		kill -9 $PIDNUMBER
+		rm -rf $CATALINA_PID
+	        echo "[DONE]"
+	else
+		# there is no PID, tell the user.
+		echo "[FAIL]"
+                echo "--------------------------------------------------------"
+                echo "No Tomcat PID found. If the Tomcat process is still"
+                echo "active under a different PID, please kill it manually."
+                echo "--------------------------------------------------------"
+	fi
+}
+
+status() {
+	findpid
+	if [ $PID_FOUND -eq 1 ] ; then
+		
+		echo " * Railo/Tomcat is running (PID: $PIDNUMBER)"
+	else
+		echo " * PID not found."
+	fi
+}
+
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  forcequit)
+	forcequit
+	;;
+  restart)
+        stop
+        sleep 5
+        start
+        ;;
+  status)
+	status
+	;;
+  *)
+        echo " * Usage: $0 {start|stop|restart|forcequit|status}"
+        exit 1
+        ;;
+esac
+
+exit 0

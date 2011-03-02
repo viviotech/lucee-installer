@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server>
+  <system>
+    <buffersize>0</buffersize>
+    <password>@@myOpenBDAdminPassword@@</password>
+    <licensekey></licensekey>
+    <assert>false</assert>
+    <missingtemplatehandler></missingtemplatehandler>
+    <tempdirectory>$@@installdir@@/work/temp</tempdirectory>
+    <lastfile>@@installdir@@/conf/bluedragon.xml.bak.1</lastfile>
+    <runtimelogging>true</runtimelogging>
+    <deniedips></deniedips>
+    <defaultcharset>UTF-8</defaultcharset>
+    <component-cfc>$@@installdir@@/conf/component.cfc</component-cfc>
+    <scriptsrc>/bluedragon/scripts</scriptsrc>
+    <resourcepath>$@@installdir@@/webresources</resourcepath>
+    <debug>false</debug>
+    <legacyformvalidation>true</legacyformvalidation>
+    <scriptprotect>false</scriptprotect>
+    <nativelibdir>@@installdir@@/bin</nativelibdir>
+    <errorhandler></errorhandler>
+    <lastupdated>14/May/2009 07:26.22</lastupdated>
+    <allowedips></allowedips>
+    <whitespacecomp>false</whitespacecomp>
+  </system>
+  <file>
+    <maxfiles>1000</maxfiles>
+    <trustcache>false</trustcache>
+  </file>
+  <file>
+    <maxfiles>1000</maxfiles>
+    <trustcache>false</trustcache>
+  </file>
+  <cfcollection>
+    <collection name="demo">
+      <storebody>false</storebody>
+      <name>demo</name>
+      <path>@@installdir@@/work/cfcollection</path>
+      <language>english</language>
+    </collection>
+  </cfcollection>
+  <javacustomtags>
+    <classes>@@installdir@@/classes</classes>
+    <mapping name="cfx_javabluedragonhello">
+      <name>cfx_javabluedragonhello</name>
+      <displayname>CFX_JavaBlueDragonHello</displayname>
+      <description>A simple Java CFX tag example</description>
+      <class>com.newatlanta.BlueDragonHello</class>
+    </mapping>
+  </javacustomtags>
+  <nativecustomtags>
+    <mapping name="cfx_nativebluedragonhello">
+      <function>ProcessTagRequest</function>
+      <keeploaded>true</keeploaded>
+      <name>cfx_nativebluedragonhello</name>
+      <displayname>CFX_NativeBlueDragonHello</displayname>
+      <module>$@@installdir@@/customtags/BlueDragonHello.dll</module>
+      <description>A simple C++ CFX tag example</description>
+    </mapping>
+  </nativecustomtags>
+  <cfchart>
+    <cachesize>1000</cachesize>
+    <storage>file</storage>
+  </cfchart>
+  <cfquery>
+    <cache>true</cache>
+    <cachecount>1000</cachecount>
+    <dbdrivers>
+      <driver name="microsoft sql server (jtds)">
+        <datasourceconfigpage>sqlserver-jtds.cfm</datasourceconfigpage>
+        <version>1.2.2</version>
+        <name>microsoft sql server (jtds)</name>
+        <drivername>net.sourceforge.jtds.jdbc.Driver</drivername>
+        <driverdescription>Microsoft SQL Server (jTDS)</driverdescription>
+        <jdbctype>4</jdbctype>
+        <provider>jTDS</provider>
+        <defaultport>1433</defaultport>
+      </driver>
+      <driver name="other">
+        <datasourceconfigpage>other.cfm</datasourceconfigpage>
+        <version></version>
+        <name>other</name>
+        <drivername></drivername>
+        <driverdescription>Other JDBC Driver</driverdescription>
+        <jdbctype></jdbctype>
+        <provider></provider>
+        <defaultport></defaultport>
+      </driver>
+      <driver name="h2 embedded (h2)">
+        <datasourceconfigpage>h2-embedded.cfm</datasourceconfigpage>
+        <version></version>
+        <name>h2 embedded (h2)</name>
+        <drivername>org.h2.Driver</drivername>
+        <driverdescription>H2 Embedded (H2)</driverdescription>
+        <jdbctype>4</jdbctype>
+        <provider>H2</provider>
+        <defaultport></defaultport>
+      </driver>
+      <driver name="oracle (oracle)">
+        <datasourceconfigpage>oracle.cfm</datasourceconfigpage>
+        <version>10.2.0.4</version>
+        <name>oracle (oracle)</name>
+        <drivername>oracle.jdbc.OracleDriver</drivername>
+        <driverdescription>Oracle (Oracle)</driverdescription>
+        <jdbctype>4</jdbctype>
+        <provider>Oracle</provider>
+        <defaultport>1521</defaultport>
+      </driver>
+      <driver name="mysql 4/5">
+        <datasourceconfigpage>mysql5.cfm</datasourceconfigpage>
+        <version>5.1.6</version>
+        <name>mysql 4/5</name>
+        <drivername>com.mysql.jdbc.Driver</drivername>
+        <driverdescription>MySQL 4/5 (MySQL)</driverdescription>
+        <jdbctype>4</jdbctype>
+        <provider>MySQL</provider>
+        <defaultport>3306</defaultport>
+      </driver>
+      <driver name="microsoft sql server 2005 (microsoft)">
+        <datasourceconfigpage>sqlserver2005-ms.cfm</datasourceconfigpage>
+        <version>1.2</version>
+        <name>microsoft sql server 2005 (microsoft)</name>
+        <drivername>com.microsoft.sqlserver.jdbc.SQLServerDriver</drivername>
+        <driverdescription>Microsoft SQL Server 2005 (Microsoft)</driverdescription>
+        <jdbctype>4</jdbctype>
+        <provider>Microsoft</provider>
+        <defaultport>1433</defaultport>
+      </driver>
+      <driver name="postgresql (postgresql)">
+        <datasourceconfigpage>postgresql.cfm</datasourceconfigpage>
+        <version>8.3-603</version>
+        <name>postgresql (postgresql)</name>
+        <drivername>org.postgresql.Driver</drivername>
+        <driverdescription>PostgreSQL (PostgreSQL)</driverdescription>
+        <jdbctype>4</jdbctype>
+        <provider>PostgreSQL</provider>
+        <defaultport>5432</defaultport>
+      </driver>
+    </dbdrivers>
+  </cfquery>
+  <debugoutput>
+    <executiontimes>
+      <show>false</show>
+      <highlight>250</highlight>
+    </executiontimes>
+    <enabled>false</enabled>
+    <exceptions>
+      <show>false</show>
+    </exceptions>
+    <tracepoints>
+      <show>false</show>
+    </tracepoints>
+    <database>
+      <show>false</show>
+    </database>
+    <ipaddresses></ipaddresses>
+    <variables>
+      <url>true</url>
+      <form>true</form>
+      <cookie>true</cookie>
+      <cgi>true</cgi>
+      <client>true</client>
+      <server>true</server>
+      <request>true</request>
+      <application>true</application>
+      <session>true</session>
+      <local>true</local>
+      <cffile>true</cffile>
+      <show>true</show>
+      <variables>false</variables>
+    </variables>
+    <timer>
+      <show>false</show>
+    </timer>
+  </debugoutput>
+  <cfapplication>
+    <j2eesession>false</j2eesession>
+    <applicationtimeout>#CreateTimeSpan(2,0,0,0)#</applicationtimeout>
+    <clientpurgeenabled>true</clientpurgeenabled>
+    <sessiontimeout>#CreateTimeSpan(0,0,20,0)#</sessiontimeout>
+    <cf5clientdata>false</cf5clientdata>
+    <clientexpiry>90</clientexpiry>
+    <enabled>true</enabled>
+    <clientstorage>cookie</clientstorage>
+    <clientGlobalUpdatesDisabled>true</clientGlobalUpdatesDisabled>
+  </cfapplication>
+  <openbdadminapi>
+    <version>1.1</version>
+    <lastupdated>14/May/2009 04:21:00</lastupdated>
+  </openbdadminapi>
+  <cfmail>
+    <interval>240</interval>
+    <smtpserver>127.0.0.1</smtpserver>
+    <smtpport>25</smtpport>
+    <charset>UTF-8</charset>
+  </cfmail>
+  <cfmlcustomtags>
+    <mapping name="cf">
+      <directory>$@@installdir@@/customtags</directory>
+      <name>cf</name>
+    </mapping>
+  </cfmlcustomtags>
+</server>

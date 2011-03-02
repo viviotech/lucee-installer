@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0026)http://www.macromedia.com/ -->
+<html>
+<head>
+<meta http-equiv="content-style-type" content="text/css">
+<title>Instance Manager</title>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<meta name="generator" content="RoboHelp by eHelp Corporation www.ehelp.com">
+<link rel="stylesheet" href="default_ns.css" type="text/css">
+<script type="text/javascript" language="JavaScript">
+<!--
+if (navigator.appName !="Netscape")
+{   document.write("<link rel='stylesheet' href='default.css'>");}
+//-->
+</script>
+<style type="text/css">
+<!--
+p.whs1 { font-style:italic; }
+table.whs2 { width:100%; border-spacing:0px; }
+col.whs3 { width:12.202%; }
+col.whs4 { width:87.798%; }
+tr.whs5 {  }
+td.whs6 { width:12.202%; border-left-width:1px; border-left-color:#000000; border-left-style:Solid; border-top-style:Solid; border-top-color:#000000; border-top-width:1px; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; }
+td.whs7 { width:87.798%; border-top-style:Solid; border-top-color:#000000; border-top-width:1px; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; }
+col.whs8 { width:15.374%; }
+col.whs9 { width:84.626%; }
+td.whs10 { width:15.374%; border-left-width:1px; border-left-color:#000000; border-left-style:Solid; border-top-style:Solid; border-top-color:#000000; border-top-width:1px; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; }
+td.whs11 { width:84.626%; border-top-style:Solid; border-top-color:#000000; border-top-width:1px; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; }
+td.whs12 { width:15.374%; border-left-width:1px; border-left-color:#000000; border-left-style:Solid; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; }
+td.whs13 { width:84.626%; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; }
+-->
+</style>
+
+<script type="text/javascript" language="JavaScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+        origWidth = innerWidth;
+        origHeight = innerHeight;
+        onresize = reDo;
+}
+onerror = null; 
+//-->
+</script>
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute; left:0px; top:0px; z-index:4; visibility:hidden; }
+-->
+</style>
+
+<script type="text/javascript" language="javascript1.2" src="whtopic.js">
+</script>
+<script type="text/javascript" language="javascript1.2" src="whutils.js">
+</script>
+<script type="text/javascript" language="javascript" src="whver.js">
+</script>
+<script type="text/javascript" language="javascript1.2">
+<!--
+    var linkedScrollbarStyle = "<link rel='stylesheet' href='wf_topics.css'>";
+    if( (!isTopicOnly()) &&(parent.gbFHPureHtml == null) )
+    {
+        document.write(linkedScrollbarStyle);
+    }
+    //-->
+</script>
+</head>
+<body>
+<script type="text/javascript" language="javascript1.2">
+<!--
+if (window.addTocInfo)
+{
+addTocInfo("Instances\nInstance Manager");
+
+  addShowButton();
+}
+if (window.setRelStartPage)
+{
+setRelStartPage("help.htm");
+
+        sendTopicLoaded();
+        autoSync(1);
+        sendSyncInfo();
+        sendAveInfo();
+        sendBgColorInfo();
+}
+//-->
+</script>
+<h1>Instance Manager (Enterprise Version Only)</h1>
+<p>The Instance Manager page is used to keep track of the different servers running on a machine and which ones have FusionReactor installed on them. The page is split into two main sections. At the top of the page is a form letting you add new servers and at the bottom is a list of all knows servers along with the instances on each server.</p>
+<h4>Adding a Server</h4>
+<p>To add a new server to the Instance Manager, firstly select the type of server you want to add from the drop-down box and then enter the file path to the root of that server. Clicking the "Add Server" button will cause FusionReactor to attempt to find the server. If it can be found then the server will appear at the bottom of the page along with all instances currently defined within it.</p>
+<h4>Scanning the System for New Servers</h4>
+<p>Instead of specifying a single server directly, you can also get FusionReactor to automatically scan the file system for servers. To do this, enter the starting directory for your search and how many folders deep FusionReactor should search, then click the "Scan System" button.</p>
+<p class="whs1"><span style="font-weight:bold;"><b>NOTE</b></span>: Please be aware that asking FusionReactor to search more than 3 or 4 levels deep on a complex file system can take several minutes to complete.</p>
+<h4>Managing Servers and Instances</h4>
+<p>Below the server adding forms you will see a list of all servers currently set up. Each server has an icon next to it:<br>
+&#160;</p>
+<table cellspacing="0" width="100%" class="whs2">
+<col class="whs3">
+<col class="whs4">
+<tr valign="top" class="whs5">
+<td width="12.202%" class="whs6">
+<p>Remove Server</p>
+</td>
+<td width="87.798%" class="whs7">
+<p>If no instances within a server are currently running FusionReactor then you can remove it from the Instance Manager completely.<span style="font-style:italic; font-weight:bold;"><i><b><br>
+NOTE</b></i></span><span style="font-style:italic;"><i>: This option just removes it from FusionReactor. It does NOT remove the server from the machine.</i></span></p>
+</td>
+</tr>
+</table>
+<p>&#160;</p>
+<p>Each server also displays a list of instances. Each instance has three icons next to it:</p>
+<p>&#160;</p>
+<table cellspacing="0" width="100%" class="whs2">
+<col class="whs8">
+<col class="whs9">
+<tr valign="top" class="whs5">
+<td width="15.374%" class="whs10">
+<p>Install FusionReactor</p>
+</td>
+<td width="84.626%" class="whs11">
+<p>This button will let you install FusionReactor onto any instance.</p>
+</td>
+</tr>
+<tr valign="top" class="whs5">
+<td width="15.374%" class="whs12">
+<p>Remove FusionReactor</p>
+</td>
+<td width="84.626%" class="whs13">
+<p>If FusionReactor has been added to an instance then this button will let you remove it again.</p>
+</td>
+</tr>
+<tr valign="top" class="whs5">
+<td width="15.374%" class="whs12">
+<p>Add to Dashboard</p>
+</td>
+<td width="84.626%" class="whs13">
+<p>If FusionReactor has been added to an instance then clicking this button will automatically add it to the Enterprise Dashboard so you can easily monitor it.</p>
+</td>
+</tr>
+</table>
+<p>&#160;</p>
+</body>
+</html>

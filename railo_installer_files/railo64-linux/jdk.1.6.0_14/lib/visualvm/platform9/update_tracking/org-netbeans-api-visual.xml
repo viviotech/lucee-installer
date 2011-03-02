@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module codename="org.netbeans.api.visual">
+    <module_version install_time="1228400586231" last="true" origin="installer" specification_version="2.17.1">
+        <file crc="2174673394" name="config/Modules/org-netbeans-api-visual.xml"/>
+        <file crc="1656844162" name="modules/org-netbeans-api-visual.jar"/>
+    </module_version>
+</module>

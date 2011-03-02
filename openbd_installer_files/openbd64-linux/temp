@@ -1,0 +1,16 @@
+<IfModule !mod_jk.c>
+    LoadModule jk_module @@ApacheModulesDir@@mod_jk.so
+</IfModule>
+
+<IfModule mod_jk.c>
+    JkMount /*.cfm ajp13
+    JkMount /*.cfc ajp13
+    JkMount /*.do ajp13
+    JkMount /*.jsp ajp13
+    JkMount /*.cfchart ajp13
+    JkMount /*.cfres ajp13
+    JkMount /*.cfm/* ajp13
+    JkMount /*.cfml/* ajp13
+    JkMountCopy all
+    JkLogFile @@installdir@@/logs
+</IfModule>
