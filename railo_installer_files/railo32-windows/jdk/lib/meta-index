@@ -4,6 +4,7 @@
 %   may be removed in a future release
 ! alt-rt.jar
 java/util
+! alt-string.jar
 java/lang
 # charsets.jar
 META-INF/services/java.nio.charset.spi.CharsetProvider
@@ -94,8 +95,8 @@ sun/net
 com/sun/jmx/
 sun/nio
 com/sun/demo/
-com/sun/servicetag/
 com/sun/imageio/
+com/sun/servicetag/
 sun/corba
 com/sun/net/
 com/sun/swing/
@@ -111,6 +112,7 @@ com/sun/image/
 sun/util
 com/sun/jndi/
 com/sun/java_cup/
+com/oracle/
 sun/misc
 com/sun/org/
 javax/

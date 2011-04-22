@@ -75,13 +75,12 @@
 
 <div align="left"><table border="0" cellpadding="0" cellspacing="4"><tr><td height="1" width="1" bgcolor="#023264"><img border="0" hspace="0" vspace="0" height="1" width="1" alt="" src="./images/void.gif"></td><td height="1" bgcolor="#023264"><img border="0" hspace="0" vspace="0" height="1" width="1" alt="" src="./images/void.gif"></td><td height="1" width="1" bgcolor="#023264"><img border="0" hspace="0" vspace="0" height="1" width="1" alt="" src="./images/void.gif"></td></tr><tr><td width="1" bgcolor="#023264"><img border="0" hspace="0" vspace="0" height="1" width="1" alt="" src="./images/void.gif"></td><td height="1" bgcolor="#ffffff"><pre>
     cd $CATALINA_HOME/bin
-    tar xvfz jsvc.tar.gz
-    cd jsvc-src
-    autoconf
+    tar xvfz commons-deamon-native.tar.gz
+    cd commons-daemon-1.0.x-native-src/unix
     ./configure
     make
-    cp jsvc ..
-    cd ..
+    cp jsvc ../..
+    cd ../..
 </pre></td><td width="1" bgcolor="#023264"><img border="0" hspace="0" vspace="0" height="1" width="1" alt="" src="./images/void.gif"></td></tr><tr><td height="1" width="1" bgcolor="#023264"><img border="0" hspace="0" vspace="0" height="1" width="1" alt="" src="./images/void.gif"></td><td height="1" bgcolor="#023264"><img border="0" hspace="0" vspace="0" height="1" width="1" alt="" src="./images/void.gif"></td><td height="1" width="1" bgcolor="#023264"><img border="0" hspace="0" vspace="0" height="1" width="1" alt="" src="./images/void.gif"></td></tr></table></div>
 
     <p>Tomcat can then be run as a daemon using the following commands.</p>
@@ -101,18 +100,19 @@
        information. In particular, the <code>-debug</code> option is useful
        to debug issues running jsvc.</p>
 
-    <p>The file <code>$CATALINA_HOME/bin/jsvc/native/tomcat.sh</code> can be 
-       used as a template for starting Tomcat automatically at boot time from 
-       <code>/etc/init.d</code>.  The file is currently setup for running 
-       Tomcat 4.1.x, so it is necessary to edit it and change the classname 
-       from <code>BootstrapService</code> to <code>Bootstrap</code>.</p>
+    <p>The file <code>
+       $CATALINA_HOME/bin/commons-daemon-1.0.x-native-src/unix/native/Tomcat5.sh
+       </code> can be used as a template for starting Tomcat automatically at
+       boot time from <code>/etc/init.d</code>. The file is currently setup for
+       running Tomcat 5.5.x, so it will be necessary to edit it a little.</p>
 
     <p>Note that the Commons-Daemon JAR file must be on your runtime classpath 
-       to run Tomcat in this manner.  The Commons-Daemon JAR file is in the Class-Path 
-       entry of the bootstrap.jar manifest, but if you get a ClassNotFoundException 
-       or a NoClassDefFoundError for a Commons-Daemon class, add the Commons-Daemon 
-       JAR to the -cp argument when launching jsvc.</p> 
+       to run Tomcat in this manner.  The Commons-Daemon JAR file is in the
+       Class-Path entry of the bootstrap.jar manifest, but if you get a
+       ClassNotFoundException or a NoClassDefFoundError for a Commons-Daemon
+       class, add the Commons-Daemon JAR to the -cp argument when launching
+       jsvc.</p> 
 
   </blockquote></td></tr></table></td></tr><!--FOOTER SEPARATOR--><tr><td colspan="2"><hr size="1" noshade></td></tr><!--PAGE FOOTER--><tr><td colspan="2"><div align="center"><font size="-1" color="#525D76"><em>
-        Copyright &copy; 1999-2010, Apache Software Foundation
+        Copyright &copy; 1999-2011, Apache Software Foundation
         </em></font></div></td></tr></table></body></html>

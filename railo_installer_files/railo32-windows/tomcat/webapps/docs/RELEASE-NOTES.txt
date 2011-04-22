@@ -15,10 +15,10 @@
   limitations under the License.
 ================================================================================
 
-$Id: RELEASE-NOTES 786654 2009-06-19 20:25:01Z markt $
+$Id: RELEASE-NOTES 999941 2010-09-22 13:43:53Z markt $
 
 
-                     Apache Tomcat Version 6.0.29
+                     Apache Tomcat Version 6.0.32
                             Release Notes
 
 
@@ -88,7 +88,7 @@ for use by web applications (by placing them in "lib"):
 * el-api.jar (EL 2.1 API)
 * jasper.jar (Jasper 2 Compiler and Runtime)
 * jasper-el.jar (Jasper 2 EL implementation)
-* jasper-jdt.jar (Eclipse JDT 3.3 Java compiler)
+* ecj-3.3.1.jar (Eclipse JDT Java compiler)
 * jsp-api.jar (JSP 2.1 API)
 * servlet-api.jar (Servlet 2.5 API)
 * tomcat-coyote.jar (Tomcat connectors and utility classes)

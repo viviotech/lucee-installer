@@ -1,6 +1,6 @@
 Header for -agentlib:hprof (or -Xrunhprof) ASCII Output (JDK 5.0 JVMTI based)
 
-@(#)jvm.hprof.txt	1.5 06/01/28
+%W% %E%
 
  Copyright (c) 2006 Sun Microsystems, Inc. All  Rights Reserved.
 

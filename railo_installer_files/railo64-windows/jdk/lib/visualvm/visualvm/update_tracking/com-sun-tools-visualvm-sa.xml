@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module codename="com.sun.tools.visualvm.sa/0">
-    <module_version install_time="1234965620846" last="true" origin="installer" specification_version="1.0">
-        <file crc="1572166880" name="config/Modules/com-sun-tools-visualvm-sa.xml"/>
-        <file crc="397934652" name="modules/com-sun-tools-visualvm-sa.jar"/>
-    </module_version>
-</module>

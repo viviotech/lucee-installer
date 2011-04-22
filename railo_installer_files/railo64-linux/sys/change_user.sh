@@ -290,7 +290,7 @@ function rebuildControlScript {
         TEMP=`echo "	status" >> $TomcatControlScript`;
         TEMP=`echo "	;;" >> $TomcatControlScript`;
         TEMP=`echo "  *)" >> $TomcatControlScript`;
-        TEMP=`echo "        echo \\" * Usage: $0 {start|stop|restart|forcequit|status}\\"" >> $TomcatControlScript`;
+        TEMP=`echo "        echo \\" * Usage: \\$0 {start|stop|restart|forcequit|status}\\"" >> $TomcatControlScript`;
         TEMP=`echo "        exit 1" >> $TomcatControlScript`;
         TEMP=`echo "        ;;" >> $TomcatControlScript`;
         TEMP=`echo "esac" >> $TomcatControlScript`;

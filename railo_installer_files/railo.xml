@@ -1,7 +1,7 @@
 <project>
     <shortName>railo</shortName>
     <fullName>Railo</fullName>
-    <version>3.2.1.000-pl1</version>
+    <version>3.2.2.000-pl1</version>
     <leftImage>railo-sidebar.png</leftImage>
     <logoImage>railo-logo.png</logoImage>
     <splashImage>railo-splash.png</splashImage>
@@ -158,9 +158,24 @@
             <name>installiis</name>
             <show>0</show>
             <value>no</value>
+        </setInstallerVariable>
+        <setInstallerVariable>
+            <name>installconn</name>
+            <show>0</show>
+            <value>no</value>
             <ruleList>
                 <platformTest>
                     <type>windows</type>
+                </platformTest>
+            </ruleList>
+        </setInstallerVariable>
+        <setInstallerVariable>
+            <name>installconn</name>
+            <show>0</show>
+            <value>yes</value>
+            <ruleList>
+                <platformTest>
+                    <type>linux</type>
                 </platformTest>
             </ruleList>
         </setInstallerVariable>
@@ -392,7 +407,7 @@
                 </copyFile>
                 <copyFile>
                     <destination>${apachemodulesloc}/mod_jk.so</destination>
-                    <origin>${installdir}/tomcat_connectors/x86_64/mod_jk-1.2.28-httpd-2.0.X.so</origin>
+                    <origin>${installdir}/tomcat_connectors/x86_64/mod_jk-1.2.31-httpd-2.0.x.so</origin>
                     <ruleList>
                         <compareValues>
                             <logic>equals</logic>
@@ -403,7 +418,7 @@
                 </copyFile>
                 <copyFile>
                     <destination>${apachemodulesloc}/mod_jk.so</destination>
-                    <origin>${installdir}/tomcat_connectors/x86_64/mod_jk-1.2.28-httpd-2.2.X.so</origin>
+                    <origin>${installdir}/tomcat_connectors/x86_64/mod_jk-1.2.31-httpd-2.2.x.so</origin>
                     <ruleList>
                         <compareValues>
                             <logic>equals</logic>
@@ -450,7 +465,7 @@
                 </copyFile>
                 <copyFile>
                     <destination>${apachemodulesloc}/mod_jk.so</destination>
-                    <origin>${installdir}/tomcat_connectors/i386/mod_jk-1.2.28-httpd-2.0.X.so</origin>
+                    <origin>${installdir}/tomcat_connectors/i386/mod_jk-1.2.31-httpd-2.0.x.so</origin>
                     <ruleList>
                         <compareValues>
                             <logic>equals</logic>
@@ -461,7 +476,7 @@
                 </copyFile>
                 <copyFile>
                     <destination>${apachemodulesloc}/mod_jk.so</destination>
-                    <origin>${installdir}/tomcat_connectors/i386/mod_jk-1.2.28-httpd-2.2.X.so</origin>
+                    <origin>${installdir}/tomcat_connectors/i386/mod_jk-1.2.31-httpd-2.2.x.so</origin>
                     <ruleList>
                         <compareValues>
                             <logic>equals</logic>
@@ -507,7 +522,6 @@
     JkMount /*.do ajp13
     JkMount /*.jsp ajp13
     JkMount /*.cfchart ajp13
-    JkMount /*.cfres ajp13
     JkMount /*.cfm/* ajp13
     JkMount /*.cfml/* ajp13
     # Flex Gateway Mappings
@@ -664,7 +678,7 @@
                 </substitute>
                 <substitute>
                     <encoding>utf-8</encoding>
-                    <files>${installdir}\connector\isapi_redirect-1.2.30.properties</files>
+                    <files>${installdir}\connector\isapi_redirect-1.2.31.properties</files>
                     <show>0</show>
                     <type>exact</type>
                     <substitutionList>
@@ -676,8 +690,8 @@
                 </substitute>
                 <renameFile>
                     <customErrorMessage>${msg(postInstall.errRenamingDLL)}</customErrorMessage>
-                    <destination>${installdir}\connector\isapi_redirect-1.2.30.dll</destination>
-                    <origin>${installdir}\connector\isapi_redirect-1.2.30.32-bit.dll</origin>
+                    <destination>${installdir}\connector\isapi_redirect-1.2.31.dll</destination>
+                    <origin>${installdir}\connector\isapi_redirect-1.2.31.32-bit.dll</origin>
                     <ruleList>
                         <platformTest>
                             <negate>1</negate>
@@ -687,8 +701,8 @@
                 </renameFile>
                 <renameFile>
                     <customErrorMessage>${msg(postInstall.errRenamingDLL)}</customErrorMessage>
-                    <destination>${installdir}\connector\isapi_redirect-1.2.30.dll</destination>
-                    <origin>${installdir}\connector\isapi_redirect-1.2.30.64-bit.dll</origin>
+                    <destination>${installdir}\connector\isapi_redirect-1.2.31.dll</destination>
+                    <origin>${installdir}\connector\isapi_redirect-1.2.31.64-bit.dll</origin>
                     <ruleList>
                         <platformTest>
                             <type>windows-x64</type>
@@ -751,7 +765,7 @@
                 </substitute>
                 <substitute>
                     <encoding>utf-8</encoding>
-                    <files>${installdir}\connector\isapi_redirect-1.2.30.properties</files>
+                    <files>${installdir}\connector\isapi_redirect-1.2.31.properties</files>
                     <show>0</show>
                     <type>exact</type>
                     <substitutionList>
@@ -763,8 +777,8 @@
                 </substitute>
                 <renameFile>
                     <customErrorMessage>${msg(postInstall.errRenamingDLL)}</customErrorMessage>
-                    <destination>${installdir}\connector\isapi_redirect-1.2.30.dll</destination>
-                    <origin>${installdir}\connector\isapi_redirect-1.2.30.32-bit.dll</origin>
+                    <destination>${installdir}\connector\isapi_redirect-1.2.31.dll</destination>
+                    <origin>${installdir}\connector\isapi_redirect-1.2.31.32-bit.dll</origin>
                     <ruleList>
                         <platformTest>
                             <negate>1</negate>
@@ -774,8 +788,8 @@
                 </renameFile>
                 <renameFile>
                     <customErrorMessage>${msg(postInstall.errRenamingDLL)}</customErrorMessage>
-                    <destination>${installdir}\connector\isapi_redirect-1.2.30.dll</destination>
-                    <origin>${installdir}\connector\isapi_redirect-1.2.30.64-bit.dll</origin>
+                    <destination>${installdir}\connector\isapi_redirect-1.2.31.dll</destination>
+                    <origin>${installdir}\connector\isapi_redirect-1.2.31.64-bit.dll</origin>
                     <ruleList>
                         <platformTest>
                             <type>windows-x64</type>
@@ -1062,6 +1076,292 @@
                 </platformTest>
             </ruleList>
         </actionGroup>
+        <actionGroup>
+            <progressText>Installing VHost Copier</progressText>
+            <actionList>
+                <substitute>
+                    <encoding>utf-8</encoding>
+                    <files>${installdir}/vhc/config.conf</files>
+                    <type>exact</type>
+                    <substitutionList>
+                        <substitution>
+                            <pattern>@@installdir@@</pattern>
+                            <value>${installdir}</value>
+                        </substitution>
+                        <substitution>
+                            <pattern>@@tomcatport@@</pattern>
+                            <value>${tomcatport}</value>
+                        </substitution>
+                        <substitution>
+                            <pattern>@@myTomcatAdminUsername@@</pattern>
+                            <value>${tomcatuser}</value>
+                        </substitution>
+                        <substitution>
+                            <pattern>@@myTomcatAdminPassword@@</pattern>
+                            <value>${tomcatpass}</value>
+                        </substitution>
+                    </substitutionList>
+                </substitute>
+                <addTextToFile>
+                    <encoding>utf-8</encoding>
+                    <file>${installdir}/vhc/config.conf</file>
+                    <text>windowsroot=${windows_folder_systemroot}</text>
+                    <ruleList>
+                        <platformTest>
+                            <type>windows</type>
+                        </platformTest>
+                    </ruleList>
+                </addTextToFile>
+                <addTextToFile>
+                    <encoding>utf-8</encoding>
+                    <file>${installdir}/vhc/config.conf</file>
+                    <text>webservertype=Apache
+httpdfile=${apacheconfigloc}</text>
+                    <ruleList>
+                        <isTrue>
+                            <value>${installconn}</value>
+                        </isTrue>
+                    </ruleList>
+                </addTextToFile>
+                <addTextToFile>
+                    <encoding>utf-8</encoding>
+                    <file>${installdir}/vhc/config.conf</file>
+                    <text>
+webservertype=IIS6</text>
+                    <ruleList>
+                        <platformTest>
+                            <type>windows</type>
+                        </platformTest>
+                        <isTrue>
+                            <value>${installiis}</value>
+                        </isTrue>
+                        <compareText>
+                            <logic>equals</logic>
+                            <nocase>1</nocase>
+                            <text>${iis_version}</text>
+                            <value>IIS6</value>
+                        </compareText>
+                        <platformTest>
+                            <negate>1</negate>
+                            <type>windows-xp</type>
+                        </platformTest>
+                    </ruleList>
+                </addTextToFile>
+                <addTextToFile>
+                    <encoding>utf-8</encoding>
+                    <file>${installdir}/vhc/config.conf</file>
+                    <text>
+webservertype=IIS7</text>
+                    <ruleList>
+                        <platformTest>
+                            <type>windows</type>
+                        </platformTest>
+                        <isTrue>
+                            <value>${installiis}</value>
+                        </isTrue>
+                        <compareText>
+                            <logic>equals</logic>
+                            <text>${iis_version}</text>
+                            <value>IIS7</value>
+                        </compareText>
+                    </ruleList>
+                </addTextToFile>
+                <urlEncode>
+                    <text>${apacheconfigloc}</text>
+                    <variable>url_apacheconfigloc</variable>
+                    <ruleList>
+                        <isTrue>
+                            <value>${installconn}</value>
+                        </isTrue>
+                    </ruleList>
+                </urlEncode>
+                <wait>
+                    <ms>5000</ms>
+                    <progressText>Waiting for Servlet Files [5]...</progressText>
+                    <ruleList>
+                        <fileExists>
+                            <negate>1</negate>
+                            <path>${installdir}/lib/railo-server/context/railo-server.xml</path>
+                        </fileExists>
+                        <fileContentTest>
+                            <logic>contains</logic>
+                            <negate>1</negate>
+                            <path>${installdir}/lib/railo-server/context/railo-server.xml</path>
+                            <text>&lt;/railo-configuration&gt;</text>
+                        </fileContentTest>
+                    </ruleList>
+                </wait>
+                <wait>
+                    <ms>5000</ms>
+                    <progressText>Waiting for Servlet Files [10]...</progressText>
+                    <ruleList>
+                        <fileExists>
+                            <negate>1</negate>
+                            <path>${installdir}/lib/railo-server/context/railo-server.xml</path>
+                        </fileExists>
+                        <fileContentTest>
+                            <logic>contains</logic>
+                            <negate>1</negate>
+                            <path>${installdir}/lib/railo-server/context/railo-server.xml</path>
+                            <text>&lt;/railo-configuration&gt;</text>
+                        </fileContentTest>
+                    </ruleList>
+                </wait>
+                <wait>
+                    <ms>5000</ms>
+                    <progressText>Waiting for Servlet Files [15]...</progressText>
+                    <ruleList>
+                        <fileExists>
+                            <negate>1</negate>
+                            <path>${installdir}/lib/railo-server/context/railo-server.xml</path>
+                        </fileExists>
+                        <fileContentTest>
+                            <logic>contains</logic>
+                            <negate>1</negate>
+                            <path>${installdir}/lib/railo-server/context/railo-server.xml</path>
+                            <text>&lt;/railo-configuration&gt;</text>
+                        </fileContentTest>
+                    </ruleList>
+                </wait>
+                <wait>
+                    <ms>5000</ms>
+                    <progressText>Waiting for Servlet Files [20]...</progressText>
+                    <ruleList>
+                        <fileExists>
+                            <negate>1</negate>
+                            <path>${installdir}/lib/railo-server/context/railo-server.xml</path>
+                        </fileExists>
+                        <fileContentTest>
+                            <logic>contains</logic>
+                            <negate>1</negate>
+                            <path>${installdir}/lib/railo-server/context/railo-server.xml</path>
+                            <text>&lt;/railo-configuration&gt;</text>
+                        </fileContentTest>
+                    </ruleList>
+                </wait>
+                <substitute>
+                    <encoding>utf-8</encoding>
+                    <files>${installdir}/lib/railo-server/context/railo-server.xml</files>
+                    <type>exact</type>
+                    <substitutionList>
+                        <substitution>
+                            <pattern>&lt;/railo-configuration&gt;</pattern>
+                            <value>&lt;gateways&gt;
+&lt;gateway cfc-path="railo.extension.gateway.DirectoryWatcher" class="" custom="directory=${url_apacheconfigloc}&amp;amp;interval=10000&amp;amp;changeFunction=startWebserver2TomcatVHostCopier&amp;amp;extensions=*.conf&amp;amp;recurse=true&amp;amp;addFunction=startWebserver2TomcatVHostCopier&amp;amp;deleteFunction=startWebserver2TomcatVHostCopier" id="webserver2TomcatVHostCopier" listener-cfc-path="webserver2tomcatVHostCopier.DirectoryListener" read-only="false" startup-mode="automatic"/&gt;
+&lt;/gateways&gt;
+&lt;/railo-configuration&gt;</value>
+                            <ruleList>
+                                <isTrue>
+                                    <value>${installconn}</value>
+                                </isTrue>
+                            </ruleList>
+                        </substitution>
+                        <substitution>
+                            <pattern>&lt;/railo-configuration&gt;</pattern>
+                            <value>&lt;gateways&gt;
+&lt;gateway cfc-path="railo.extension.gateway.DirectoryWatcher" class="" custom="directory=${iiswebroot}&amp;amp;interval=5000&amp;amp;changeFunction=startWebserver2TomcatVHostCopier&amp;amp;extensions=xml&amp;amp;recurse=false&amp;amp;addFunction=startWebserver2TomcatVHostCopier&amp;amp;deleteFunction=startWebserver2TomcatVHostCopier" id="webserver2TomcatVHostCopier" listener-cfc-path="webserver2tomcatVHostCopier.DirectoryListener" read-only="false" startup-mode="automatic"/&gt;
+&lt;/gateways&gt;
+&lt;/railo-configuration&gt;</value>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                                <isTrue>
+                                    <value>${installiis}</value>
+                                </isTrue>
+                                <compareText>
+                                    <logic>equals</logic>
+                                    <text>${iis_version}</text>
+                                    <value>IIS6</value>
+                                </compareText>
+                                <platformTest>
+                                    <negate>1</negate>
+                                    <type>windows-xp</type>
+                                </platformTest>
+                            </ruleList>
+                        </substitution>
+                        <substitution>
+                            <pattern>&lt;/railo-configuration&gt;</pattern>
+                            <value>&lt;gateways&gt;
+&lt;gateway cfc-path="railo.extension.gateway.DirectoryWatcher" class="" custom="directory=C%3A%5Cwindows%5CSystem32%5Cinetsrv%5Cconfig%5C&amp;amp;interval=5000&amp;amp;changeFunction=startWebserver2TomcatVHostCopier&amp;amp;extensions=config&amp;amp;recurse=false&amp;amp;addFunction=startWebserver2TomcatVHostCopier&amp;amp;deleteFunction=startWebserver2TomcatVHostCopier" id="webserver2TomcatVHostCopier" listener-cfc-path="webserver2tomcatVHostCopier.DirectoryListener" read-only="false" startup-mode="automatic"/&gt;
+&lt;/gateways&gt;
+&lt;/railo-configuration&gt;</value>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                                <isTrue>
+                                    <value>${installiis}</value>
+                                </isTrue>
+                                <compareText>
+                                    <logic>equals</logic>
+                                    <text>${iis_version}</text>
+                                    <value>IIS7</value>
+                                </compareText>
+                            </ruleList>
+                        </substitution>
+                    </substitutionList>
+                </substitute>
+                <wait>
+                    <ms>5000</ms>
+                    <progressText>Waiting for Servlet Gateway [5]...</progressText>
+                    <ruleList>
+                        <fileExists>
+                            <negate>1</negate>
+                            <path>${installdir}/lib/railo-server/context/gateway/</path>
+                        </fileExists>
+                    </ruleList>
+                </wait>
+                <wait>
+                    <ms>5000</ms>
+                    <progressText>Waiting for Servlet Gateway [10]...</progressText>
+                    <ruleList>
+                        <fileExists>
+                            <negate>1</negate>
+                            <path>${installdir}/lib/railo-server/context/gateway/</path>
+                        </fileExists>
+                    </ruleList>
+                </wait>
+                <wait>
+                    <ms>5000</ms>
+                    <progressText>Waiting for Servlet Gateway [15]...</progressText>
+                    <ruleList>
+                        <fileExists>
+                            <negate>1</negate>
+                            <path>${installdir}/lib/railo-server/context/gateway/</path>
+                        </fileExists>
+                    </ruleList>
+                </wait>
+                <wait>
+                    <ms>5000</ms>
+                    <progressText>Waiting for Servlet Gateway [20]...</progressText>
+                    <ruleList>
+                        <fileExists>
+                            <negate>1</negate>
+                            <path>${installdir}/lib/railo-server/context/gateway/</path>
+                        </fileExists>
+                    </ruleList>
+                </wait>
+                <copyFile>
+                    <destination>${installdir}/lib/railo-server/context/gateway/webserver2tomcatVHostCopier/</destination>
+                    <origin>${installdir}/vhc/</origin>
+                    <onErrorActionList>
+                        <wait>
+                            <ms>1</ms>
+                        </wait>
+                    </onErrorActionList>
+                </copyFile>
+                <deleteFile>
+                    <path>${installdir}/vhc/</path>
+                    <progressText>Cleaning up VHost Copier Files...</progressText>
+                </deleteFile>
+            </actionList>
+            <ruleList>
+                <isTrue>
+                    <value>${vhostcopier}</value>
+                </isTrue>
+            </ruleList>
+        </actionGroup>
     </postInstallationActionList>
     <preUninstallationActionList>
         <runProgram>
@@ -1133,10 +1433,13 @@
                             <origin>railo32-windows/connector</origin>
                         </distributionDirectory>
                         <distributionDirectory>
-                            <origin>railo64-windows/fusionreactor</origin>
+                            <origin>railo-all/lib</origin>
                         </distributionDirectory>
                         <distributionDirectory>
-                            <origin>railo-all/lib</origin>
+                            <origin>railo-all/fusionreactor</origin>
+                        </distributionDirectory>
+                        <distributionDirectory>
+                            <origin>railo-all/vhc</origin>
                         </distributionDirectory>
                     </distributionFileList>
                 </folder>
@@ -1208,6 +1511,9 @@
                         <distributionDirectory>
                             <origin>railo-all/fusionreactor</origin>
                         </distributionDirectory>
+                        <distributionDirectory>
+                            <origin>railo-all/vhc</origin>
+                        </distributionDirectory>
                     </distributionFileList>
                 </folder>
                 <folder>
@@ -1239,6 +1545,9 @@
                         </distributionDirectory>
                         <distributionDirectory>
                             <origin>railo-all/fusionreactor</origin>
+                        </distributionDirectory>
+                        <distributionDirectory>
+                            <origin>railo-all/vhc</origin>
                         </distributionDirectory>
                     </distributionFileList>
                 </folder>
@@ -1585,7 +1894,7 @@
             <description>${msg(params.installApacheDesc)}</description>
             <explanation>${msg(params.installApacheExplanation)}</explanation>
             <value></value>
-            <default>yes</default>
+            <default>true</default>
             <displayStyle>checkbox-left</displayStyle>
             <ruleList>
                 <platformTest>
@@ -1817,6 +2126,28 @@
             <value>yes</value>
             <default>no</default>
             <displayStyle>checkbox-left</displayStyle>
+        </booleanParameter>
+        <booleanParameter>
+            <name>vhostcopier</name>
+            <title>Install VHost Copier?</title>
+            <description>Install VHost Copier? [${installconn}]</description>
+            <explanation>Would you like to install the VHost Copier on to your system? This module will automatically configure your sites in Tomcat/Railo.
+
+If you do not install this module, you will need to manually configure your sites in Tomcat.
+
+Note: After installation, you can manage this module from the Railo Server Administrator. </explanation>
+            <value>yes</value>
+            <default>yes</default>
+            <displayStyle>checkbox-left</displayStyle>
+            <ruleEvaluationLogic>or</ruleEvaluationLogic>
+            <ruleList>
+                <isTrue>
+                    <value>${installconn}</value>
+                </isTrue>
+                <isTrue>
+                    <value>${installiis}</value>
+                </isTrue>
+            </ruleList>
         </booleanParameter>
     </parameterList>
     <platformOptionsList>

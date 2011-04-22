@@ -1,10 +1,10 @@
 ----
-FusionReactor Rev. 3.5
+FusionReactor Rev. 3.5.5
 ----
 
 RELEASE NOTES
 
-Status: 04-October-2009
+Status: 17-February-2011
 
 Welcome to FusionReactor!
 
@@ -27,9 +27,9 @@ For known issues and further support, please see the following web pages:
 
 To check for FusionReactor updates use the [update page http://www.fusion-reactor.com/fr/update.cfm]
 
-3.5 RESOLVED ISSUES
+3.5.5 RESOLVED ISSUES
 
 For resolved issues, please see the following web pages:
 
    [http://www.fusion-reactor.com/support/kb/FRS-230.cfm]
-   
+

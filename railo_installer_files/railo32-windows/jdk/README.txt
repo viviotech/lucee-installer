@@ -43,11 +43,11 @@ Java Platform, Standard Edition Runtime Environment (JRE)
 -----------------------------------------------------------------------
 
 To run your application, a user needs the Java SE Runtime Environment,
-which is freely available from Sun. Or, you can redistribute the
+which is freely available from Oracle. Or, you can redistribute the
 Java SE Runtime Environment for free with your application, according
 to the terms of the Java SE Platform Runtime Environment's license. The 
 JavaFX runtime is only required to run applications written in the 
-JavaFX scripting language; it is freely available from Sun, and must
+JavaFX scripting language; it is freely available from Oracle, and must
 not be redistributed with your application.
 
 The final step in the deployment process occurs when the software is
@@ -92,10 +92,10 @@ provided that:
     contained in or on the Software,
 
 (g) you only distribute the Software subject to a license agreement
-    that protects Sun's interests consistent with the terms
+    that protects Oracle's interests consistent with the terms
     contained in this Agreement, and
 
-(h) you agree to defend and indemnify Sun and its licensors from
+(h) you agree to defend and indemnify Oracle and its licensors from
     and against any damages, costs, liabilities, settlement amounts
     and/or expenses (including attorneys' fees) incurred in
     connection with any claim, lawsuit or action by any third party
@@ -368,9 +368,7 @@ override, see
 
 -----------------------------------------------------------------------
 The Java(TM) Runtime Environment (JRE) and the JavaFX(TM) runtime are 
-products of Sun Microsystems(TM), Inc.
+products of Oracle.
 
-Copyright © 2010 Sun Microsystems, Inc.
-4150 Network Circle, Santa Clara, California 95054, U.S.A.
-All rights reserved.
+Copyright (c) 2011, Oracle and/or its affiliates. All rights reserved.
 

@@ -161,10 +161,9 @@ tens of JARs. On fast servers, this will allow sub-second recompilation cycles
 for even large JSP  pages.</p>
 
 <p>Apache Ant, which was used in previous Tomcat releases, can be used instead
-of the new compiler by simply removing the <code>lib/jasper-jdt.jar</code> file, 
-and placing the <code>ant.jar</code> file from the latest Ant distribution in
-the <code>lib</code> folder.  If you do this, you also need to use the "javac"
-argument to catalina.sh.</p>
+of the new compiler by simply removing the <code>lib/ecj-*.jar</code> file, 
+and placing the <code>ant.jar</code> and <code>ant-launcher.jar</code> files
+from the latest Ant distribution in the <code>lib</code> folder.</p>
 
 </blockquote></td></tr></table><table cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#525D76"><font face="arial,helvetica.sanserif" color="#ffffff"><a name="Known issues"><!--()--></a><a name="Known_issues"><strong>Known issues</strong></a></font></td></tr><tr><td><blockquote>
 
@@ -352,5 +351,5 @@ setting the init parameter <code>javaEncoding</code> to
 </p>
 
 </blockquote></td></tr></table></td></tr><!--FOOTER SEPARATOR--><tr><td colspan="2"><hr size="1" noshade></td></tr><!--PAGE FOOTER--><tr><td colspan="2"><div align="center"><font size="-1" color="#525D76"><em>
-        Copyright &copy; 1999-2010, Apache Software Foundation
+        Copyright &copy; 1999-2011, Apache Software Foundation
         </em></font></div></td></tr></table></body></html>
