@@ -225,7 +225,7 @@ function rebuildControlScript {
         TEMP=`echo "		findpid" >> $TomcatControlScript`;
         TEMP=`echo "		if [ \\$PID_FOUND -eq 1 ] ; then" >> $TomcatControlScript`;
         TEMP=`echo "			echo \\"[FAIL]\\"" >> $TomcatControlScript`;
-        TEMP=`echo "			echo \\" * The Tomcat/${myCFServerName} process is not responding. Shutting down uncleanly...\\"" >> $TomcatControlScript`;
+        TEMP=`echo "			echo \\" * The Tomcat/${myCFServerName} process is not responding. Forcing shutdown...\\"" >> $TomcatControlScript`;
         TEMP=`echo "			forcequit" >> $TomcatControlScript`;
         TEMP=`echo "		else" >> $TomcatControlScript`;
         TEMP=`echo "			echo \\"[DONE]\\"" >> $TomcatControlScript`;

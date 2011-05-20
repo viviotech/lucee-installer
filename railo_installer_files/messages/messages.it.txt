@@ -1,5 +1,5 @@
 Installer.Welcome.Title=Setup - %1$s
-Installer.Welcome.Text=Benvenuti nel %1$s Wizard di installazione.\n\n\n\nProcedura di installazione sviluppata da:\n- Jordan Michaels\n- Bilal Soylu\n\nProcedura di installazione localizzata da:\n- Paul Klinkenberg - Tedesco\n- Salvatore Fusto - Italiano\n- Ronan Lucio - Portoghese (Brasiliano)\n- Tomoaki Tanaka - Japanese\n
+Installer.Welcome.Text=Benvenuti nel %1$s Wizard di installazione.\n\n\n\n\nProcedura di installazione sviluppata da:\n- Jordan Michaels\n- Bilal Soylu\n\nProcedura di installazione localizzata da:\n- Paul Klinkenberg - Tedesco\n- Salvatore Fusto - Italiano\n- Ronan Lucio - Portoghese (Brasiliano)\n
 Installer.Ready.Title=Avvio dell'installazione
 Installer.Ready.Text1=La procedura è pronta ad installar %1$s sul tuo computer.
 Installer.Installation.Finished.Title=Installazione %1$s sul tuo computer in corso.
@@ -89,9 +89,3 @@ warnings.WinXPLimitedSupport=Il supporto di Windows XP è molto limitato.\n-Assic
 warnings.FRPortBusy=Porte 8114/8088 già in uso. Non è possibile installare FusionReactor in quanto già installato.
 final.OpenRailoURL=Avvia amministratore del server railo?
 final.OpenFRURL=Amministrazione FusionReactor
-vhost.WindowTitle=
-vhost.WindowExplanation=
-vhost.InstallVHostProgress=
-vhost.WaitServlet=
-vhost.WaitGateway=
-vhost.CleaningFiles=

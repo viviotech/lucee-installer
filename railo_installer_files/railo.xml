@@ -202,6 +202,24 @@
             </ruleList>
         </setInstallerVariable>
         <setInstallerVariable>
+            <name>bittype</name>
+            <value>64</value>
+            <ruleList>
+                <platformTest>
+                    <type>windows-x64</type>
+                </platformTest>
+            </ruleList>
+        </setInstallerVariable>
+        <setInstallerVariable>
+            <name>bittype</name>
+            <value>32</value>
+            <ruleList>
+                <platformTest>
+                    <type>windows-x86</type>
+                </platformTest>
+            </ruleList>
+        </setInstallerVariable>
+        <setInstallerVariable>
             <name>iis_version</name>
             <persist>1</persist>
             <value>no</value>
@@ -693,10 +711,11 @@
                     <destination>${installdir}\connector\isapi_redirect-1.2.31.dll</destination>
                     <origin>${installdir}\connector\isapi_redirect-1.2.31.32-bit.dll</origin>
                     <ruleList>
-                        <platformTest>
-                            <negate>1</negate>
-                            <type>windows-x64</type>
-                        </platformTest>
+                        <compareText>
+                            <logic>equals</logic>
+                            <text>${bittype}</text>
+                            <value>32</value>
+                        </compareText>
                     </ruleList>
                 </renameFile>
                 <renameFile>
@@ -704,9 +723,11 @@
                     <destination>${installdir}\connector\isapi_redirect-1.2.31.dll</destination>
                     <origin>${installdir}\connector\isapi_redirect-1.2.31.64-bit.dll</origin>
                     <ruleList>
-                        <platformTest>
-                            <type>windows-x64</type>
-                        </platformTest>
+                        <compareText>
+                            <logic>equals</logic>
+                            <text>${bittype}</text>
+                            <value>64</value>
+                        </compareText>
                     </ruleList>
                 </renameFile>
                 <runProgram>
@@ -780,10 +801,11 @@
                     <destination>${installdir}\connector\isapi_redirect-1.2.31.dll</destination>
                     <origin>${installdir}\connector\isapi_redirect-1.2.31.32-bit.dll</origin>
                     <ruleList>
-                        <platformTest>
-                            <negate>1</negate>
-                            <type>windows-x64</type>
-                        </platformTest>
+                        <compareText>
+                            <logic>equals</logic>
+                            <text>${bittype}</text>
+                            <value>32</value>
+                        </compareText>
                     </ruleList>
                 </renameFile>
                 <renameFile>
@@ -791,9 +813,11 @@
                     <destination>${installdir}\connector\isapi_redirect-1.2.31.dll</destination>
                     <origin>${installdir}\connector\isapi_redirect-1.2.31.64-bit.dll</origin>
                     <ruleList>
-                        <platformTest>
-                            <type>windows-x64</type>
-                        </platformTest>
+                        <compareText>
+                            <logic>equals</logic>
+                            <text>${bittype}</text>
+                            <value>64</value>
+                        </compareText>
                     </ruleList>
                 </renameFile>
                 <runProgram>
@@ -1077,7 +1101,7 @@
             </ruleList>
         </actionGroup>
         <actionGroup>
-            <progressText>Installing VHost Copier</progressText>
+            <progressText>${msg(vhost.InstallVHostProgress)}</progressText>
             <actionList>
                 <substitute>
                     <encoding>utf-8</encoding>
@@ -1177,7 +1201,7 @@ webservertype=IIS7</text>
                 </urlEncode>
                 <wait>
                     <ms>5000</ms>
-                    <progressText>Waiting for Servlet Files [5]...</progressText>
+                    <progressText>${msg(vhost.WaitServlet)} [5]...</progressText>
                     <ruleList>
                         <fileExists>
                             <negate>1</negate>
@@ -1193,7 +1217,7 @@ webservertype=IIS7</text>
                 </wait>
                 <wait>
                     <ms>5000</ms>
-                    <progressText>Waiting for Servlet Files [10]...</progressText>
+                    <progressText>${msg(vhost.WaitServlet)} [10]...</progressText>
                     <ruleList>
                         <fileExists>
                             <negate>1</negate>
@@ -1209,7 +1233,7 @@ webservertype=IIS7</text>
                 </wait>
                 <wait>
                     <ms>5000</ms>
-                    <progressText>Waiting for Servlet Files [15]...</progressText>
+                    <progressText>${msg(vhost.WaitServlet)} [15]...</progressText>
                     <ruleList>
                         <fileExists>
                             <negate>1</negate>
@@ -1225,7 +1249,7 @@ webservertype=IIS7</text>
                 </wait>
                 <wait>
                     <ms>5000</ms>
-                    <progressText>Waiting for Servlet Files [20]...</progressText>
+                    <progressText>${msg(vhost.WaitServlet)} [20]...</progressText>
                     <ruleList>
                         <fileExists>
                             <negate>1</negate>
@@ -1303,8 +1327,69 @@ webservertype=IIS7</text>
                     </substitutionList>
                 </substitute>
                 <wait>
+                    <ms>10000</ms>
+                    <progressText>${msg(vhost.WaitServlet)} [A-10...</progressText>
+                </wait>
+                <wait>
                     <ms>5000</ms>
-                    <progressText>Waiting for Servlet Gateway [5]...</progressText>
+                    <progressText>${msg(vhost.WaitServlet)} [B-5]...</progressText>
+                    <ruleList>
+                        <fileExists>
+                            <negate>1</negate>
+                            <path>${installdir}/lib/railo-server/context/railo-server.xml</path>
+                        </fileExists>
+                        <fileContentTest>
+                            <logic>contains</logic>
+                            <negate>1</negate>
+                            <path>${installdir}/lib/railo-server/context/railo-server.xml</path>
+                            <text>&lt;/railo-configuration&gt;</text>
+                        </fileContentTest>
+                    </ruleList>
+                </wait>
+                <wait>
+                    <ms>5000</ms>
+                    <progressText>${msg(vhost.WaitServlet)} [B-10]...</progressText>
+                    <ruleList>
+                        <fileExists>
+                            <negate>1</negate>
+                            <path>${installdir}/lib/railo-server/context/railo-server.xml</path>
+                        </fileExists>
+                        <fileContentTest>
+                            <logic>contains</logic>
+                            <negate>1</negate>
+                            <path>${installdir}/lib/railo-server/context/railo-server.xml</path>
+                            <text>&lt;/railo-configuration&gt;</text>
+                        </fileContentTest>
+                    </ruleList>
+                </wait>
+                <substitute>
+                    <encoding>utf-8</encoding>
+                    <files>${installdir}/lib/railo-server/context/railo-server.xml</files>
+                    <type>exact</type>
+                    <substitutionList>
+                        <substitution>
+                            <pattern>&lt;/railo-configuration&gt;</pattern>
+                            <value>&lt;extensions&gt;
+&lt;provider url="http://www.railodeveloper.com/ExtensionProvider.cfc"/&gt;
+&lt;extension author="Railo - Paul Klinkenberg" category="Administration" codename="0.4" config="{'STEPS':[{'meetsrequirements':'1'},{},{}],'MIXED':{'SAVEPATH':'${installdir}/lib/railo-server/context/gateway/webserver2tomcatVHostCopier/','meetsrequirements':'1'}}" created="{ts '2010-01-01 00:00:00'}" description="&amp;#10;&amp;#9;&amp;#9;&amp;#9;With this extension, your virtual hosts in Apache or IIS 6/7 will be automagically added to Railo-Tomcat.&amp;#10;&amp;#9;&amp;#9;&amp;#9;This way, you do not need to add the hosts in 2 places, and you do not need to restart Tomcat for the changes to take effect." documentation="http://www.railodeveloper.com/post.cfm/apache-iis-to-tomcat-vhost-copier-for-railo" forum="" id="tomcatvhosts" image="" label="Webserver2Tomcat vhost copier" mailinglist="" name="Webserver2TomcatVhostCopier" network="" provider="http://www.railodeveloper.com/ExtensionProvider.cfc" support="mailto:paul@ongevraagdadvies.nl" type="server" version="0.4.021" video=""/&gt;
+&lt;/extensions&gt;
+&lt;/railo-configuration&gt;</value>
+                            <ruleList>
+                                <fileExists>
+                                    <path>${installdir}/lib/railo-server/context/railo-server.xml</path>
+                                </fileExists>
+                                <fileContentTest>
+                                    <logic>contains</logic>
+                                    <path>${installdir}/lib/railo-server/context/railo-server.xml</path>
+                                    <text>&lt;/railo-configuration&gt;</text>
+                                </fileContentTest>
+                            </ruleList>
+                        </substitution>
+                    </substitutionList>
+                </substitute>
+                <wait>
+                    <ms>5000</ms>
+                    <progressText>${msg(vhost.WaitGateway)} [5]...</progressText>
                     <ruleList>
                         <fileExists>
                             <negate>1</negate>
@@ -1314,7 +1399,7 @@ webservertype=IIS7</text>
                 </wait>
                 <wait>
                     <ms>5000</ms>
-                    <progressText>Waiting for Servlet Gateway [10]...</progressText>
+                    <progressText>${msg(vhost.WaitGateway)} [10]...</progressText>
                     <ruleList>
                         <fileExists>
                             <negate>1</negate>
@@ -1324,7 +1409,7 @@ webservertype=IIS7</text>
                 </wait>
                 <wait>
                     <ms>5000</ms>
-                    <progressText>Waiting for Servlet Gateway [15]...</progressText>
+                    <progressText>${msg(vhost.WaitGateway)} [15]...</progressText>
                     <ruleList>
                         <fileExists>
                             <negate>1</negate>
@@ -1334,7 +1419,7 @@ webservertype=IIS7</text>
                 </wait>
                 <wait>
                     <ms>5000</ms>
-                    <progressText>Waiting for Servlet Gateway [20]...</progressText>
+                    <progressText>${msg(vhost.WaitGateway)} [20]...</progressText>
                     <ruleList>
                         <fileExists>
                             <negate>1</negate>
@@ -1353,7 +1438,7 @@ webservertype=IIS7</text>
                 </copyFile>
                 <deleteFile>
                     <path>${installdir}/vhc/</path>
-                    <progressText>Cleaning up VHost Copier Files...</progressText>
+                    <progressText>Cleaning up VHost Copier Files...${msg(vhost.CleaningFiles)}</progressText>
                 </deleteFile>
             </actionList>
             <ruleList>
@@ -1759,14 +1844,17 @@ webservertype=IIS7</text>
     <customLanguageFileList>
         <language>
             <code>en</code>
+	    <encoding>utf-8</encoding>
             <file>messages/messages.en.txt</file>
         </language>
         <language>
             <code>de</code>
+            <encoding>utf-8</encoding>
             <file>messages/messages.de.txt</file>
         </language>
         <language>
             <code>it</code>
+            <encoding>utf-8</encoding>
             <file>messages/messages.it.txt</file>
         </language>
         <language>
@@ -1776,10 +1864,12 @@ webservertype=IIS7</text>
         </language>
         <language>
             <code>nl</code>
+            <encoding>utf-8</encoding>
             <file>messages/messages.nl.txt</file>
         </language>
         <language>
             <code>pt_BR</code>
+            <encoding>utf-8</encoding>
             <file>messages/messages.pt_BR.txt</file>
         </language>
     </customLanguageFileList>
@@ -2116,6 +2206,9 @@ webservertype=IIS7</text>
                 <platformTest>
                     <type>linux-x64</type>
                 </platformTest>
+                <platformTest>
+                    <type>windows-x64</type>
+                </platformTest>
             </ruleList>
         </choiceParameter>
         <booleanParameter>
@@ -2129,13 +2222,9 @@ webservertype=IIS7</text>
         </booleanParameter>
         <booleanParameter>
             <name>vhostcopier</name>
-            <title>Install VHost Copier?</title>
-            <description>Install VHost Copier? [${installconn}]</description>
-            <explanation>Would you like to install the VHost Copier on to your system? This module will automatically configure your sites in Tomcat/Railo.
-
-If you do not install this module, you will need to manually configure your sites in Tomcat.
-
-Note: After installation, you can manage this module from the Railo Server Administrator. </explanation>
+            <title>${msg(vhost.WindowTitle)}</title>
+            <description>${msg(vhost.WindowTitle)}</description>
+            <explanation>${msg(vhost.WindowExplanation)}</explanation>
             <value>yes</value>
             <default>yes</default>
             <displayStyle>checkbox-left</displayStyle>
