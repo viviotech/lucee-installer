@@ -3,6 +3,7 @@
 % UNSUPPORTED: this file and its format may change and/or
 %   may be removed in a future release
 ! alt-rt.jar
+java/math
 java/util
 ! alt-string.jar
 java/lang

@@ -18,16 +18,13 @@
 # -----------------------------------------------------------------------------
 # Start Script for the CATALINA Server
 #
-# $Id: startup.sh 562770 2007-08-04 22:13:58Z markt $
+# $Id: startup.sh 1137558 2011-06-20 09:26:36Z rjung $
 # -----------------------------------------------------------------------------
 
 # Better OS/400 detection: see Bugzilla 31132
 os400=false
-darwin=false
 case "`uname`" in
-CYGWIN*) cygwin=true;;
 OS400*) os400=true;;
-Darwin*) darwin=true;;
 esac
 
 # resolve links - $0 may be a softlink
@@ -56,6 +53,7 @@ if $os400; then
 else
   if [ ! -x "$PRGDIR"/"$EXECUTABLE" ]; then
     echo "Cannot find $PRGDIR/$EXECUTABLE"
+    echo "The file is absent or does not have execute permission"
     echo "This file is needed to run this program"
     exit 1
   fi

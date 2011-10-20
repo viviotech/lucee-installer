@@ -16,7 +16,8 @@
   limitations under the License.
 -->
 <tomcat-users>
-<user name="@@myTomcatAdminUsername@@" password="@@myTomcatAdminPassword@@" roles="admin,manager" /><!--
+<user name="@@myTomcatAdminUsername@@" password="@@myTomcatAdminPassword@@" roles="admin,manager,manager-gui" />
+<!--
   <role rolename="tomcat"/>
   <role rolename="role1"/>
   <user username="tomcat" password="tomcat" roles="tomcat"/>

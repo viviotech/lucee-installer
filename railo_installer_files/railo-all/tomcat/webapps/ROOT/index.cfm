@@ -2,15 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="description" content="This is the start page of Railo express running on Resins. Railo 3.1 OS is a fast and reliable open source CFML engine."/>
-	<meta name="keywords" content="CFML,Cold Fusion,Scripting Language,Performance,Tuning,Open Source,JBoss,Reactor,ModelGlue,ColdBox,Transfer"/>
-    <title>Welcome to Railo 3.2</title><link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
+	<meta name="description" content="Welcome to the Railo, a fast and reliable open source CFML engine."/>
+	<meta name="keywords" content="CFML,Cold Fusion,ColdFusion,Scripting Language,Fast,Performance,Open Source,OSS,JBoss,Tomcat,Java"/>
+	<cfoutput>
+	<title>Welcome to Railo #left(server.railo.version,3)#</title><link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
+	</cfoutput>
 </head>
    <body id="documentation" class="twoCol">
    	<div id="container" class="sysDocumentation">
    		<div id="masthead">
    			<div id="header" class="clearfix">
-   				<div class="wrap"><h1><a href="http://www.getrailo.org/go.cfm/community_website">Default</a></h1>
+   				<div class="wrap"><h1><a href="http://www.getrailo.org/go.cfm/community_website">Railo Home</a></h1>
    					<h2 id="navPrimary">Welcome to the Railo world.</h2>
    				</div>
    			</div>
@@ -20,7 +22,7 @@
    			<div class="wrap clearfix">
 				<div class="sidebar" id="left">
 					<ul class="navSecondary">
-						<li><a href="http://www.getrailo.org/go.cfm/quick-start-guide" target="_blank">Getting Started</a>
+						<li><a href="http://wiki.getrailo.org/wiki/Installation:InstallerDocumentation" target="_blank">Installer Docs</a>
 						<li><a href="http://www.getrailo.org/go.cfm/community_website" target="_blank">Comunity Website</a></li>
 						<li><a href="http://www.getrailo.org/go.cfm/wiki" target="_blank">Wiki - Documentation</a></li>
 						<li><a href="http://www.getrailo.org/go.cfm/mailing-list" target="_blank">Railo mailing list</a></li>
@@ -40,23 +42,24 @@
    				<div id="main">
    					<div id="primary" class="content">
 	   					<div id="explanation">
-	   					<h2>Important notes</h2>
-						<p>Thank you for choosing Railo Server as your CFML engine. If you have installed Railo on your production server, please make sure
-						that your Server Administrator is protected and that you have set a default password for the Web Administrator.<br><br>
-						Please check the <a href="http://www.getrailo.org/go.cfm/quick-start-guide" target="_blank">quick 
-						start guide</a> on our page on how to begin. In our Wiki you will find a lot of useful information and documentation.<br>
-						If you have installed Railo Express, please check out our 
-						<a href="http://www.getrailo.org/go.cfm/Railo_Installation" target="_blank">installation guides</a> for other platforms and 
-						application servers which are available in the wiki.
-						<br><br>
-						At the moment this page runs on the virtual host <b>#cgi.server_name#</b>. If you like to know how to add additional 
-						virtual hosts which result in Railo contexts please check the wiki on how to do this. 
-						<a href="http://www.getrailo.org/go.cfm/Installation:CreateRailoContext" target="_blank">Creating new virtual hosts</a><br />
-						
-						</p>
+	   					<h2>Getting Started</h2>
+						<p>Thank you for choosing Railo Server as your CFML engine! Now that you're up and running, here are some helpful links to get you started:</p>
+						<p><strong>Windows</strong></p>
+                                                <ul>
+                                                	<li><a href="http://wiki.getrailo.org/wiki/Installation:InstallerDocumentation:MSAddingSites">Adding New Sites to Windows/IIS</a></li>
+                                                	<li><a href="http://wiki.getrailo.org/wiki/Installation:InstallerDocumentation:MSCommonProblems">Solutions to Common Windows Problems</a></li>
+                                                	<li><a href="http://wiki.getrailo.org/wiki/Installation:InstallerDocumentation:MSSESURL">Configuring Search Engine Safe (SES) URL's</a></li>
+                                                </ul>
+						<p><strong>Linux</strong></p>
+                                                <ul>
+                                                        <li><a href="http://wiki.getrailo.org/wiki/Installation:InstallerDocumentation:LinAddingSites">Adding New Sites to Linux/Apache</a></li>
+                                                        <li><a href="http://wiki.getrailo.org/wiki/Installation:InstallerDocumentation:LinStartStop">Starting and Stopping Railo</a></li>
+                                                        <li><a href="http://wiki.getrailo.org/wiki/Installation:InstallerDocumentation:LinSESURL">Configuring Search Engine Safe (SES) URL's</a></li>
+                                                </ul>
+
 	   					<h2>Railo Administration</h2>
 						<p>
-							If you want to call the Railo Administrator, just follow this link:
+							To access the Railo Administrators, just follow the following links:
 							<ul>
 								<li><a href="#cgi.context_path#/railo-context/admin/server.cfm">Railo Server Administrator</a></li>
 								<li><a href="#cgi.context_path#/railo-context/admin/web.cfm">Railo Web Administrator</a></li>

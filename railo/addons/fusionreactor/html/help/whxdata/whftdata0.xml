@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ftstdata>
+	<topic name="About" url="about.htm"/>
+	<topic name="Accessing the FusionReactor administrator program" url="accessing_the_fusionreactor_administrator_program.htm"/>
+	<topic name="List All Threads" url="all_threads.htm"/>
+	<topic name="Change password" url="change_password.htm"/>
+	<topic name="Compression Settings" url="compression_settings.htm"/>
+	<topic name="CP Restrictions" url="cp_exclusions.htm"/>
+	<topic name="Crash protection log" url="crash_protection_log.htm"/>
+	<topic name="Crash Protection settings" url="crash_protection_settings.htm"/>
+	<topic name="Creating A Regular Expression Exclusion" url="creating_a_regular_expression_exclusion.htm"/>
+	<topic name="Creating a regular expression filter" url="creating_a_regular_expression_filter.htm"/>
+	<topic name="CPU Graph" url="current_cpu_graph.htm"/>
+	<topic name="Memory Graph" url="current_memory_graph.htm"/>
+	<topic name="Enabling and disabling FusionReactor" url="enabling_and_disabling_fusionreactor.htm"/>
+	<topic name="Enterprise Dashboard" url="enterprise_console.htm"/>
+	<topic name="Enterprise Settings" url="enterprise_settings.htm"/>
+	<topic name="Exclude MIME Types" url="exclude_mime_types.htm"/>
+	<topic name="Exclude URLs" url="exclude_urls.htm"/>
+	<topic name="Filter Restrictions" url="filter_restrictions.htm"/>
+	<topic name="Filter settings" url="filter_settings.htm"/>
+	<topic name="Restrictions" url="fr_restrictions.htm"/>
+	<topic name="FusionReactor Settings" url="fusionreactor_settings.htm"/>
+	<topic name="Help" url="help_1.htm"/>
+	<topic name="Importing and Graphing Data in Excel" url="importing_and_graphing_data_in_excel.htm"/>
+	<topic name="Installation Guide" url="installation_guide.htm"/>
+	<topic name="Instance Manager" url="instance_manager.htm"/>
+	<topic name="JDBC Activity Graph" url="jdbc_activity_graph.htm"/>
+	<topic name="JDBC Stack Trace Filter" url="jdbc_filter.htm"/>
+	<topic name="JDBC Log" url="jdbc_log.htm"/>
+	<topic name="JDBC Settings" url="jdbc_settings.htm"/>
+	<topic name="JDBC Time Graph" url="jdbc_time_graph.htm"/>
+	<topic name="Log file" url="log_file.htm"/>
+	<topic name="Logout" url="logout.htm"/>
+	<topic name="Longest JDBC" url="longest_jdbc.htm"/>
+	<topic name="Longest running requests" url="longest_running_requests.htm"/>
+	<topic name="Manage Groups" url="manage_groups.htm"/>
+	<topic name="Manage Servers" url="manage_machines.htm"/>
+	<topic name="Managing Users" url="managing_users.htm"/>
+	<topic name="Resource log" url="memory_log.htm"/>
+	<topic name="Resource settings" url="memory_sampling_settings.htm"/>
+	<topic name="Metrics settings" url="metrics_settings.htm"/>
+	<topic name="System Metrics" url="page_metrics.htm"/>
+	<topic name="Request Activity Graph" url="request_activity_graph.htm"/>
+	<topic name="Request Capture" url="request_capture.htm"/>
+	<topic name="Request Log" url="request_log.htm"/>
+	<topic name="Request Settings" url="request_settings.htm"/>
+	<topic name="Request Time Graph" url="request_time_graph.htm"/>
+	<topic name="Search and replace filters" url="search_and_replace_filters.htm"/>
+	<topic name="Show request history" url="show_request_history.htm"/>
+	<topic name="Show running requests" url="show_running_requests.htm"/>
+	<topic name="Slow request" url="slow_request.htm"/>
+	<topic name="Stack traces" url="stack_traces.htm"/>
+	<topic name="System requirements" url="system_requirements.htm"/>
+	<topic name="The Request Detail Page" url="the_request_detail_page.htm"/>
+	<topic name="Types Of User" url="types_of_user.htm"/>
+	<topic name="Uploading Your FusionReactor License File" url="uploading_your_fusionereactor_license_file.htm"/>
+	<topic name="Using Scripts" url="using_scripts.htm"/>
+	<topic name="web.xml file modifications" url="web.xml_file_modifications.htm"/>
+	<topic name="FusionReactor Help" url="welcome_to_fusionreactor.htm"/>
+</ftstdata>

@@ -425,32 +425,34 @@
         <servlet-name>jsp</servlet-name>
         <url-pattern>*.jspx</url-pattern>
     </servlet-mapping>
-    
-    <!-- The mapping for the Railo servlet -->
-<servlet-mapping>
-    <servlet-name>GlobalCFMLServlet</servlet-name>
-    <url-pattern>*.cfm</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
-    <servlet-name>GlobalCFMLServlet</servlet-name>
-    <url-pattern>/index.cfm/*</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
-    <servlet-name>GlobalCFMLServlet</servlet-name>
-    <url-pattern>*.cfml</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
-    <servlet-name>GlobalCFMLServlet</servlet-name>
-    <url-pattern>*.cfc</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
-    <servlet-name>GlobalAMFServlet</servlet-name>
-    <url-pattern>/flashservices/gateway/*</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
-    <servlet-name>MessageBrokerServlet</servlet-name>
-    <url-pattern>/flex2gateway/*</url-pattern>
-</servlet-mapping>
+
+    <!-- Mappings for the Railo servlet -->
+    <servlet-mapping>
+        <servlet-name>GlobalCFMLServlet</servlet-name>
+        <url-pattern>*.cfm</url-pattern>
+        <url-pattern>*.cfml</url-pattern>
+        <url-pattern>*.cfc</url-pattern>
+	<!-- SES mappings -->
+        <url-pattern>/index.cfm/*</url-pattern>
+        <url-pattern>/default.cfm/*</url-pattern>
+        <url-pattern>/post.cfm/*</url-pattern>
+        <url-pattern>/archive.cfm/*</url-pattern>
+        <url-pattern>/blog.cfm/*</url-pattern>
+        <url-pattern>/page.cfm/*</url-pattern>
+        <url-pattern>/rewrite.cfm/*</url-pattern>
+    </servlet-mapping>
+    <!-- mappings for remoting with Railo -->
+    <servlet-mapping>
+        <servlet-name>GlobalAMFServlet</servlet-name>
+        <url-pattern>/flashservices/gateway/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MessageBrokerServlet</servlet-name>
+        <url-pattern>/flex2gateway/*</url-pattern>
+        <url-pattern>/messagebroker/*</url-pattern>
+    </servlet-mapping>
+
+
     <!-- The mapping for the SSI servlet -->
 <!--
     <servlet-mapping>
@@ -1249,11 +1251,11 @@
   <!-- you wish to include.                                                 -->
 
     <welcome-file-list>
+        <welcome-file>index.cfm</welcome-file>
+        <welcome-file>index.cfml</welcome-file>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.htm</welcome-file>
         <welcome-file>index.jsp</welcome-file>
-        <welcome-file>index.cfm</welcome-file>
-        <welcome-file>index.cfml</welcome-file>
     </welcome-file-list>
 
 </web-app>

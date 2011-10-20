@@ -1,0 +1,38 @@
+  <web-app>
+
+    <!--
+     |
+     | To add FusionReactor to your Application Server add the filter defintion shown
+     | below as the *first* filter to the global web descriptor.
+     |
+     | Listed below are a few examples where to find the global web descriptor:
+     |
+     | Tomcat:     /opt/tomcat/conf/web.xml
+     | CFusionMX:  /opt/cfusionmx/runtime/servers/default/SERVER-INF/default-web.xml
+     | CFusionMX7: /opt/cfusionmx7/runtime/servers/coldfusion/SERVER-INF/default-web.xml
+     | JRun4:      /opt/jrun4/servers/cfusion/SERVER-INF/default-web.xml
+     |
+     | Please see the FusionReactor documentation for more information.
+     |
+     | Do not forget to adjust the path of the config parameter to match your
+     | environment. It must point to the correct configuration file of your
+     | FusionReactor instance.
+     |
+     -->
+    <filter>
+        <filter-name>FusionReactor</filter-name>
+        <filter-class>com.intergral.fusionreactor.filter.FusionReactorFilter</filter-class>
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>/opt/fusionreactor/instance/default/conf/reactor.conf</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>FusionReactor</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <!-- ... -->
+
+</web-app>

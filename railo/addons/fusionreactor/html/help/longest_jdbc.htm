@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0026)http://www.macromedia.com/ -->
+<html>
+<head>
+<meta http-equiv="content-style-type" content="text/css">
+<title>Longest JDBC</title>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<meta name="generator" content="RoboHelp by eHelp Corporation www.ehelp.com">
+<link rel="stylesheet" href="default_ns.css" type="text/css">
+<script type="text/javascript" language="JavaScript">
+<!--
+if (navigator.appName !="Netscape")
+{   document.write("<link rel='stylesheet' href='default.css'>");}
+//-->
+</script>
+<style type="text/css">
+<!--
+table.whs1 { width:100%; border-spacing:0px; }
+col.whs2 { width:13.06%; }
+col.whs3 { width:86.94%; }
+tr.whs4 {  }
+td.whs5 { width:13.06%; border-left-width:1px; border-left-color:#000000; border-left-style:Solid; border-top-style:Solid; border-top-color:#000000; border-top-width:1px; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; }
+td.whs6 { width:86.94%; border-top-style:Solid; border-top-color:#000000; border-top-width:1px; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; }
+td.whs7 { width:13.06%; border-left-width:1px; border-left-color:#000000; border-left-style:Solid; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; }
+td.whs8 { width:86.94%; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; }
+col.whs9 { width:15.485%; }
+col.whs10 { width:84.515%; }
+td.whs11 { width:15.485%; border-left-width:1px; border-left-color:#000000; border-left-style:Solid; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; border-top-width:1px; border-top-color:#000000; border-top-style:Solid; }
+td.whs12 { width:84.515%; border-right-width:1px; border-right-color:#000000; border-right-style:Solid; border-bottom-style:Solid; border-bottom-color:#000000; border-bottom-width:1px; padding-right:10px; padding-left:10px; border-top-width:1px; border-top-color:#000000; border-top-style:Solid; }
+p.whs13 { font-style:italic; }
+-->
+</style>
+
+<script type="text/javascript" language="JavaScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+        origWidth = innerWidth;
+        origHeight = innerHeight;
+        onresize = reDo;
+}
+onerror = null; 
+//-->
+</script>
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute; left:0px; top:0px; z-index:4; visibility:hidden; }
+-->
+</style>
+
+<script type="text/javascript" language="javascript1.2" src="whtopic.js">
+</script>
+<script type="text/javascript" language="javascript1.2" src="whutils.js">
+</script>
+<script type="text/javascript" language="javascript" src="whver.js">
+</script>
+<script type="text/javascript" language="javascript1.2">
+<!--
+    var linkedScrollbarStyle = "<link rel='stylesheet' href='wf_topics.css'>";
+    if( (!isTopicOnly()) &&(parent.gbFHPureHtml == null) )
+    {
+        document.write(linkedScrollbarStyle);
+    }
+    //-->
+</script>
+</head>
+<body>
+<script type="text/javascript" language="javascript1.2">
+<!--
+if (window.addTocInfo)
+{
+addTocInfo("Metrics\nLongest JDBC");
+
+  addShowButton();
+}
+if (window.setRelStartPage)
+{
+setRelStartPage("help.htm");
+
+        sendTopicLoaded();
+        autoSync(1);
+        sendSyncInfo();
+        sendAveInfo();
+        sendBgColorInfo();
+}
+//-->
+</script>
+<h1>Longest JDBC</h1>
+<p>The Longest JDBC page shows a list of the longest running JDBC requests on this server. To change the size of the Longest Request list, change the History Size value on the <a href="metrics_settings.htm">Metrics Settings</a> page. The Longest JDBC table has the following columns:<br>
+&#160;</p>
+<table cellspacing="0" width="100%" class="whs1">
+<col class="whs2">
+<col class="whs3">
+<tr valign="top" class="whs4">
+<td width="13.06%" class="whs5">
+<p>SQL</p>
+</td>
+<td width="86.94%" class="whs6">
+<p>This is the SQL which was actually ran followed by a JDBC stack trace (the list of CFCs and tags which were called to get to this query) and finally you will see the URL which was called from the browser. If the stack trace is longer than one line then it will be displayed collapsed. Click on the line or the arrow to the left of the line to expand the stack trace.</p>
+</td>
+</tr>
+<tr valign="top" class="whs4">
+<td width="13.06%" class="whs7">
+<p>Data Source</p>
+</td>
+<td width="86.94%" class="whs8">
+<p>If you are using a wrapped data source and have named it (Refer to the <a href="http://www.fusion-reactor.com/helpDocs/JDBCDriverWrapperUserGuide.pdf">JDBC Driver Wrapper User Guide</a>) then that name will appear here.</p>
+</td>
+</tr>
+<tr valign="top" class="whs4">
+<td width="13.06%" class="whs7">
+<p>Start Time</p>
+</td>
+<td width="86.94%" class="whs8">
+<p>This is the time at which this JDBC query began.</p>
+</td>
+</tr>
+<tr valign="top" class="whs4">
+<td width="13.06%" class="whs7">
+<p>Total Time (ms)</p>
+</td>
+<td width="86.94%" class="whs8">
+<p>This is the amount of time it took CF to complete the query.</p>
+</td>
+</tr>
+<tr valign="top" class="whs4">
+<td width="13.06%" class="whs7">
+<p>DB Time (ms)</p>
+</td>
+<td width="86.94%" class="whs8">
+<p>This is the amount of time the database actually spent processing the query.</p>
+</td>
+</tr>
+<tr valign="top" class="whs4">
+<td width="13.06%" class="whs7">
+<p>Row Count</p>
+</td>
+<td width="86.94%" class="whs8">
+<p>This is the number of rows which was returned by the query.</p>
+</td>
+</tr>
+</table>
+<h4>Managing Requests</h4>
+<p>Each JDBC request listed on this page has an icon next to it:<br>
+&#160;</p>
+<table cellspacing="0" width="100%" class="whs1">
+<col class="whs9">
+<col class="whs10">
+<tr valign="top" class="whs4">
+<td width="15.485%" class="whs11">
+<p>Request Detail</p>
+</td>
+<td width="84.515%" class="whs12">
+<p>If you click this button then you will be taken to the Request Details page for the page which ran this JDBC request. This will give you access to all information associated with that request. eg. Cookies, JDBC, Headers and User Trace Markers.</p>
+</td>
+</tr>
+</table>
+<p>&#160;</p>
+<p class="whs13"><span style="font-weight:bold;"><b>NOTE</b></span>: Over extended periods of time you may find that this list gets filled with very long running JDBC requests. In order to see some of the medium running requests again you can empty the list by clicking on the "Reset Longest" button.</p>
+<h4>Refreshing the Page</h4>
+<p>At the top of the page you will see the standard page header. At any time you can click the refresh button to update the main content. Alternatively you can select a time period from the drop-down box to update the content automatically. Selecting "None" from the drop-down box will stop the automatic refresh.</p>
+<p>&#160;</p>
+</body>
+</html>

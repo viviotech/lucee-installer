@@ -17,14 +17,16 @@
 -->
 
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-   version="2.5"> 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0"
+  metadata-complete="true">  
 
-  <display-name>Tomcat Manager Application</display-name>
+  <display-name>Tomcat Host Manager Application</display-name>
   <description>
-    A scriptable management web application for the Tomcat Web Server;
-	Manager lets you view, load/unload/etc particular web applications.
+    A scriptable host management web application for the Tomcat Web Server;
+    Manager lets you view, create and remove virtual hosts.
   </description>
 
   <servlet>
@@ -44,83 +46,62 @@
     </init-param>
   </servlet>
 
-  <!-- Define the Manager Servlet Mapping -->
-  <servlet-mapping>
-    <servlet-name>HostManager</servlet-name>
-    <url-pattern>/list</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>HostManager</servlet-name>
-    <url-pattern>/add</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>HostManager</servlet-name>
-    <url-pattern>/remove</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>HostManager</servlet-name>
-    <url-pattern>/start</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>HostManager</servlet-name>
-    <url-pattern>/stop</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>HTMLHostManager</servlet-name>
-    <url-pattern>/html/*</url-pattern>
-  </servlet-mapping>
+  <filter>
+    <filter-name>SetCharacterEncoding</filter-name>
+    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>SetCharacterEncoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
   <filter>
     <filter-name>CSRF</filter-name>
     <filter-class>org.apache.catalina.filters.CsrfPreventionFilter</filter-class>
     <init-param>
       <param-name>entryPoints</param-name>
-      <param-value>/html,/html/list</param-value>
+      <param-value>/html,/html/,/html/list,/index.jsp</param-value>
     </init-param>
   </filter>
-
+  
   <filter-mapping>
     <filter-name>CSRF</filter-name>
     <servlet-name>HTMLHostManager</servlet-name>
   </filter-mapping>
+  
+  <!-- Define the Manager Servlet Mapping -->
+  <servlet-mapping>
+    <servlet-name>HostManager</servlet-name>
+    <url-pattern>/text/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HTMLHostManager</servlet-name>
+    <url-pattern>/html/*</url-pattern>
+  </servlet-mapping>
 
   <!-- Define a Security Constraint on this Application -->
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>HostManager commands</web-resource-name>
-      <url-pattern>/list</url-pattern>
-      <url-pattern>/add</url-pattern>
-      <url-pattern>/remove</url-pattern>
-      <url-pattern>/start</url-pattern>
-      <url-pattern>/stop</url-pattern>
+      <url-pattern>/text/*</url-pattern>
     </web-resource-collection>
     <auth-constraint>
-       <!-- NOTE: 1. These roles are not present in the default users file
-                  2. The admin role is deprecated, it will be removed in
-                     Tomcat 7.
-                  3. Use the admin-script role to take advantage of the new
-                     CSRF protection. Using the admin role or assigning both
-                     the admin-script and admin-gui roles to the same user
-                     will bypass the CSRF protection. -->
-       <role-name>admin</role-name>
+       <!-- NOTE:  This role is not present in the default users file -->
        <role-name>admin-script</role-name>
     </auth-constraint>
   </security-constraint>
-
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>HTMLHostManager commands</web-resource-name>
       <url-pattern>/html/*</url-pattern>
     </web-resource-collection>
     <auth-constraint>
-       <!-- NOTE: 1. These roles are not present in the default users file
-                  2. The admin role is deprecated, it will be removed in
-                     Tomcat 7.
-                  3. Use the admin-gui role to take advantage of the new
-                     CSRF protection. Using the admin role or assigning both
-                     the admin-script and admin-gui roles to the same user
-                     will bypass the CSRF protection. -->
-       <role-name>admin</role-name>
+       <!-- NOTE:  This role is not present in the default users file -->
        <role-name>admin-gui</role-name>
     </auth-constraint>
   </security-constraint>
@@ -134,21 +115,30 @@
   <!-- Security roles referenced by this web application -->
   <security-role>
     <description>
-      The role that is required to access the text Host Manager pages
-    </description>
-    <role-name>admin-script</role-name>
-  </security-role>
-  <security-role>
-    <description>
-      The role that is required to access the HTML Host Manager pages
+      The role that is required to log in to the Host Manager Application HTML
+      interface
     </description>
     <role-name>admin-gui</role-name>
   </security-role>
   <security-role>
     <description>
-      Deprecated role that can access all Host Manager functionality
+      The role that is required to log in to the Host Manager Application text
+      interface
     </description>
-    <role-name>admin</role-name>
+    <role-name>admin-script</role-name>
   </security-role>
 
+  <error-page>
+    <error-code>401</error-code>
+    <location>/WEB-INF/jsp/401.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>403</error-code>
+    <location>/WEB-INF/jsp/403.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/jsp/404.jsp</location>
+  </error-page>
+  
 </web-app>

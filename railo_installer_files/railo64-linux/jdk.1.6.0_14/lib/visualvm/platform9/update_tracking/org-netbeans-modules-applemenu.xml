@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module codename="org.netbeans.modules.applemenu/1">
-    <module_version install_time="1228400602186" last="true" origin="installer" specification_version="1.9.1">
-        <file crc="1861227191" name="config/Modules/org-netbeans-modules-applemenu.xml"/>
-        <file crc="2117691887" name="modules/org-netbeans-modules-applemenu.jar"/>
-    </module_version>
-</module>

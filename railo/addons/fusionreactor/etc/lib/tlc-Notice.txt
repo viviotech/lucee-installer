@@ -1,0 +1,7 @@
+This product includes the TrueLicense Library Collection (TrueLicence)
+which has been developed by Schlichtherle IT Services (http://schlichtherle.de)
+and is covered by the Apache License, Version 2.0
+(http://www.apache.org/licenses/LICENSE-2.0).
+
+This product includes modified example code published on Sun's Java web site
+at http://java.sun.com/developer/technicalArticles/GUI/swing/wizard/index.html.

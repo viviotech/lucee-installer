@@ -16,13 +16,12 @@
 # limitations under the License.
 
 # -----------------------------------------------------------------------------
-#  Set CLASSPATH and Java options
+#  Set JAVA_HOME or JRE_HOME if not already set, ensure any provided settings
+#  are valid and consistent with the selected start-up options and set up the
+#  endorsed directory. 
 #
-#  $Id: setclasspath.sh 758165 2009-03-25 07:22:44Z mturk $
+#  $Id: setclasspath.sh 1138835 2011-06-23 11:27:57Z rjung $
 # -----------------------------------------------------------------------------
-
-# First clear out the user classpath
-CLASSPATH=
 
 # Make sure prerequisite environment variables are set
 if [ -z "$JAVA_HOME" -a -z "$JRE_HOME" ]; then
@@ -59,7 +58,7 @@ if [ -z "$JRE_HOME" ]; then
 fi
 
 # If we're running under jdb, we need a full jdk.
-if [ "$1" = "debug" -o "$1" = "javac" ] ; then
+if [ "$1" = "debug" ] ; then
   if [ "$os400" = "true" ]; then
     if [ ! -x "$JAVA_HOME"/bin/java -o ! -x "$JAVA_HOME"/bin/javac ]; then
       echo "The JAVA_HOME environment variable is not defined correctly"
@@ -76,54 +75,11 @@ if [ "$1" = "debug" -o "$1" = "javac" ] ; then
     fi
   fi
 fi
-if [ -z "$BASEDIR" ]; then
-  echo "The BASEDIR environment variable is not defined"
-  echo "This environment variable is needed to run this program"
-  exit 1
-fi
-if [ ! -x "$BASEDIR"/bin/setclasspath.sh ]; then
-  if $os400; then
-    # -x will Only work on the os400 if the files are:
-    # 1. owned by the user
-    # 2. owned by the PRIMARY group of the user
-    # this will not work if the user belongs in secondary groups
-    eval
-  else
-    echo "The BASEDIR environment variable is not defined correctly"
-    echo "This environment variable is needed to run this program"
-    exit 1
-  fi
-fi
 
 # Don't override the endorsed dir if the user has set it previously
 if [ -z "$JAVA_ENDORSED_DIRS" ]; then
   # Set the default -Djava.endorsed.dirs argument
-  JAVA_ENDORSED_DIRS="$BASEDIR"/endorsed
-fi
-
-# Set standard CLASSPATH
-if [ "$1" = "javac" ] ; then
-  if [ ! -f "$JAVA_HOME"/lib/tools.jar ]; then
-    echo "Can't find tools.jar in JAVA_HOME"
-    echo "Need a JDK to run javac"
-    exit 1
-  fi
-fi
-if [ "$1" = "debug" -o "$1" = "javac" ] ; then
-  if [ -f "$JAVA_HOME"/lib/tools.jar ]; then
-    CLASSPATH="$JAVA_HOME"/lib/tools.jar
-  fi
-fi
-
-# OSX hack to CLASSPATH
-JIKESPATH=
-if [ `uname -s` = "Darwin" ]; then
-  OSXHACK="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Classes"
-  if [ -d "$OSXHACK" ]; then
-    for i in "$OSXHACK"/*.jar; do
-      JIKESPATH="$JIKESPATH":"$i"
-    done
-  fi
+  JAVA_ENDORSED_DIRS="$CATALINA_HOME"/endorsed
 fi
 
 # Set standard commands for invoking Java.
@@ -131,4 +87,3 @@ _RUNJAVA="$JRE_HOME"/bin/java
 if [ "$os400" != "true" ]; then
   _RUNJDB="$JAVA_HOME"/bin/jdb
 fi
-_RUNJAVAC="$JAVA_HOME"/bin/javac

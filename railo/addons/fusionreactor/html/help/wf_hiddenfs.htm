@@ -1,0 +1,23 @@
+<!-- saved from url=(0026)http://www.macromedia.com/ -->
+<HTML>
+	<script language="javascript">
+	<!--
+	function CorrectFrame()
+	{
+		var curLoc = window.frames["comm"].document.location.href;
+		if (curLoc.indexOf(parent.gsParamPasser) == -1)
+			window.frames["comm"].document.location.href = parent.gsParamPasser;
+	}
+	function UniqueID() {
+		return parent.UniqueID();
+	}
+	var sHTML = "";
+	sHTML += "<frameset rows=\"35%, 35%, 30%\" frameborder=\"0\" borderspace=\"0\" BORDER=\"0\">\n";
+	sHTML += "<frame name=\"comm\" onload=\"CorrectFrame()\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\" id=\"comm\" src=\"wf_blank.htm\" />\n";
+	sHTML += "<frame name=\"Master\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\" id=\"master\" src=\"wf_master.htm\" />\n";
+	sHTML += "<frame name=\"skin\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\" id=\"skin\" src=\"wf_blank.htm\" />\n";
+	sHTML += "</frameset>\n";
+	document.write(sHTML);
+	//-->
+	</script>
+</HTML>

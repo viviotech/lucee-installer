@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module codename="org.netbeans.bootstrap/1">
-    <module_version install_time="1228400603301" last="true" origin="installer" specification_version="2.15.1">
-        <file crc="602032457" name="lib/boot.jar"/>
-        <file crc="4223059973" name="lib/nbexec"/>
-        <file crc="1063797452" name="lib/nbexec.exe"/>
-    </module_version>
-</module>

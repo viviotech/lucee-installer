@@ -1,0 +1,27 @@
+<!-- saved from url=(0026)http://www.macromedia.com/ -->
+<HTML>
+	<HEAD>
+		<script language="javascript">
+			function UniqueID() {
+				return parent.UniqueID();
+			}
+			function DoCommand(cmd, param) 
+			{
+				if( (parent!=this) && (parent.DoCommand) )
+				{
+					parent.DoCommand(cmd, param);	
+				}
+			}
+		</script>
+	</HEAD>
+	<script language="javascript">
+		var sHtml = "";
+		sHtml += "<frameset rows=\"";
+		sHtml += parent.gsToolbarPaneHeight;
+		sHtml += ", *\" frameborder=\"0\" borderspace=\"0\" BORDER=\"0\">";
+		sHtml += "<frame name=\"master\" id=\"master\" marginwidth=\"0\" marginheight=\"0\" noresize=\"yes\" scrolling=\"no\" src=\"wf_master.htm\" />";
+		sHtml += "<frame name=\"bottom\" id=\"bottom\" marginwidth=\"0\" marginheight=\"0\" noresize=\"yes\" scrolling=\"no\" src=\"wf_bottom.htm\" />";
+		sHtml += "</frameset>";
+		document.write(sHtml);
+	</script>
+</HTML>

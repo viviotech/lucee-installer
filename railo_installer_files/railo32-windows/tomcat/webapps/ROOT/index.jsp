@@ -115,9 +115,9 @@
                 </tr>
                 <tr>
 		  <td class="menu">
-		    <a href="manager/status">Status</a><br/>
+		    <a href="tomcat-manager/status">Status</a><br/>
                     <!--<a href="admin">Tomcat&nbsp;Administration</a><br/>-->
-                    <a href="manager/html">Tomcat&nbsp;Manager</a><br/>
+                    <a href="tomcat-manager/html">Tomcat&nbsp;Manager</a><br/>
                     &nbsp;
                   </td>
                 </tr>
@@ -131,8 +131,8 @@
                 <tr>
                   <td class="menu">
                     <a href="RELEASE-NOTES.txt">Release&nbsp;Notes</a><br/>
-                    <a href="docs/changelog.html">Change&nbsp;Log</a><br/>
-                    <a href="docs">Tomcat&nbsp;Documentation</a><br/>                        &nbsp;
+                    <a href="tomcat-docs/changelog.html">Change&nbsp;Log</a><br/>
+                    <a href="tomcat-docs">Tomcat&nbsp;Documentation</a><br/>                        &nbsp;
                     &nbsp;
 		    </td>
                 </tr>
@@ -156,22 +156,7 @@
                   </td>
                 </tr>
             </table>
-	    
-            <br/>
-            <table width="100%" border="1" cellspacing="0" cellpadding="3">
-                <tr>
-                  <th>Examples</th>
-                </tr>
-                <tr>
-                  <td class="menu">
-                    <a href="examples/servlets/">Servlets Examples</a><br/>
-                    <a href="examples/jsp/">JSP Examples</a><br/>
-                    <a href="webdav/">WebDAV&nbsp;capabilities</a><br/>
-     		    &nbsp;
-                  </td>
-                </tr>
-            </table>
-	    
+
             <br/>
             <table width="100%" border="1" cellspacing="0" cellpadding="3">
                 <tr>

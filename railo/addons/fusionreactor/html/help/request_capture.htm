@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0026)http://www.macromedia.com/ -->
+<html>
+<head>
+<meta http-equiv="content-style-type" content="text/css">
+<title>Request Capture</title>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<meta name="generator" content="RoboHelp by eHelp Corporation www.ehelp.com">
+<link rel="stylesheet" href="default_ns.css" type="text/css">
+<script type="text/javascript" language="JavaScript">
+<!--
+if (navigator.appName !="Netscape")
+{   document.write("<link rel='stylesheet' href='default.css'>");}
+//-->
+</script>
+<style type="text/css">
+<!--
+p.whs1 { color:#ff0000; }
+-->
+</style>
+
+<script type="text/javascript" language="JavaScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+        origWidth = innerWidth;
+        origHeight = innerHeight;
+        onresize = reDo;
+}
+onerror = null; 
+//-->
+</script>
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute; left:0px; top:0px; z-index:4; visibility:hidden; }
+-->
+</style>
+
+<script type="text/javascript" language="javascript1.2" src="whtopic.js">
+</script>
+<script type="text/javascript" language="javascript1.2" src="whutils.js">
+</script>
+<script type="text/javascript" language="javascript" src="whver.js">
+</script>
+<script type="text/javascript" language="javascript1.2">
+<!--
+    var linkedScrollbarStyle = "<link rel='stylesheet' href='wf_topics.css'>";
+    if( (!isTopicOnly()) &&(parent.gbFHPureHtml == null) )
+    {
+        document.write(linkedScrollbarStyle);
+    }
+    //-->
+</script>
+</head>
+<body>
+<script type="text/javascript" language="javascript1.2">
+<!--
+if (window.addTocInfo)
+{
+addTocInfo("Requests\nRequest Capture");
+
+  addShowButton();
+}
+if (window.setRelStartPage)
+{
+setRelStartPage("help.htm");
+
+        sendTopicLoaded();
+        autoSync(1);
+        sendSyncInfo();
+        sendAveInfo();
+        sendBgColorInfo();
+}
+//-->
+</script>
+<h1>Request Capture</h1>
+<p>Request Capture is the ability to store incoming requests and their associated responses to the file system.</p>
+<p>&#160;</p>
+<p>When request capture is set to requests and responses you will end up with three files for each request. A request file, a body file and a response file. The header XML file holds all information sent to server by the client. The response XML file holds everything sent back (besides body) and the body file holds the actual returned content.</p>
+<p>&#160;</p>
+<p class="whs1"><span style="font-weight:bold;"><b>WARNING</b></span>: Turning on Request Content Capture will create multiple XML files for every request run on a server. This may use very large quantities of disk space quickly. Please be careful when enabling this feature and do not leave it enabled if you are not monitoring it.</p>
+<h5>How do I set up Request Capture?</h5>
+<p>From the FusionReactor Administrator, click "<a href="request_settings.htm">Request Settings</a>" from the table of contents (Requests section) and you will see the Request Settings screen. Scroll down until you reach a section named "Request Capture". From here you can control the request capture feature.]</p>
+<p>&#160;</p>
+<p>Request Capture can be in three states. Disabled, Capture Requests only, or capture both requests and responses. The Capture Path is the directory into which the captured requests will be stored.</p>
+<h4>Why would I want to Capture Requests?</h4>
+<p>Request capture can be useful for a variety of reasons from technical to legal, these include:</p>
+<h5>Analysis</h5>
+<p>The FusionReactor stored requests hold much more information than you would normally expect to find in web logs and as such they have a much higher value for analyzing your application traffic.</p>
+<h5>Development</h5>
+<p>You could use stored requests in order to be able to reproduce specific load conditions or test cases.</p>
+<h5>Support</h5>
+<p>Anyone who has had to have a user describe the contents of their screen will instantly realize how much easier life would be if you had an exact copy of their response in easy access.</p>
+</body>
+</html>
