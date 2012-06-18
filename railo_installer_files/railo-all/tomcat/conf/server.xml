@@ -136,6 +136,7 @@
                prefix="localhost_access_log." suffix=".txt"
                pattern="%h %l %u %t &quot;%r&quot; %s %b" resolveHosts="false"/>
 	
+	<Valve className="mod_cfml.core" loggingEnabled="false" waitForContext="3" />	
       </Host>
 
       <!--

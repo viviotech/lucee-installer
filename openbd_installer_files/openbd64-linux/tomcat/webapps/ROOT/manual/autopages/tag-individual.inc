@@ -1,22 +1,83 @@
+<cfsilent>
+	<cfset request.page.section = "tags">
 
-<cfset tagInfo = GetEngineTagInfo( url.tag )>
-<cfset request.page.title = "#UCase(url.tag)#">
+	<cfset url.tag	= request.params[2]>
 
-<h1><cfoutput>#UCase(url.tag)# - OpenBD CFML Function</cfoutput></h1>
+	<cfset tagInfo = GetEngineTagInfo( url.tag )>
+	<cfset request.page.title = "#UCase(url.tag)#">
+
+	<cfset desc = Left( tagInfo.summary, 200 )>
+	<cfset desc = Replace( desc, Chr(13), "", "ALL" )>
+	<cfset request.page.desc = "#UCase(url.tag)# :: #XmlFormat(desc)#">
 
 
-<div class="functionSummary">
-	<cfoutput><p>#XmlFormat(tagInfo.summary)#</p></cfoutput>
+</cfsilent>
+<style>
+span.inparam {
+	color: maroon;
+}
+
+span.paramDetail{
+	color: #808080;
+}
+
+span.optional{
+	font-style:italic
+}
+
+span.return {
+	color: blue;
+}
+
+.row {
+	margin-bottom: 30px;
+}
+
+.row h3 {
+	line-height: inherit;
+}
+</style>
+
+<cfoutput>
+
+<h1>#UCase(url.tag)#</h1>
+
+<ul class="breadcrumb">
+	<li><a href="./?/tag/">CFML Tags</a> <span class="divider">/</span></li>
+	<li><a href="./?/tag/category/#tagInfo.category#" style="text-transform:capitalize">#tagInfo.category# Category</a> <span class="divider">/</span></li>
+	<li class="active">&lt; #UCase(url.tag)# &gt;</li>
+</ul>
+
+
+<div class="row">
+	<div class="span2">
+	<h3>Description</h3>
+	</div>
+	<div class="span14">
+		<p>#XmlFormat(tagInfo.summary)#</p>
+	</div>
 </div>
 
-<div class="functionUsage">
-	<p><strong>Usage: </strong></p>
-	<div class="usage">
-	<cfoutput>
-	<span class="return">&lt;#url.tag#&gt; <cfif tagInfo.endtag>... &lt;/#url.tag#&gt;</cfif></span>
 
-	<cfif ArrayLen(tagInfo.attributes) gt 0>
-		<table style="margin-top: 20px; color: black; border:1px solid silver;" border="1" cellpadding="6" cellspacing="0">
+<div class="row">
+	<div class="span2">
+		<h3>Usage</h3>
+	</div>
+
+	<div class="span14">
+		<code>&lt;#url.tag#&gt; <cfif tagInfo.endtag>... &lt;/#url.tag#&gt;</cfif></code>
+	</div>
+</div>
+
+
+<cfif ArrayLen(tagInfo.attributes) != 0>
+
+<div class="row">
+	<div class="span2">
+		<h3>Attributes</h3>
+	</div>
+	<div class="span14">
+		<table>
 		<tr>
 			<th>attribute</th>
 			<th>default</th>
@@ -32,35 +93,43 @@
 		</tr>
 		</cfloop>
 		</table>
-	</cfif>
-
-	</cfoutput>
 	</div>
 </div>
+</cfif>
+
+
 
 <cfif tagInfo.category neq "unknown">
-	<div class="functionUsage" style="font-size:85%">
+<div class="row">
+	<div class="span2">
+	<h3>See Also</h3>
+	</div>
+	<div class="span14">
 		<cfset funcArray = GetSupportedTags( tagInfo.category )>
-
-		<cfoutput>
-		<p><strong>Other functions from: <a href="./?/tag/category/#tagInfo.category#">#tagInfo.category#</a></strong></p>
 		<div class="usage">
 			<cfloop array="#funcArray#" index="func"><a href="./?/tag/#func#">#func#</a> &nbsp; </cfloop>
 		</div>
-		</cfoutput>
 	</div>
+</div>
 </cfif>
+
 
 
 <cfset codeSnippet = ExpandPath( "./pages/tagcode/#LCase(url.tag)#.inc" )>
 <cfif FileExists(codeSnippet)>
-<div class="functionUsage">
-	<p><strong>Code Sample:</strong></p>
+<div class="row">
+
+	<div class="span2">
+		<h3>Extra</h3>
+	</div>
+
 	<cfset contents = FileRead( codeSnippet )>
 	<cfset contents = Replace(contents,"<cf", "&lt;cf", "all")>
 	<cfset contents = Replace(contents,"</cf", "&lt;/cf", "all")>
 	<cfset contents = Replace(contents,"<!---", "&lt;!---", "all")>
 	<cfset contents = Replace(contents, Chr(9), "  ", "all")>
-	<cfoutput>#contents#</cfoutput>
+	<div class="span14">#contents#</div>
 </div>
 </cfif>
+
+</cfoutput>

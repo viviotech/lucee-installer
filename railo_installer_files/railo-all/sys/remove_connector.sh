@@ -2,15 +2,14 @@
 ####################################################################################
 # Written By: Jordan Michaels (jordan@viviotech.net)
 ####################################################################################
-# Purpose:    This is an uninstallation script for the OpenBD & Railo Projects
-#             that removes the componants that were installed by the installation
-#             process.
+# Purpose:    This is an uninstallation script for the mod_jk and mod_cfml configs
+#             that were installed during the installation of the CFML engine.
 #
 # Usage:      ./remove_connector.sh /path/to/apache.conf
 ####################################################################################
 # LICENSE:    http://www.opensource.org/licenses/bsd-license.php
 ####################################################################################
-# Copyright (c) 2009, Jordan Michaels, Vivio Technologies
+# Copyright (c) 2009-2012, Jordan Michaels, Vivio Technologies
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without modification,
@@ -79,5 +78,12 @@ sed -i '/<IfModule mod_jk.c>/,/<\/IfModule>/d' $myApacheConfigFile
 	
 echo "";
 echo "Mod_JK entries removed...";
+
+sed -i '/^PerlRequire/d' $myApacheConfigFile
+sed -i '/^PerlHeaderParserHandler/d' $myApacheConfigFile
+sed -i '/^PerlSetVar/d' $myApacheConfigFile
+
+echo "Mod_CFML entries removed...";
+
 echo "Apache config updated sucessfully.";
 echo "";

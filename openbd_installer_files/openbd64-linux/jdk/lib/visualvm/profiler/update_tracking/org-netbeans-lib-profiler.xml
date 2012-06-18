@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.netbeans.lib.profiler/1">
-    <module_version install_time="1284010973838" last="true" origin="installer" specification_version="1.10.2">
+    <module_version install_time="1298629267859" last="true" origin="installer" specification_version="1.10.2">
         <file crc="2155818874" name="config/Modules/org-netbeans-lib-profiler.xml"/>
         <file crc="1996545171" name="lib/deployed/jdk15/hpux-pa_risc2.0/libprofilerinterface.sl"/>
         <file crc="1918124266" name="lib/deployed/jdk15/hpux-pa_risc2.0w/libprofilerinterface.sl"/>
@@ -28,8 +28,8 @@
         <file crc="3947087672" name="lib/deployed/jdk16/windows-amd64/profilerinterface.map"/>
         <file crc="660295821" name="lib/deployed/jdk16/windows/profilerinterface.dll"/>
         <file crc="1662163517" name="lib/deployed/jdk16/windows/profilerinterface.map"/>
-        <file crc="781385925" name="lib/jfluid-server-15.jar"/>
-        <file crc="3482984002" name="lib/jfluid-server.jar"/>
-        <file crc="833451628" name="modules/org-netbeans-lib-profiler.jar"/>
+        <file crc="1724523776" name="lib/jfluid-server-15.jar"/>
+        <file crc="2210180014" name="lib/jfluid-server.jar"/>
+        <file crc="530554436" name="modules/org-netbeans-lib-profiler.jar"/>
     </module_version>
 </module>

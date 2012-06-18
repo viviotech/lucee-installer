@@ -1,24 +1,23 @@
-</div>
-</td>
-</tr>
-<tr>
-	<td colspan="2">
-		<div id="footer">
-			<p style="float:left;">&copy; Copyright <cfoutput>#Year(now())#</cfoutput> OpenBD Project   .   All Rights Reserved   .   <a href="http://www.openbluedragon.org/">Built and Powered By Open BlueDragon</a></p>
-			<p style="float:right;">Except where otherwise noted, content on this site is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a></p>
-		</div>
-	</td>
-</tr>
-</table>
+     <footer>
+        <p style="font-size: 80%;">&copy; Copyright <cfoutput>#Year(now())#</cfoutput> <a href="http://openbd.org/">OpenBD Open Source Java CFML Runtime Engine / Google App Engine</a> . All Rights Reserved . <a href="http://openbd.org/download/">Built &amp; Powered By OpenBD</a></p>
+      </footer>
+    </div> <!-- /container -->
 
-<script>
-$(function () {
-	$("#manual").tree({
-	ui:{theme_name: "default"},
-	types:{"default":{clickable:true,renameable:false,deletable:false,creatable:false,draggable:false,max_children:-1,max_depth:-1,valid_children:"all"}},
-	callback:{onselect:function(NODE, TREE_OBJ){var href = $(NODE).find("a").attr("href");if ( href != null && href != "" && href != "#" ){document.location = href;}}}
-	});
-});
-</script>
+		<script type="text/javascript" src="./js/js.cfm"/>
+		<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
+		<script type="text/javascript">var pageTracker = _gat._getTracker("UA-153886-5");pageTracker._trackPageview();</script>
 
-</body></html>
+		<!-- Place this render call where appropriate -->
+		<script type="text/javascript">
+		  window.___gcfg = {lang: 'en-GB'};
+
+		  (function() {
+		    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		    po.src = 'https://apis.google.com/js/plusone.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		  })();
+		</script>
+		<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+
+  </body>
+</html>

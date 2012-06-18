@@ -6,14 +6,15 @@
     <licensekey></licensekey>
     <assert>false</assert>
     <missingtemplatehandler></missingtemplatehandler>
-    <tempdirectory>$@@installdir@@/work/temp</tempdirectory>
+    <tempdirectory>@@installdir@@/work/temp</tempdirectory>
     <lastfile>@@installdir@@/conf/bluedragon.xml.bak.1</lastfile>
     <runtimelogging>true</runtimelogging>
     <deniedips></deniedips>
+    <libpath>@@installdir@@/lib/</libpath>
     <defaultcharset>UTF-8</defaultcharset>
-    <component-cfc>$@@installdir@@/conf/component.cfc</component-cfc>
+    <component-cfc>@@installdir@@/conf/component.cfc</component-cfc>
     <scriptsrc>/bluedragon/scripts</scriptsrc>
-    <resourcepath>$@@installdir@@/webresources/</resourcepath>
+    <resourcepath>@@installdir@@/webresources/</resourcepath>
     <debug>false</debug>
     <legacyformvalidation>true</legacyformvalidation>
     <scriptprotect>false</scriptprotect>
@@ -196,7 +197,7 @@
   </cfmail>
   <cfmlcustomtags>
     <mapping name="cf">
-      <directory>$@@installdir@@/customtags</directory>
+      <directory>@@installdir@@/customtags</directory>
       <name>cf</name>
     </mapping>
   </cfmlcustomtags>

@@ -11,20 +11,20 @@
       <cpuManufacturer>AuthenticAMD</cpuManufacturer>
       <serialNumber/>
    </environment>
-   <registry urn="urn:st:db6ba1a9-47cf-4380-a315-95ab43e1cd8a" version="1.0">
+   <registry urn="urn:st:64cb7f6f-2ff5-4004-ad9a-5096a405fac2" version="1.0">
       <service_tag>
-         <instance_urn>urn:st:5e0168a4-8c89-4070-88a0-1d6afbf37e71</instance_urn>
+         <instance_urn>urn:st:c393880c-4dc7-4a4f-9305-bd78ebf0d210</instance_urn>
          <product_name>Java SE 6 Runtime Environment</product_name>
-         <product_version>1.6.0_29</product_version>
+         <product_version>1.6.0_32</product_version>
          <product_urn>urn:uuid:92d1de8c-1e59-42c6-a280-1c379526bcbc</product_urn>
          <product_parent_urn>urn:uuid:fdc90b21-018d-4cab-b866-612c7c119ed3</product_parent_urn>
          <product_parent>Java Platform Standard Edition 6 (Java SE 6)</product_parent>
-         <product_defined_inst_id>id=1.6.0_29-b11 i386,dir=/home/jordan/Desktop/jre1.6.0_29</product_defined_inst_id>
+         <product_defined_inst_id>id=1.6.0_32-b05 i386,dir=/home/jordan/Downloads/jre1.6.0_32</product_defined_inst_id>
          <product_vendor>Sun Microsystems</product_vendor>
          <platform_arch>i386</platform_arch>
-         <timestamp>2011-10-19 20:30:09 GMT</timestamp>
+         <timestamp>2012-05-15 22:18:30 GMT</timestamp>
          <container>global</container>
-         <source>jre-6u29-fcs-bin-b11-linux-i586-03_oct_2011.bin</source>
+         <source>jre-6u32-fcs-bin-b05-linux-i586-05_apr_2012.bin</source>
          <installer_uid>-1</installer_uid>
       </service_tag>
    </registry>

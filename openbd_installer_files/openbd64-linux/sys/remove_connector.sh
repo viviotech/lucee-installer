@@ -79,5 +79,12 @@ sed -i '/<IfModule mod_jk.c>/,/<\/IfModule>/d' $myApacheConfigFile
 	
 echo "";
 echo "Mod_JK entries removed...";
+
+sed -i '/^PerlRequire/d' $myApacheConfigFile
+sed -i '/^PerlHeaderParserHandler/d' $myApacheConfigFile
+sed -i '/^PerlSetVar/d' $myApacheConfigFile
+
+echo "Mod_CFML entries removed...";
+
 echo "Apache config updated sucessfully.";
 echo "";

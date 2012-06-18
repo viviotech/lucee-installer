@@ -29,10 +29,9 @@ The following libraries are required if your webapp uses the CFCHART tag:
 
 The following libraries are required if your webapp uses the CFSEARCH tag:
 
-   lucene-analyzers-3.0.2.jar
-   lucene-core-3.0.2.jar
-   lucene-highlighter-3.0.2.jar
-   lucene-snowball-3.0.2.jar
+   lucene-analyzers-3.3.0.jar
+   lucene-core-3.3.0.jar
+   lucene-highlighter-3.3.0.jar
    PDFBox-0.7.2.jar
 
 The following library is for the HtmlGetPrintableText() function

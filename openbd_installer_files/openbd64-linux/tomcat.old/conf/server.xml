@@ -64,7 +64,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL HTTP/1.1 Connector on port 8080
     -->
-    <Connector port="8080" protocol="HTTP/1.1" 
+    <Connector port="@@tomcatport@@" protocol="HTTP/1.1" 
                connectionTimeout="20000" 
                redirectPort="8443" />
     <!-- A "Connector" using the shared thread pool-->
@@ -131,15 +131,27 @@
       <!--
         Add additional VIRTUALHOSTS by copying the following example config:
         REPLACE:
-        [ENTER DOMAIN NAME] with a domain, IE: www.mysite.com
-        [ENTER SYSTEM PATH] with your web site's base directory. IE: /home/user/public_html/ or C:\websites\www.mysite.com\ etc...
-        Don't forget to remove comments! ;)
+        [ENTER DOMAIN NAME] with a domain, IE: mysite.com
+        [ENTER SYSTEM PATH] with your web site's base directory. IE: /home/user/public_html/ or C:\websites\mysite.com\ etc...
+        [ENTER ALT DOMAIN] with any alternative domains that also resolve to this site.
+
+	The <Alias> tag is used to identify subdomains or other domain names that point to this same site. The subdomain of www is
+	the most common use of the <Alias> directive. Add a new Alias tag for each additional entry.
       -->
       <!--
         <Host name="[ENTER DOMAIN NAME]" appBase="webapps"
-             unpackWARs="true" autoDeploy="true"
+	     unpackWARs="true" autoDeploy="true"
              xmlValidation="false" xmlNamespaceAware="false">
              <Context path="" docBase="[ENTER SYSTEM PATH]" />
+	     <Alias>[ENTER ALT DOMAIN]</Alias>
+        </Host>
+
+	Working Example:
+        <Host name="openbluedragon.org" appBase="webapps"
+             unpackWARs="true" autoDeploy="true"
+             xmlValidation="false" xmlNamespaceAware="false">
+             <Context path="" docBase="/home/admin/openbluedragon.org/" />
+             <Alias>www.openbluedragon.org</Alias>
         </Host>
       -->
 

@@ -165,7 +165,7 @@ function rebuildControlScript {
         TEMP=`echo "CATALINA_PID=${myInstallDir}/tomcat/work/tomcat.pid; export CATALINA_PID" >> $TomcatControlScript`;
         TEMP=`echo "CATALINA_TMPDIR=${myInstallDir}/tomcat/temp; export CATALINA_TMPDIR" >> $TomcatControlScript`;
         TEMP=`echo "JRE_HOME=${myInstallDir}/jdk/jre; export JRE_HOME" >> $TomcatControlScript`;
-        TEMP=`echo "JAVA_HOME=${myInstallDir}i/jdk; export JAVA_HOME" >> $TomcatControlScript`;
+        TEMP=`echo "JAVA_HOME=${myInstallDir}/jdk; export JAVA_HOME" >> $TomcatControlScript`;
 	TEMP=`echo "TOMCAT_OWNER=${myUserName}; export TOMCAT_OWNER" >> $TomcatControlScript`;
         TEMP=`echo "" >> $TomcatControlScript`;
         TEMP=`echo "findpid() {" >> $TomcatControlScript`;

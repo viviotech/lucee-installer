@@ -22,14 +22,14 @@
 
 
 
-<cfset this.prefix = "spreadsheet,get,array,struct,nx,bit,binary,cache,create,date,file,find,html,is,list,ls,query,set,jmx,java,to,xml,replace,span,sqs,thread,url,write,yes,amazon,directory,delete">
+<cfset this.prefix = "spreadsheet,get,array,struct,socket,system,nx,bit,binary,cache,collection,create,date,file,find,html,ip,image,is,list,ls,query,set,jmx,java,to,xml,replace,span,sqs,thread,url,write,yes,amazon,directory,delete,salesforce,mongo">
 
 <cffunction name="getCamelCase" returntype="string">
 	<cfargument name="funcname">
 
 	<cfset var st = "">
 	<cfloop list="#this.prefix#" index="st" delimiters=",">
-		<cfif arguments.funcname.startsWith( st ) AND Len(arguments.funcname) GT Len(st)>
+		<cfif ( arguments.funcname.startsWith( st ) && Len(arguments.funcname) > Len(st) )>
 			<cfset var b = arguments.funcname.substring(0,1).toUpperCase()>
 			<cfset b = b & st.substring( 1 )>
 			<cfset b = b & arguments.funcname.substring( st.length(), st.length()+1 ).toUpperCase()>

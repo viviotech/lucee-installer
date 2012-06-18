@@ -1,7 +1,7 @@
 <project>
     <shortName>railo</shortName>
     <fullName>Railo</fullName>
-    <version>3.3.1.000-pl1</version>
+    <version>3.3.3.001-pl1</version>
     <licenseFile>railo-all/license.txt</licenseFile>
     <leftImage>railo-sidebar.png</leftImage>
     <logoImage>railo-logo.png</logoImage>
@@ -247,9 +247,6 @@
                             <linkName>${installdir}/sys/mod_jk.so</linkName>
                             <target>${apachemodulesloc}/mod_jk.so</target>
                         </createSymLink>
-                        <deleteFile>
-                            <path>${installdir}/tomcat_connectors/</path>
-                        </deleteFile>
                     </actionList>
                     <ruleList>
                         <isTrue>
@@ -294,9 +291,6 @@
                             <linkName>${installdir}/sys/mod_jk.so</linkName>
                             <target>${apachemodulesloc}/mod_jk.so</target>
                         </createSymLink>
-                        <deleteFile>
-                            <path>${installdir}/tomcat_connectors/</path>
-                        </deleteFile>
                     </actionList>
                     <ruleList>
                         <isTrue>
@@ -365,6 +359,12 @@
                             <target>${apacheconfigloc}</target>
                         </createSymLink>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
+                            <program>${installdir}/tomcat_connectors/install_mod_cfml.sh</program>
+                            <programArguments>-m install -l ${installdir} -f ${apacheconfigloc} -c ${apachecontrolloc}</programArguments>
+                        </runProgram>
+                        <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>${apachecontrolloc}</program>
                             <programArguments>restart</programArguments>
                             <show>0</show>
@@ -576,10 +576,19 @@
                                 </compareText>
                             </ruleList>
                         </renameFile>
+                        <substitute>
+                            <files>${installdir}\AJP13\installer.settings</files>
+                            <type>exact</type>
+                            <substitutionList>
+                                <substitution>
+                                    <pattern>@@uninstallDir@@</pattern>
+                                    <value>${installdir}\AJP13\</value>
+                                </substitution>
+                            </substitutionList>
+                        </substitute>
                         <runProgram>
-                            <program>${installdir}\connector\iis7connect.bat</program>
-                            <programArguments></programArguments>
-                            <show>0</show>
+                            <program>${installdir}\AJP13\Connector_Setup.exe</program>
+                            <programArguments>/VERYSILENT /SUPPRESSMSGBOXES /LOG /SP- /NOCANCEL /NORESTART</programArguments>
                         </runProgram>
                     </actionList>
                     <onErrorActionList>
@@ -666,12 +675,19 @@
                                 </compareText>
                             </ruleList>
                         </renameFile>
+                        <substitute>
+                            <files>${installdir}\AJP13\installer.settings</files>
+                            <type>exact</type>
+                            <substitutionList>
+                                <substitution>
+                                    <pattern>@@uninstallDir@@</pattern>
+                                    <value>${installdir}\AJP13\</value>
+                                </substitution>
+                            </substitutionList>
+                        </substitute>
                         <runProgram>
-                            <program>${installdir}\connector\iis6connect.bat</program>
-                            <programArguments></programArguments>
-                            <runAs>Administrator</runAs>
-                            <show>0</show>
-                            <useMSDOSPath>0</useMSDOSPath>
+                            <program>${installdir}\AJP13\Connector_Setup.exe</program>
+                            <programArguments>/VERYSILENT /SUPPRESSMSGBOXES /LOG /SP- /NOCANCEL /NORESTART</programArguments>
                         </runProgram>
                     </actionList>
                     <onErrorActionList>
@@ -1429,6 +1445,7 @@
             </postUninstallationActionList>
             <preUninstallationActionList>
                 <getSymLinkTarget>
+                    <abortOnError>0</abortOnError>
                     <link>${installer_directory}/sys/mod_jk.so</link>
                     <variable>modjklocation</variable>
                     <ruleList>
@@ -1438,6 +1455,7 @@
                     </ruleList>
                 </getSymLinkTarget>
                 <deleteFile>
+                    <abortOnError>0</abortOnError>
                     <path>${modjklocation}</path>
                     <ruleList>
                         <fileExists>
@@ -1449,6 +1467,7 @@
                     </ruleList>
                 </deleteFile>
                 <getSymLinkTarget>
+                    <abortOnError>0</abortOnError>
                     <link>${installer_directory}/sys/httpd.conf</link>
                     <variable>apacheconfigloc</variable>
                     <ruleList>
@@ -1458,6 +1477,7 @@
                     </ruleList>
                 </getSymLinkTarget>
                 <runConsoleProgram>
+                    <abortOnError>0</abortOnError>
                     <program>${installer_directory}/sys/remove_connector.sh</program>
                     <programArguments>${apacheconfigloc}</programArguments>
                     <show>0</show>
@@ -1479,6 +1499,7 @@
                     </ruleList>
                 </deleteFile>
                 <runProgram>
+                    <abortOnError>0</abortOnError>
                     <program>${installer_directory}/sys/apache_ctl</program>
                     <programArguments>restart</programArguments>
                     <show>0</show>
@@ -1489,6 +1510,7 @@
                     </ruleList>
                 </runProgram>
                 <runProgram>
+                    <abortOnError>0</abortOnError>
                     <program>${installdir}\tomcat\bin\service.bat</program>
                     <programArguments>remove Railo</programArguments>
                     <show>0</show>
@@ -1499,11 +1521,13 @@
                     </ruleList>
                 </runProgram>
                 <runProgram>
+                    <abortOnError>0</abortOnError>
                     <explanation>${msg(postInstall.removingIIS7Connector)}</explanation>
                     <program>${installdir}\connector\iis7remove.bat</program>
                     <programArguments></programArguments>
                     <progressText>${msg(postInstall.removingIIS7Connector)}</progressText>
                     <show>0</show>
+                    <showMessageOnError>0</showMessageOnError>
                     <ruleList>
                         <platformTest>
                             <type>windows</type>
@@ -1516,10 +1540,12 @@
                     </ruleList>
                 </runProgram>
                 <runProgram>
+                    <abortOnError>0</abortOnError>
                     <explanation>${msg(postInstall.removingIIS6Connector)}</explanation>
                     <program>${installdir}\connector\iis6remove.bat</program>
                     <programArguments></programArguments>
                     <progressText>${msg(postInstall.removingIIS6Connector)}</progressText>
+                    <showMessageOnError>0</showMessageOnError>
                     <ruleList>
                         <platformTest>
                             <type>windows</type>
@@ -1540,6 +1566,19 @@
                         <platformTest>
                             <type>osx</type>
                         </platformTest>
+                    </ruleList>
+                </runProgram>
+                <runProgram>
+                    <abortOnError>0</abortOnError>
+                    <program>${installdir}\AJP13\unins000.exe</program>
+                    <programArguments></programArguments>
+                    <ruleList>
+                        <platformTest>
+                            <type>windows</type>
+                        </platformTest>
+                        <fileExists>
+                            <path>${installdir}\AJP13\unins000.exe</path>
+                        </fileExists>
                     </ruleList>
                 </runProgram>
             </preUninstallationActionList>
@@ -1589,7 +1628,7 @@
                     <runInTerminal>0</runInTerminal>
                     <windowsExec>notepad</windowsExec>
                     <windowsExecArgs>${installdir}\tomcat\conf\server.xml</windowsExecArgs>
-                    <windowsIcon>${installdir}\railo.ico</windowsIcon>
+                    <windowsIcon>${installdir}\tomcat.ico</windowsIcon>
                     <windowsPath>${installdir}</windowsPath>
                 </startMenuShortcut>
                 <startMenuLinkShortcut>
@@ -1635,6 +1674,9 @@
                     <distributionFileList>
                         <distributionDirectory>
                             <origin>railo32-windows/connector</origin>
+                        </distributionDirectory>
+                        <distributionDirectory>
+                            <origin>railo-all/AJP13</origin>
                         </distributionDirectory>
                     </distributionFileList>
                 </folder>
@@ -2210,10 +2252,6 @@
                                         </fileExists>
                                     </ruleList>
                                 </deleteFile>
-                                <getSymLinkTarget>
-                                    <link>${installer_directory}/sys/httpd.conf</link>
-                                    <variable>apacheconfigloc</variable>
-                                </getSymLinkTarget>
                                 <runConsoleProgram>
                                     <program>${installer_directory}/sys/remove_connector.sh</program>
                                     <programArguments>${apacheconfigloc}</programArguments>
@@ -2253,9 +2291,6 @@
                                             <linkName>${installdir}/sys/mod_jk.so</linkName>
                                             <target>${apachemodulesloc}/mod_jk.so</target>
                                         </createSymLink>
-                                        <deleteFile>
-                                            <path>${installdir}/common/tomcat_connectors/</path>
-                                        </deleteFile>
                                     </actionList>
                                     <ruleList>
                                         <isTrue>
@@ -2297,9 +2332,6 @@
                                             <linkName>${installdir}/sys/mod_jk.so</linkName>
                                             <target>${apachemodulesloc}/mod_jk.so</target>
                                         </createSymLink>
-                                        <deleteFile>
-                                            <path>${installdir}/common/tomcat_connectors/</path>
-                                        </deleteFile>
                                     </actionList>
                                     <ruleList>
                                         <isTrue>
@@ -2313,6 +2345,19 @@
                                     </ruleList>
                                 </actionGroup>
                                 <runProgram>
+                                    <program>rm</program>
+                                    <programArguments>-rf ${installdir}/tomcat_connectors/</programArguments>
+                                </runProgram>
+                                <runProgram>
+                                    <program>cp</program>
+                                    <programArguments>-rf ${installdir}/common/tomcat_connectors/ ${installdir}/tomcat_connectors/ </programArguments>
+                                </runProgram>
+                                <runProgram>
+                                    <program>${installdir}/tomcat_connectors/install_mod_cfml.sh</program>
+                                    <programArguments>-m install -l ${installdir} -f ${apacheconfigloc} -c ${apachecontrolloc}</programArguments>
+                                </runProgram>
+                                <runProgram>
+                                    <abortOnError>0</abortOnError>
                                     <program>${apachecontrolloc}</program>
                                     <programArguments>restart</programArguments>
                                     <show>0</show>
@@ -2340,80 +2385,11 @@
                                         </runProgram>
                                         <runProgram>
                                             <program>xcopy</program>
-                                            <programArguments>/E /Y ${installdir}\common\connector\* ${installdir}\connector\</programArguments>
-                                            <runAs>Administrator</runAs>
-                                            <ruleList>
-                                                <platformTest>
-                                                    <type>windows</type>
-                                                </platformTest>
-                                            </ruleList>
+                                            <programArguments>/E /Y ${installdir}\common\AJP13\* ${installdir}\AJP13\</programArguments>
                                         </runProgram>
-                                        <substitute>
-                                            <encoding>utf-8</encoding>
-                                            <files>${installdir}\connector\iis6connect.bat</files>
-                                            <show>0</show>
-                                            <type>exact</type>
-                                            <substitutionList>
-                                                <substitution>
-                                                    <pattern>@@installdir@@</pattern>
-                                                    <value>${installdir}</value>
-                                                </substitution>
-                                            </substitutionList>
-                                        </substitute>
-                                        <substitute>
-                                            <encoding>utf-8</encoding>
-                                            <files>${installdir}\connector\iis6remove.bat</files>
-                                            <show>0</show>
-                                            <type>exact</type>
-                                            <substitutionList>
-                                                <substitution>
-                                                    <pattern>@@installdir@@</pattern>
-                                                    <value>${installdir}</value>
-                                                </substitution>
-                                            </substitutionList>
-                                        </substitute>
-                                        <substitute>
-                                            <encoding>utf-8</encoding>
-                                            <files>${installdir}\connector\isapi_redirect-1.2.31.properties</files>
-                                            <show>0</show>
-                                            <type>exact</type>
-                                            <substitutionList>
-                                                <substitution>
-                                                    <pattern>@@installdir@@</pattern>
-                                                    <value>${installdir}</value>
-                                                </substitution>
-                                            </substitutionList>
-                                        </substitute>
-                                        <renameFile>
-                                            <customErrorMessage>${msg(postInstall.errRenamingDLL)}</customErrorMessage>
-                                            <destination>${installdir}\connector\isapi_redirect-1.2.31.dll</destination>
-                                            <origin>${installdir}\connector\isapi_redirect-1.2.31.32-bit.dll</origin>
-                                            <ruleList>
-                                                <compareText>
-                                                    <logic>equals</logic>
-                                                    <text>${bittype}</text>
-                                                    <value>32</value>
-                                                </compareText>
-                                            </ruleList>
-                                        </renameFile>
-                                        <renameFile>
-                                            <customErrorMessage>${msg(postInstall.errRenamingDLL)}</customErrorMessage>
-                                            <destination>${installdir}\connector\isapi_redirect-1.2.31.dll</destination>
-                                            <origin>${installdir}\connector\isapi_redirect-1.2.31.64-bit.dll</origin>
-                                            <ruleList>
-                                                <compareText>
-                                                    <logic>equals</logic>
-                                                    <text>${bittype}</text>
-                                                    <value>64</value>
-                                                </compareText>
-                                            </ruleList>
-                                        </renameFile>
                                         <runProgram>
-                                            <program>${installdir}\connector\iis6connect.bat</program>
-                                            <programArguments></programArguments>
-                                            <runAs>Administrator</runAs>
-                                            <show>0</show>
-                                            <useMSDOSPath>0</useMSDOSPath>
+                                            <program>${installdir}\AJP13\Connector_Setup.exe</program>
+                                            <programArguments>/VERYSILENT /SUPPRESSMSGBOXES /LOG /SP- /NOCANCEL /NORESTART</programArguments>
                                         </runProgram>
                                     </actionList>
                                     <onErrorActionList>
@@ -2442,73 +2418,21 @@
                                         </runProgram>
                                         <runProgram>
                                             <program>xcopy</program>
-                                            <programArguments>/E /Y ${installdir}\common\connector\* ${installdir}\connector\</programArguments>
-                                            <runAs>Administrator</runAs>
+                                            <programArguments>/E /Y ${installdir}\common\AJP13\* ${installdir}\AJP13\</programArguments>
                                         </runProgram>
                                         <substitute>
-                                            <encoding>utf-8</encoding>
-                                            <files>${installdir}\connector\iis7connect.bat</files>
-                                            <show>0</show>
+                                            <files>${installdir}\AJP13\installer.settings</files>
                                             <type>exact</type>
                                             <substitutionList>
                                                 <substitution>
-                                                    <pattern>@@installdir@@</pattern>
-                                                    <value>${installdir}</value>
+                                                    <pattern>@@uninstallDir@@</pattern>
+                                                    <value>${installdir}\AJP13\</value>
                                                 </substitution>
                                             </substitutionList>
                                         </substitute>
-                                        <substitute>
-                                            <encoding>utf-8</encoding>
-                                            <files>${installdir}\connector\iis7remove.bat</files>
-                                            <show>0</show>
-                                            <type>exact</type>
-                                            <substitutionList>
-                                                <substitution>
-                                                    <pattern>@@installdir@@</pattern>
-                                                    <value>${installdir}</value>
-                                                </substitution>
-                                            </substitutionList>
-                                        </substitute>
-                                        <substitute>
-                                            <encoding>utf-8</encoding>
-                                            <files>${installdir}\connector\isapi_redirect-1.2.31.properties</files>
-                                            <show>0</show>
-                                            <type>exact</type>
-                                            <substitutionList>
-                                                <substitution>
-                                                    <pattern>@@installdir@@</pattern>
-                                                    <value>${installdir}</value>
-                                                </substitution>
-                                            </substitutionList>
-                                        </substitute>
-                                        <renameFile>
-                                            <customErrorMessage>${msg(postInstall.errRenamingDLL)}</customErrorMessage>
-                                            <destination>${installdir}\connector\isapi_redirect-1.2.31.dll</destination>
-                                            <origin>${installdir}\connector\isapi_redirect-1.2.31.32-bit.dll</origin>
-                                            <ruleList>
-                                                <compareText>
-                                                    <logic>equals</logic>
-                                                    <text>${bittype}</text>
-                                                    <value>32</value>
-                                                </compareText>
-                                            </ruleList>
-                                        </renameFile>
-                                        <renameFile>
-                                            <customErrorMessage>${msg(postInstall.errRenamingDLL)}</customErrorMessage>
-                                            <destination>${installdir}\connector\isapi_redirect-1.2.31.dll</destination>
-                                            <origin>${installdir}\connector\isapi_redirect-1.2.31.64-bit.dll</origin>
-                                            <ruleList>
-                                                <compareText>
-                                                    <logic>equals</logic>
-                                                    <text>${bittype}</text>
-                                                    <value>64</value>
-                                                </compareText>
-                                            </ruleList>
-                                        </renameFile>
                                         <runProgram>
-                                            <program>${installdir}\connector\iis7connect.bat</program>
-                                            <programArguments></programArguments>
-                                            <show>0</show>
+                                            <program>${installdir}\AJP13\Connector_Setup.exe</program>
+                                            <programArguments>/VERYSILENT /SUPPRESSMSGBOXES /LOG /SP- /NOCANCEL /NORESTART</programArguments>
                                         </runProgram>
                                     </actionList>
                                     <onErrorActionList>
@@ -2524,6 +2448,25 @@
                                         </compareText>
                                     </ruleList>
                                 </actionGroup>
+                                <substitute>
+                                    <abortOnError>0</abortOnError>
+                                    <files>${installdir}/tomcat/conf/server.xml</files>
+                                    <type>exact</type>
+                                    <substitutionList>
+                                        <substitution>
+                                            <pattern>        &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"  
+               prefix="localhost_access_log." suffix=".txt"
+               pattern="%h %l %u %t &amp;quot;%r&amp;quot; %s %b" resolveHosts="false"/&gt;
+	
+      &lt;/Host&gt;</pattern>
+                                            <value>        &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"  
+               prefix="localhost_access_log." suffix=".txt"
+               pattern="%h %l %u %t &amp;quot;%r&amp;quot; %s %b" resolveHosts="false"/&gt;
+	&lt;Valve className="mod_cfml.core" loggingEnabled="false" waitForContext="10" /&gt;
+      &lt;/Host&gt;</value>
+                                        </substitution>
+                                    </substitutionList>
+                                </substitute>
                             </actionList>
                             <ruleList>
                                 <platformTest>
@@ -2795,6 +2738,13 @@
                 </actionGroup>
                 <deleteFile>
                     <path>${installdir}/common</path>
+                    <ruleList>
+                        <compareValues>
+                            <logic>equals</logic>
+                            <value1>1</value1>
+                            <value2>2</value2>
+                        </compareValues>
+                    </ruleList>
                 </deleteFile>
             </postInstallationActionList>
         </component>
@@ -2947,7 +2897,7 @@
                 <setInstallerVariable>
                     <name>apachecontrolloc</name>
                     <persist>1</persist>
-                    <value>/etc/init.d/httpd</value>
+                    <value>/usr/sbin/apachectl</value>
                     <ruleList>
                         <platformTest>
                             <type>linux</type>
@@ -2997,10 +2947,10 @@
                 <setInstallerVariable>
                     <name>apachecontrolloc</name>
                     <persist>1</persist>
-                    <value>/etc/init.d/apache2</value>
+                    <value>/usr/sbin/apachectl</value>
                     <ruleList>
                         <fileExists>
-                            <path>/etc/init.d/apache2</path>
+                            <path>/usr/sbin/apachectl</path>
                         </fileExists>
                         <platformTest>
                             <type>linux</type>
@@ -3247,6 +3197,12 @@
                     <value1>${installer_ui}</value1>
                     <value2>gui</value2>
                 </compareValues>
+                <compareValues>
+                    <logic>equals</logic>
+                    <negate>1</negate>
+                    <value1>${project.InstallationType}</value1>
+                    <value2>upgrade</value2>
+                </compareValues>
             </ruleList>
         </launchBrowser>
 
@@ -3367,7 +3323,6 @@
             <explanation>${msg(params.UpgradeInstallExpl)}</explanation>
             <value>yes</value>
             <default>yes</default>
-            <displayStyle>radiobuttons</displayStyle>
             <postShowPageActionList>
                 <setInstallerVariable>
                     <name>project.InstallationType</name>
@@ -3574,20 +3529,6 @@
             <ruleEvaluationLogic>or</ruleEvaluationLogic>
             <width>6</width>
             <ruleList>
-                <ruleGroup>
-                    <ruleList>
-                        <compareText>
-                            <logic>equals</logic>
-                            <text>${project.InstallationType}</text>
-                            <value>upgrade</value>
-                        </compareText>
-                        <compareValues>
-                            <logic>equals</logic>
-                            <value1>${upgradeTomcat}</value1>
-                            <value2>1</value2>
-                        </compareValues>
-                    </ruleList>
-                </ruleGroup>
                 <compareText>
                     <logic>equals</logic>
                     <negate>1</negate>
@@ -3884,40 +3825,6 @@
                         </ruleGroup>
                     </ruleList>
                 </setInstallerVariable>
-                <showWarning>
-                    <progressText>${msg(warnings.ISAPIprogressText)}</progressText>
-                    <text>${msg(warnings.ISAPIText)}</text>
-                    <ruleList>
-                        <registryTest>
-                            <key>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\InetStp\Components\</key>
-                            <logic>does_not_exist</logic>
-                            <name>ISAPIExtensions</name>
-                            <wowMode>32</wowMode>
-                        </registryTest>
-                        <compareText>
-                            <logic>equals</logic>
-                            <text>${iis_version}</text>
-                            <value>IIS7</value>
-                        </compareText>
-                    </ruleList>
-                </showWarning>
-                <showWarning>
-                    <progressText>${msg(warnings.detectISAPIFiltersPT)}</progressText>
-                    <text>${msg(warnings.detectISAPIFilterText)}</text>
-                    <ruleList>
-                        <registryTest>
-                            <key>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\InetStp\Components\</key>
-                            <logic>does_not_exist</logic>
-                            <name>ISAPIFilter</name>
-                            <wowMode>32</wowMode>
-                        </registryTest>
-                        <compareText>
-                            <logic>equals</logic>
-                            <text>${iis_version}</text>
-                            <value>IIS7</value>
-                        </compareText>
-                    </ruleList>
-                </showWarning>
             </preShowPageActionList>
             <ruleList>
                 <ruleGroup>

@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <registration_data version="1.0">
    <environment>
-      <hostname>jordan-desktop</hostname>
-      <hostId>007f0100</hostId>
+      <hostname>jordan-M61P-S3</hostname>
+      <hostId>007f0101</hostId>
       <osName>Linux</osName>
-      <osVersion>2.6.35-24-generic</osVersion>
+      <osVersion>2.6.38-8-generic</osVersion>
       <osArchitecture>amd64</osArchitecture>
-      <systemModel>unknown</systemModel>
+      <systemModel>x86_64</systemModel>
       <systemManufacturer/>
       <cpuManufacturer>AuthenticAMD</cpuManufacturer>
       <serialNumber/>
    </environment>
-   <registry urn="urn:st:45d05695-8936-4b73-b46a-638cfe885619" version="1.0">
+   <registry urn="urn:st:91918f2e-5671-4716-bedd-03d8131cff04" version="1.0">
       <service_tag>
-         <instance_urn>urn:st:87db4ea4-c555-49bc-8050-d6bcadb53fca</instance_urn>
+         <instance_urn>urn:st:e854d333-ba19-4eba-aece-bec29f194505</instance_urn>
          <product_name>Java SE 6 Development Kit</product_name>
-         <product_version>1.6.0_23</product_version>
+         <product_version>1.6.0_30</product_version>
          <product_urn>urn:uuid:b58ef9a8-5ae8-11db-a023-080020a9ed93</product_urn>
          <product_parent_urn>urn:uuid:fdc90b21-018d-4cab-b866-612c7c119ed3</product_parent_urn>
          <product_parent>Java Platform Standard Edition 6 (Java SE 6)</product_parent>
-         <product_defined_inst_id>id=1.6.0_23-b05 amd64,dir=/home/jordan/Downloads/jdk1.6.0_23/jre</product_defined_inst_id>
+         <product_defined_inst_id>id=1.6.0_30-b12 amd64,dir=/home/jordan/Downloads/jdk1.6.0_30/jre</product_defined_inst_id>
          <product_vendor>Sun Microsystems</product_vendor>
          <platform_arch>amd64</platform_arch>
-         <timestamp>2011-01-07 01:15:10 GMT</timestamp>
+         <timestamp>2012-01-09 21:50:37 GMT</timestamp>
          <container>global</container>
-         <source>jdk-6u23-fcs-bin-b05-linux-amd64-12_nov_2010.bin</source>
+         <source>jdk-6u30-fcs-bin-b12-linux-amd64-10_nov_2011.bin</source>
          <installer_uid>-1</installer_uid>
       </service_tag>
    </registry>

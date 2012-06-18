@@ -1,0 +1,121 @@
+.download-list {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.download-list td {
+	text-align: center;
+}
+
+.download-list td a {
+	width: 250px;
+	text-align: center;
+}
+
+.download-list td.priority-download a {
+	width: 600px;
+	text-align: center;
+}
+
+.download-slider {
+	background-image: url(/res/img/img_theme/download-bg.jpg);
+	/*border: solid 2px #122818;*/
+	padding: 0;
+	margin: 10px 0 10px 0;
+	height: 300px;
+	max-height: 300px;
+	overflow: auto;
+}
+
+.download-slider .slides {
+	padding: 0;
+	margin: 0;
+}
+
+.slide-boundary {
+	padding: 5px 5px 5px 5px;
+	margin: 10px 10px 10px 10px;
+	background-color: #ffffff;
+	min-height: 268px;
+	border: solid 1px #000000;
+}
+
+.download-slider .slide-content-only {
+	width: 100%;
+	height: 300px;
+	padding: 0;
+	margin: 0;
+	overflow: auto;
+}
+
+.download-slider .slide-content-only table {
+	width: 100%;
+	padding: 0;
+	margin: 0 0 10px 0;
+}
+
+.download-slider .slide-content-only table td {
+	padding: 2px;
+	text-align: center;
+}
+
+.download-slider .slide-content-only table .fileRow0 td{
+	max-width: 40px;
+	border-left: solid 4px #c5e8fb;
+	border-right: solid 4px #c5e8fb;
+}
+
+.download-slider .slide-content-only table .fileRow1 td{
+	max-width: 40px;
+	border-left: solid 4px #eeefff;
+	border-right: solid 4px #eeefff;
+}
+
+.download-slider .slide-content-only table td:hover{
+	border-left: solid 4px #000000;
+	border-right: solid 4px #000000;
+}
+
+.download-slider .slide-content-only table .fileRow0 .name{
+	max-width: 100%;
+	border: none;
+	text-align: left;
+	background-color: #c5e8fb;
+}
+
+.download-slider .slide-content-only table .fileRow1 .name{
+	max-width: 100%;
+	border: none;
+	text-align: left;
+	background-color: #eeefff;
+}
+
+.download-slider .slide-content-only b {
+	font-size: 12pt;
+}
+
+.mail-list-content {
+	border: none;
+}
+
+.mail-list-content .issue {
+	margin-bottom: 10px;
+	border-top: 1px dotted silver;
+}
+
+.mail-list-content .issue .summary, .mail-list-content .issue .summary p  {
+	font-size: 8pt;
+	margin-left: 15px;
+	margin-right: 15px;
+	font-family: "Trebuchet MS", Arial, Sans-Serif, Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+pre {
+ margin: 10px;
+ border: 1px solid silver;
+ padding: 4px;
+ font-size: 9pt;
+ line-height: 11pt;
+ background-color: #f8f8f8;
+}

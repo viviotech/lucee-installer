@@ -320,7 +320,7 @@ elif [ "$1" = "stop" ] ; then
 
   if [ $FORCE -eq 1 ]; then
     if [ ! -z "$CATALINA_PID" ]; then
-       echo "Killing: `cat $CATALINA_PID`"
+       echo "(Tomcat PID: `cat $CATALINA_PID`)"
        kill -9 `cat $CATALINA_PID`
     else
        echo "Kill failed: \$CATALINA_PID not set"

@@ -1,6 +1,5 @@
-# %W% %E%
 #
-# Copyright (c) 2009, 2010, Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2009, 2011, Oracle and/or its affiliates. All rights reserved.
 #
 
 # fontconfig.properties for SuSe releases
@@ -200,7 +199,7 @@ filename.-founder-songti-medium-r-normal--*-%d-*-*-c-*-gbk-0=/usr/X11R6/lib/X11/
 filename.-founder-songti-medium-r-normal--*-%d-*-*-c-*-iso10646-1=/usr/X11R6/lib/X11/fonts/truetype/FZSongTi.ttf
 filename.-founder-mingtib-medium-r-normal--*-%d-*-*-c-*-iso10646-1=/usr/X11R6/lib/X11/fonts/truetype/FZMingTiB.ttf
 filename.-misc-sazanami_gothic-medium-r-normal--*-%d-*-*-*-*-iso10646-1=/usr/X11R6/lib/X11/fonts/truetype/sazanami-gothic.ttf
-lfilename.-misc-sazanami_gothic-medium-r-normal--*-%d-*-*-m-*-iso10646-1=/usr/X11R6/lib/X11/fonts/truetype/sazanami-gothic.ttf
+filename.-misc-sazanami_gothic-medium-r-normal--*-%d-*-*-m-*-iso10646-1=/usr/X11R6/lib/X11/fonts/truetype/sazanami-gothic.ttf
 filename.-misc-sazanami_gothic-medium-r-normal--*-%d-*-*-*-*-jisx0208.1990-0=/usr/X11R6/lib/X11/fonts/truetype/sazanami-gothic.ttf
 filename.-misc-sazanami_mincho-medium-r-normal--*-%d-*-*-*-*-iso10646-1=/usr/X11R6/lib/X11/fonts/truetype/sazanami-mincho.ttf
 filename.-misc-sazanami_mincho-medium-r-normal--*-%d-*-*-*-*-jisx0208.1990-0=/usr/X11R6/lib/X11/fonts/truetype/sazanami-mincho.ttf
