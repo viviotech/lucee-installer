@@ -20,6 +20,9 @@ rem Start/Stop Script for the CATALINA Server
 rem
 rem Environment Variable Prerequisites
 rem
+rem   Do not set the variables in this script. Instead put them into a script
+rem   setenv.bat in CATALINA_BASE/bin to keep your customizations separate.
+rem
 rem   CATALINA_HOME   May point at your Catalina "build" directory.
 rem
 rem   CATALINA_BASE   (Optional) Base directory for resolving dynamic portions
@@ -27,7 +30,11 @@ rem                   of a Catalina installation.  If not present, resolves to
 rem                   the same directory that CATALINA_HOME points to.
 rem
 rem   CATALINA_OPTS   (Optional) Java runtime options used when the "start",
-rem                   or "run" command is executed.
+rem                   "run" or "debug" command is executed.
+rem                   Include here and not in JAVA_OPTS all options, that should
+rem                   only be used by Tomcat itself, not by the stop process,
+rem                   the version command etc.
+rem                   Examples are heap size, GC logging, JMX ports etc.
 rem
 rem   CATALINA_TMPDIR (Optional) Directory path location of temporary directory
 rem                   the JVM should use (java.io.tmpdir).  Defaults to
@@ -37,10 +44,15 @@ rem   JAVA_HOME       Must point at your Java Development Kit installation.
 rem                   Required to run the with the "debug" argument.
 rem
 rem   JRE_HOME        Must point at your Java Runtime installation.
-rem                   Defaults to JAVA_HOME if empty.
+rem                   Defaults to JAVA_HOME if empty. If JRE_HOME and JAVA_HOME
+rem                   are both set, JRE_HOME is used.
 rem
-rem   JAVA_OPTS       (Optional) Java runtime options used when the "start",
-rem                   "stop", or "run" command is executed.
+rem   JAVA_OPTS       (Optional) Java runtime options used when any command
+rem                   is executed.
+rem                   Include here and not in CATALINA_OPTS all options, that
+rem                   should be used by Tomcat and also by the stop process,
+rem                   the version command etc.
+rem                   Most options should go into CATALINA_OPTS.
 rem
 rem   JAVA_ENDORSED_DIRS (Optional) Lists of of semi-colon separated directories
 rem                   containing some jars in order to allow replacement of APIs 
@@ -81,7 +93,7 @@ rem                   set TITLE=Tomcat.Cluster#1.Server#1 [%DATE% %TIME%]
 rem
 rem
 rem
-rem $Id: catalina.bat 1040546 2010-11-30 14:47:34Z markt $
+rem $Id: catalina.bat 1146096 2011-07-13 15:20:43Z markt $
 rem ---------------------------------------------------------------------------
 
 rem Suppress Terminate batch job on CTRL+C
@@ -108,23 +120,29 @@ cd ..
 set "CATALINA_HOME=%cd%"
 cd "%CURRENT_DIR%"
 :gotHome
+
 if exist "%CATALINA_HOME%\bin\catalina.bat" goto okHome
 echo The CATALINA_HOME environment variable is not defined correctly
 echo This environment variable is needed to run this program
 goto end
 :okHome
 
+rem Copy CATALINA_BASE from CATALINA_HOME if not defined
+if not "%CATALINA_BASE%" == "" goto gotBase
+set "CATALINA_BASE=%CATALINA_HOME%"
+:gotBase
+
 rem Ensure that any user defined CLASSPATH variables are not used on startup,
 rem but allow them to be specified in setenv.bat, in rare case when it is needed.
 set CLASSPATH=
 
 rem Get standard environment variables
-if "%CATALINA_BASE%" == "" goto gotSetenvHome
-if exist "%CATALINA_BASE%\bin\setenv.bat" call "%CATALINA_BASE%\bin\setenv.bat"
-goto gotSetenvBase
-:gotSetenvHome
+if not exist "%CATALINA_BASE%\bin\setenv.bat" goto checkSetenvHome
+call "%CATALINA_BASE%\bin\setenv.bat"
+goto setenvDone
+:checkSetenvHome
 if exist "%CATALINA_HOME%\bin\setenv.bat" call "%CATALINA_HOME%\bin\setenv.bat"
-:gotSetenvBase
+:setenvDone
 
 rem Get standard Java environment variables
 if exist "%CATALINA_HOME%\bin\setclasspath.bat" goto okSetclasspath
@@ -132,7 +150,6 @@ echo Cannot find "%CATALINA_HOME%\bin\setclasspath.bat"
 echo This file is needed to run this program
 goto end
 :okSetclasspath
-set "BASEDIR=%CATALINA_HOME%"
 call "%CATALINA_HOME%\bin\setclasspath.bat" %1
 if errorlevel 1 goto end
 
@@ -143,10 +160,6 @@ if "%CLASSPATH%" == "" goto emptyClasspath
 set "CLASSPATH=%CLASSPATH%;"
 :emptyClasspath
 set "CLASSPATH=%CLASSPATH%%CATALINA_HOME%\bin\bootstrap.jar"
-
-if not "%CATALINA_BASE%" == "" goto gotBase
-set "CATALINA_BASE=%CATALINA_HOME%"
-:gotBase
 
 if not "%CATALINA_TMPDIR%" == "" goto gotTmpdir
 set "CATALINA_TMPDIR=%CATALINA_BASE%\temp"
@@ -214,6 +227,7 @@ if ""%1"" == ""debug"" goto doDebug
 if ""%1"" == ""run"" goto doRun
 if ""%1"" == ""start"" goto doStart
 if ""%1"" == ""stop"" goto doStop
+if ""%1"" == ""configtest"" goto doConfigTest
 if ""%1"" == ""version"" goto doVersion
 
 echo Usage:  catalina ( commands ... )
@@ -226,6 +240,7 @@ echo   run -security     Start in the current window with security manager
 echo   start             Start Catalina in a separate window
 echo   start -security   Start in a separate window with security manager
 echo   stop              Stop Catalina
+echo   configtest        Run a basic syntax check on server.xml
 echo   version           What version of tomcat are you running?
 goto end
 
@@ -265,6 +280,12 @@ goto execCmd
 :doStop
 shift
 set ACTION=stop
+set CATALINA_OPTS=
+goto execCmd
+
+:doConfigTest
+shift
+set ACTION=configtest
 set CATALINA_OPTS=
 goto execCmd
 

@@ -21,7 +21,7 @@
 <%@page import="org.apache.catalina.Session" %>
 <%@page import="org.apache.catalina.manager.JspHelper" %>
 <%@page import="org.apache.catalina.util.ContextName" %>
-<!DOCTYPE html 
+<!DOCTYPE html
      PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <%--!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
@@ -51,7 +51,7 @@
     <meta http-equiv="expires" content="0"/><!-- 0 is an invalid value and should be treated as 'now' -->
     <meta http-equiv="content-language" content="en"/>
     <meta name="author" content="Cedrik LIME"/>
-    <meta name="copyright" content="copyright 2005-2011 the Apache Software Foundation"/>
+    <meta name="copyright" content="copyright 2005-2012 the Apache Software Foundation"/>
     <meta name="robots" content="noindex,nofollow,noarchive"/>
     <title>Sessions Administration: details for <%= currentSessionId %></title>
 </head>
@@ -99,7 +99,7 @@
        <td><%= JspHelper.getDisplayTTLForSession(currentSession) %></td>
      </tr>
    </table>
-   
+
    <form method="post" action="<%= submitUrl %>">
      <div>
        <input type="hidden" name="sessionId" value="<%= currentSessionId %>" />
@@ -113,10 +113,10 @@
        %>    <input type="submit" value="Refresh" />
      </div>
    </form>
-    
+
    <div class="error"><%= JspHelper.escapeXml(request.getAttribute("error")) %></div>
    <div class="message"><%= JspHelper.escapeXml(request.getAttribute("message")) %></div>
-   
+
    <table style="text-align: left;" border="1" cellpadding="2" cellspacing="2">
    <% int nAttributes = 0;
       Enumeration attributeNamesEnumeration = currentHttpSession.getAttributeNames();

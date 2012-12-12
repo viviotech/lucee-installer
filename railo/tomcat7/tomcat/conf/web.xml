@@ -241,6 +241,50 @@
         <load-on-startup>3</load-on-startup>
     </servlet>
 
+  <!-- ===================================================================  -->
+  <!-- Invoke the Railo Servlet                                             -->
+  <!-- ===================================================================  -->
+
+	<servlet>
+	    <servlet-name>GlobalCFMLServlet</servlet-name>
+	    <description>CFML runtime Engine</description>
+	    <servlet-class>railo.loader.servlet.CFMLServlet</servlet-class>   
+	    <init-param>
+	        <param-name>railo-web-directory</param-name> 
+	        <param-value>{web-root-directory}/WEB-INF/railo/</param-value> 
+	        <description>Railo Web Directory directory</description> 
+	    </init-param>
+	    <!-- init-param>
+	        <param-name>railo-server-directory</param-name>
+	        <param-value>./</param-value>
+	        <description>directory where railo root directory is stored</description>
+	    </init-param -->
+	    <load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+	    <servlet-name>GlobalAMFServlet</servlet-name>
+	    <description>AMF Servlet for flash remoting</description>
+	    <servlet-class>railo.loader.servlet.AMFServlet</servlet-class>
+	    <load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<servlet>
+	    <servlet-name>GlobalRestServlet</servlet-name>
+	    <description>Servlet to access REST service</description>
+	    <servlet-class>railo.loader.servlet.RestServlet</servlet-class>
+	    <init-param>
+		<param-name>railo-web-directory</param-name> 
+		<param-value>{web-root-directory}/WEB-INF/railo/</param-value> 
+		<description>Railo Web Directory directory</description> 
+	    </init-param>	
+	    <!-- init-param>
+		<param-name>railo-server-directory</param-name>
+		<param-value>./</param-value>
+		<description>directory where railo root directory is stored</description>
+	    </init-param -->
+	    <load-on-startup>1</load-on-startup>
+	</servlet>
 
   <!-- NOTE: An SSI Filter is also available as an alternative SSI          -->
   <!-- implementation. Use either the Servlet or the Filter but NOT both.   -->
@@ -371,6 +415,34 @@
         <servlet-name>jsp</servlet-name>
         <url-pattern>*.jspx</url-pattern>
     </servlet-mapping>
+
+    
+    <!-- Mappings for the Railo servlet -->
+    <servlet-mapping>
+        <servlet-name>GlobalCFMLServlet</servlet-name>
+        <url-pattern>*.cfm</url-pattern>
+        <url-pattern>*.cfml</url-pattern>
+        <url-pattern>*.cfc</url-pattern>
+	<!-- Basic SES Mappings -->
+        <url-pattern>/index.cfm/*</url-pattern>
+        <url-pattern>/default.cfm/*</url-pattern>
+        <url-pattern>/post.cfm/*</url-pattern>
+        <url-pattern>/archive.cfm/*</url-pattern>
+        <url-pattern>/blog.cfm/*</url-pattern>
+        <url-pattern>/page.cfm/*</url-pattern>
+        <url-pattern>/rewrite.cfm/*</url-pattern>
+    </servlet-mapping>
+    <!-- mappings for remoting with Railo -->
+    <servlet-mapping>
+        <servlet-name>GlobalAMFServlet</servlet-name>
+        <url-pattern>/flashservices/gateway/*</url-pattern>
+    </servlet-mapping>
+    <!-- mapping for Railo's REST servlet -->
+    <servlet-mapping>
+        <servlet-name>GlobalRestServlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
 
     <!-- The mapping for the SSI servlet -->
 <!--
@@ -4171,6 +4243,8 @@
   <!-- to use within your application.                                       -->
 
     <welcome-file-list>
+        <welcome-file>index.cfm</welcome-file>
+        <welcome-file>index.cfml</welcome-file>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.htm</welcome-file>
         <welcome-file>index.jsp</welcome-file>

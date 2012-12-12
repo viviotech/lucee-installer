@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+     version="2.5">
+
+	<servlet id="railo">
+		<servlet-name>CFMLServlet</servlet-name>
+		<description>CFML runtime Engine</description>
+		<servlet-class>railo.loader.servlet.CFMLServlet</servlet-class>
+		<init-param>
+	      <param-name>configuration</param-name>
+	      <param-value>/WEB-INF/railo/</param-value>
+		  <description>Web Application Configuraton Directory. This is where Railo will look for the context configuration file (railo-web.xml.cfm) and other customizations like custom tags, custom built-in-functions, etc.</description>
+	    </init-param>	
+		<!--init-param>
+	      <param-name>railo-server-root</param-name>
+	      <param-value>C:/Users/Igal/Railo</param-value>
+	      <description>Directory where Railo server root is stored. set this if you want to use a different root for the server from the folder where the Railo jars are loaded from.</description>
+	    </init-param!-->
+		<load-on-startup>1</load-on-startup>
+	</servlet>	
+	
+	<servlet-mapping>
+		<servlet-name>CFMLServlet</servlet-name>
+		<url-pattern>*.cfm</url-pattern>
+		<url-pattern>*.cfml</url-pattern>
+		<url-pattern>*.cfc</url-pattern>
+		<url-pattern>/index.cfm/*</url-pattern>
+		<!--url-pattern>*.jsp</url-pattern!-->
+		<!--url-pattern>*.htm</url-pattern!-->
+	</servlet-mapping>
+
+	
+	<!--servlet id="static">
+		<servlet-name>FileServlet</servlet-name>
+		<description>File Servlet for Static Files</description>
+		<servlet-class>railo.loader.servlet.FileServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet!-->
+	
+	<!--servlet-mapping> 
+		<servlet-name>FileServlet</servlet-name> 
+		<url-pattern>/</url-pattern> 
+	</servlet-mapping!-->
+	
+
+	<welcome-file-list>
+		<welcome-file>index.cfm</welcome-file>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>

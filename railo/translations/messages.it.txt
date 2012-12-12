@@ -1,91 +1,93 @@
 Installer.Welcome.Title=Setup - %1$s
-Installer.Welcome.Text=Benvenuti nel %1$s Wizard di installazione.\n\n\n\n\nProcedura di installazione sviluppata da:\n- Jordan Michaels\n- Bilal Soylu\n\nProcedura di installazione localizzata da:\n- Paul Klinkenberg - Tedesco\n- Salvatore Fusto - Italiano\n- Ronan Lucio - Portoghese (Brasiliano)\n
-Installer.Ready.Title=Avvio dell'installazione
-Installer.Ready.Text1=La procedura è pronta ad installar %1$s sul tuo computer.
-Installer.Installation.Finished.Title=Installazione %1$s sul tuo computer in corso.
-Installer.Installation.Finished.Text=Installazione %1$s sul tuo computer completata.
-tomcat.PageTitle=Username Amministratore Tomcat.
-tomcat.PageName=Username Amministratore Tomcat.
-tomcat.Description=Tomcat include una interfaccia web per gestire alcuni settaggi del server. Inserire la username con cui accedere alle funzionalità di amministrazione.
-tomcat.PasswordTitle=Password Amministratore Tomcat.
-tomcat.PasswordDesc=Password Amministratore Tomcat.
-tomcat.PasswordExplanation=Inserire la password con cui accedere alle funzionalità di amministrazione...
-tomcat.PortTitle=Numero della porta di ascolto Tomcat
-tomcat.PortDesc=Numero della porta di ascolto Tomcat
-tomcat.PortExplanation=Specificare la porta di ascolto per Tomcat. Il valore inserito indicherà la porta per accedere sia all'area di amministrazione del web server Tomcat che all'area di amministrazione del server railo. Se non sei sicuro del valore da inserire lascia quello di default (scelta consigliata).
-tomcat.PortErr=Numero di porta errato. Selezionare un altro valore.
-tomcat.SystemUserTitle=Utente di sistema per Tomcat.
-tomcat.SystemUserDesc=Utente di sistema per Tomcat.
-tomcat.SystemUserExplanation=Specificare un nome di account per Tomcat.  Il funzionamento in modalità "Root" o "Amministratore" su Windows eviterà problemi di permessi di accesso, mentre in modalità non-root si avrà un ulteriore livello di sicurezza. Nel caso si scelga di usare la modalità non-root, raccomandiamo di usare una username che sia facile da ricordare, ad esempio "railo" o "cfml.
-component.RailoCore=Railo Core.
-component.RailoCoreDesc=Il core di railo include Railo, Tomcat, e una versione dedicata di java JRE.
-postInstall.CreateTomcatUserFile=Creazione dei file utente di Tomcat.
+Installer.Welcome.Text=Benvenuto nel programma di installazione di %1$s.\n\n
+Installer.Ready.Title=Pronto per l'installazione.
+Installer.Ready.Text1=Il programma è ora pronto per installare %1$s su questo computer.
+Installer.Installation.Finished.Title=Fine installazione di %1$s.
+Installer.Installation.Finished.Text=Il programma di setup ha terminato di installare %1$s su questo computer.
+postInstall.CreateTomcatUserFile=Creazione user file di Tomcat.
 postInstall.CreateControlScript=Creazione dello script di controllo.
-postInstall.BindingTomcat=Collegamento a Tomcat.
-postInstall.InstallingService=Installazione del servizio.
-postInstall.installing64bitmodjk=Installazione di mod_jk versione 64-bit.
-postInstall.installing32bitmodjk=Installazione di mod_jk versione 32-bit.
-postInstall.configuringApache=Configurazione di Apache con mod_jk
-postInstall.configuringRailoTomcat=Configurazione del servizio Railo-Tomcat
-postInstall.modifyingTomcatPort=Modifica del numero di porta di ascolto Tomcat
-postInstall.configuringTomcatPort=Configurazione della porta di ascolto Tomcat
-postInstall.installingII7Connector=Installazione connettore per IIS7 
-postInstall.errRenamingDLL=Errore nel rinominare la DLL del connectore.
-postInstall.errIISMessage=Si è verificato un errore durante installazione del connettore per IIS.Consultare i file di log per ulteriori dettagli.
-postInstall.installingII6Connector=Installazione del Connectore per IIS6.
+postInstall.modifyingTomcatPort=Modifica dei numeri delle porte di Tomcat.
+postInstall.installingJRE=Installazione JRE
+postInstall.configuringRailoTomcat=Configurazio0ne del servizio Railo-Tomcat.
 postInstall.updatingTomcatUser=Aggiornamento utente di sistema Tomcat.
-postInstall.installingFusionReactor=Installazione del software FusionReactor
-postInstall.bindingFRtoTomcat=Collegamento di FusionReactor e Tomcat
-postInstall.creatingFRFilter=Creazione FusionReactor Filter
-postInstall.startingRailo=Avvio del servizio Railo.
-postInstall.removingService=Arresto del servizio Railo.
-postInstall.removingIIS7Connector=Arresto del connettore per IIS7.
-postInstall.removingIIS6Connector=Arresto del connettore per IIS6.
+postInstall.startingRailo=Avvio del servizio Railo
+postInstall.configuringApache=Configurazione di Apache
+postInstall.installingBonCodeConnector=Installazione del connector per IIS.
+warnings.setRailoServerPass=Impossibile settare la password di amministrazione del server Railo.
+warnings.setRailoWebPass=Impossibile settare la password dell'amministratore web di Railo.
+warnings.tomcatStartTimeout=Timeout in attesa dell'avvio di Railo.
+warnings.passwordLengthSix=La password deve contenere almeno 6 caratteri.
+warnings.tomcatWebPort=La porta selezionata per il web server Tomcat è già in uso.
+warnings.tomcatShutdownPort=La porta selezionata per lo shutdown di Tomcat è già in uso.
+warnings.tomcatAJPPort=La porta selezionata per il Tomcat AJP è già in uso.
 shortCuts.RailoComment=Controllo del servizio Railo.
 shortCuts.RailoName=Controllo del servizio Railo-Tomcat.
-shortCuts.RemoveRailoComment=Disinstallazione di Railo dal tuo Computer.
-shortCuts.RemoveRailoName=Disinstalla Railo.
-shortCuts.LaunchRailoAdminComment=Avvio dell'aministrazione del server Railo.
-shortCuts.LaunchRailoAdminName=Amministrazione server Railo.
-shortCuts.TomcatMonitorComment=Avvio monitor del servizio Railo-Tomcat.
-shortCuts.TomcatMonitorName=monitor servizio Railo-Tomcat.
-shortCuts.TomcatHostEntryComment=Aggiungi un nuovo host nella configurazione di Tomcat.
-shortCuts.TomcatHostEntryName=Configurazione host Tomcat
-params.StartAtBootTitle=Avvia automaticamente Railo all'accensione del tuo computer? 
-params.StartAtBootDesc=Si, avvia Railo all'accensione
-params.StartAtBootExplanation=Vuoi che Railo venga automaticamento avviato ogni volta che il sistema  viene acceso?
-params.installApacheTitle=Installazione Connettore per Apache?
-params.installApacheDesc=Vuoi installare il connettore Apache?
-params.installApacheExplanation=Il connettore per Apache è quasi sempre necessario, escluso il caso in cui Apache non sia il webserver principale. Si consiglia di installare sempre questo connettore.
-params.ApacheVersionTitle=Versione di Apache
-params.ApacheVersionDesc=Versione di Apache
-params.ApacheVersionExplanation=Specificare la versione di Apache installata sul tuo computer.
-params.ApacheControlFileTitle=Cartella dello script di settaggio di Apache.
-params.ApacheControlFileDesc=Cartella dello script di settaggio di Apache.
-params.ApacheControlFileExplanation=Specificare la cartella dello script di settaggio di Apache. Cartella di default in CentOS: "/etc/init.d/httpd"; Cartella di default per Ubuntu: "/etc/init.d/apache2".
-params.ApacheModulesTitle=Cartella dei  moduli di Apache 
-params.ApacheModulesDesc=Cartella dei  moduli di Apache 
-params.ApacheModulesExplanation=Specificare la cartella dei moduli di Apache. Cartella di default per RHEL/CentOS:"/usr/lib/httpd/modules/"; Cartella di default per Ubuntu:"/usr/lib/apache2/modules/". Per sistemi a 64 bit, cambiare la cartella "lib" in "lib64".
-params.ApacheConfigFileTitle=File di configurazione di Apache.
-params.ApacheConfigFileDesc=File di configurazione diApache.
-params.ApacheConfigFileExplanation=Il file di configurazione di Apache controlla la gestione delle richieste ad Apache. Cartella di default per RHEL/CentOS: "/etc/httpd/conf/httpd.conf"; cartella di default per Ubuntu: "/etc/apache2/apache2.conf"
-params.ApacheLogDirTitle=Cartella dei files di log di Apache.
-params.ApacheLogDirDesc=Cartella dei files di log di Apache.
-params.ApacheLogDirExplanation=Indicare la cartella in cui Apache salva i files di log. Cartella di default per RHEL/CentOS: "/var/log/httpd/"; cartella di default per Ubuntu: "/var/log/apache2/". Prestare attenzione poichè il programma di installazione usa quasto valore per installare il connettore Apache-Tomcat (mod_jk).
-params.installIISConnectorTitle=Installare il Connector IIS?
-params.installIISConnectorDesc=Installare il Connector IIS?
-params.installIISConnectorExplanation=Procedere con l'installazione del connettore Per IIS? In caso di dubbio lasciare la checkbox selezionata.
-params.bitTypeTitle=Sistema 32 o 64 bit
-params.bitTypeDesc=Sistema 32 o 64 bit
-params.bitTypeExplanation=Specificare se l'installazione viene eseguita su un OS a 32 o a 64 bit.
-params.InstallFRTitle=Installare FusionReactor?
-params.InstallFRDesc=Installare il server monitor FusionReactor?
-params.InstallFRExplanation=Prova gratis per 10 giorni il server monitor FusionReactor .\n\n- Statistiche dettagliate su richieste, carico CPU, uso memoria ecc.\n- Controlla tutti i tuoi server da una unica postazione.\n- Permette di gestire il server anche in caso di out of memory.\n- Ricevi notifiche ogni qualvolta si presenti un guasto o un malfunzionamento del server.\n\nFusionReactor non causa alcun sovraccarico del server in quanto progettato e realizzato per un uso continuo in servers di produzione.
-warnings.ISAPIprogressText=Ricerca estenzioni ISAPI.
-warnings.ISAPIText=Estensioni ISAPI per IIS non installate. Queste estensioni sono necessarie per un corretto funzionamento di IIS.
-warnings.detectISAPIFiltersPT=Ricerca estenzioni ISAPI.
-warnings.detectISAPIFilterText=Filtri ISAPI per IIS non installate. Questi filtri sono necessarie per un corretto funzionamento di IIS.
-warnings.WinXPLimitedSupport=Il supporto di Windows XP è molto limitato.\n-Assicurarsi di avere interrotto IIS 5.1 prima di continuare.
-warnings.FRPortBusy=Porte 8114/8088 già in uso. Non è possibile installare FusionReactor in quanto già installato.
-final.OpenRailoURL=Avvia amministratore del server railo?
-final.OpenFRURL=Amministrazione FusionReactor
+shortCuts.RemoveRailoComment=Disinstallazione di Railo da questo computer.
+shortCuts.RemoveRailoName=Disinstallazione di Railo.
+shortCuts.LaunchRailoAdminComment=Avvio dell'amministrazione del server Railo.
+shortCuts.LaunchRailoAdminName=Amministrazione del server Railo.
+shortCuts.TomcatMonitorComment=Avvio del monitor del servizio Railo-Tomcat.
+shortCuts.TomcatMonitorName=Monitor del servizio Railo-Tomcat.
+shortCuts.TomcatHostEntryComment=Aggiunta di un host entry alla configurazione di Tomcat.
+shortCuts.TomcatHostEntryName=Configurazione dell' host IN Tomcat.
+shortCuts.OpenRailoURL=Aprire ora la schermata di benvenuto di Railo?
+uninstall.stopRailoService=Spegnimento del servizio Railo.
+uninstall.removeRailoService=Rimozione del servizio Railo.
+tomcat.title=Login dell'amministratore di Tomcat.
+tomcat.explanation=Tomcat include un'interfaccia web per gestire alcuni aspetti del tuo server Tomcat. Inserisci username e password che userai per accedere all'interfaccia web di amministrazione.
+tomcat.tomcatUser=Username Tomcat
+tomcat.tomcatPass=Password Tomcat
+tomcat.tomcatPassConf=Ripeti per conferma la Password Tomcat
+tomcat.SystemUserTitle=Utente di sistema Tomcat
+tomcat.SystemUserExplanation=Digita il tipo di utente per Tomcat. In modalità "root" o "Amministratore" sotto Windows non si avranno problemi di accesso alle risorse, mentre in modalità non-root il sistema aggiungerà un ulteriore livello di sicurezza. Se si sceglie di lanciare il servizio come utente non-root, si raccomanda di usare un nome utente semplice da identificare e ricordare, es. "railo" oppure "cfml.
+tomcatPorts.title=Porte Tomcat
+tomcatPorts.explanation=Tomcat ha bisogno di porte dedicate sul computer per poter servire vari tipi di richieste.E' possibile variare tali porte utilizzando in campi in basso. Se non si è sicuri lasciare i valori di default dei campi.
+tomcatPorts.webServerPort=Porta del web server Tomcat
+tomcatPorts.shutdownPort=Porta PER lo shutdown di Tomcat
+tomcatPorts.AJPPort=Porta per l'AJP di Tomcat
+params.StartAtBootTitle=Lanciare Tomcat all'avvio del computer?
+params.StartAtBootDesc=Si, Avvia Tomcat all'avvio del computer.
+params.StartAtBootExplanation=Vuoi che Railo si avvii automaticamente ad ogni accensione del sistema?
+params.installApacheTitle=Installa Apache Connector?
+params.installApacheDesc=Installa Apache Connector?
+params.installApacheExplanation=Il connector Per Apache è necessario per la maggior parte delle installazioni. Non è necessario nel caso in cui non si utilizzi Apache come web server. Se non sei sicuro della scelta, conferma l'installazione del Connector.
+params.ApacheControlFileTitle=Posizione dello script di controllo di Apache
+params.ApacheControlFileDesc=Posizione dello script di controllo di Apache
+params.ApacheControlFileExplanation=Indica la cartella dello script di controllo di Apache.Il valore di default è "/usr/sbin/apachectl".
+params.ApacheModulesTitle=Cartella dei moduli di Apache.
+params.ApacheModulesDesc=Cartella dei moduli di Apache.
+params.ApacheModulesExplanation=Indica la cartella in cui Apache memorizza i moduli. I valori di default sono "/usr/lib/httpd/modules/" per il S.O. RHEL/CentOS, e "/usr/lib/apache2/modules/" per il S.O. Ubuntu. Per sistemi a 64 bit può essere necessario modificare il percorso cambiando la cartella "lib" a "lib 64".
+params.ApacheConfigFileTitle=File di Configurazione di Apache.
+params.ApacheConfigFileDesc=File di Configurazione di Apache.
+params.ApacheConfigFileExplanation=Il file di configurazione di Apache controlla il modo in cui le richieste al web server vengono processate. La cartella di default del file di configurazione è "/etc/httpd/conf/httpd.conf" su S.O. RHEL/CentOS e "/etc/apache2/apache2.conf" su S.O. Ubuntu.
+params.ApacheLogDirTitle=Cartella del file di log di Apache
+params.ApacheLogDirDesc=Cartella del file di log di Apache
+params.ApacheLogDirExplanation=Indica la cartella in cui Apache registra i files di log. Le cartelle di default sono "/var/log/httpd/" per S.O. RHEL/CentOS, e "/var/log/apache2/" per S.O. Ubuntu.
+params.installIISConnectorTitle=Installare il Connector per IIS?
+params.installIISConnectorDesc=Installare il Connector per IIS?
+params.installIISConnectorExplanation=Vuoi installare  il Connector petr IIS? Se non si è sicuri lasciare la check box selezionata.
+params.bitTypeTitl e=Selezionare il tipo di sistema operativo(32 o 64 bit).
+params.bitTypeDesc=Tipo di sistema operativo(32 o 64 bit).
+params.bitTypeExplanation=Verificare il tipo di sistema operativo su cui vuoi effettuare l'installazione. Stai utilizzando un sistema operativo a 32 o a 64 bit?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

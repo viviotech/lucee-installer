@@ -22,7 +22,7 @@
 <%@page import="org.apache.catalina.Session" %>
 <%@page import="org.apache.catalina.ha.session.DeltaSession" %>
 <%@page import="org.apache.catalina.util.ContextName" %>
-<!DOCTYPE html 
+<!DOCTYPE html
      PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -43,7 +43,7 @@
     <meta http-equiv="expires" content="0"/><!-- 0 is an invalid value and should be treated as 'now' -->
     <meta http-equiv="content-language" content="en"/>
     <meta name="author" content="Cedrik LIME"/>
-    <meta name="copyright" content="copyright 2005-2011 the Apache Software Foundation"/>
+    <meta name="copyright" content="copyright 2005-2012 the Apache Software Foundation"/>
     <meta name="robots" content="noindex,nofollow,noarchive"/>
     <title>Sessions Administration for <%= JspHelper.escapeXml(cn.getDisplayName()) %></title>
 </head>

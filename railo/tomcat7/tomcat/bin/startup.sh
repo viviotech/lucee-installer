@@ -18,16 +18,13 @@
 # -----------------------------------------------------------------------------
 # Start Script for the CATALINA Server
 #
-# $Id: startup.sh 1088179 2011-04-02 23:32:42Z kkolinko $
+# $Id: startup.sh 1137558 2011-06-20 09:26:36Z rjung $
 # -----------------------------------------------------------------------------
 
 # Better OS/400 detection: see Bugzilla 31132
 os400=false
-darwin=false
 case "`uname`" in
-CYGWIN*) cygwin=true;;
 OS400*) os400=true;;
-Darwin*) darwin=true;;
 esac
 
 # resolve links - $0 may be a softlink
