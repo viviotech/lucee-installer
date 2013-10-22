@@ -35,16 +35,17 @@
   <!-- Global JNDI resources
        Documentation at /docs/jndi-resources-howto.html
   -->
-  <GlobalNamingResources>
+  <!-- <GlobalNamingResources> -->
     <!-- Editable user database that can also be used by
          UserDatabaseRealm to authenticate users
     -->
-    <Resource name="UserDatabase" auth="Container"
+    <!-- <Resource name="UserDatabase" auth="Container"
               type="org.apache.catalina.UserDatabase"
               description="User database that can be updated and saved"
               factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
               pathname="conf/tomcat-users.xml" />
-  </GlobalNamingResources>
+    -->
+  <!-- </GlobalNamingResources> -->
 
   <!-- A "Service" is a collection of one or more "Connectors" that share
        a single "Container" Note:  A "Service" is not itself a "Container", 
@@ -111,17 +112,17 @@
 
       <!-- Use the LockOutRealm to prevent attempts to guess user passwords
            via a brute-force attack -->
-      <Realm className="org.apache.catalina.realm.LockOutRealm">
+      <!-- <Realm className="org.apache.catalina.realm.LockOutRealm"> -->
         <!-- This Realm uses the UserDatabase configured in the global JNDI
              resources under the key "UserDatabase".  Any edits
              that are performed against this UserDatabase are immediately
              available for use by the Realm.  -->
-        <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+        <!-- <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
                resourceName="UserDatabase"/>
-      </Realm>
+      </Realm> -->
 
       <Host name="127.0.0.1"  appBase="webapps"
-            unpackWARs="true" autoDeploy="true">
+            unpackWARs="false" autoDeploy="false">
 
         <!-- SingleSignOn valve, share authentication between web applications
              Documentation at: /docs/config/valve.html -->
@@ -136,7 +137,13 @@
                prefix="localhost_access_log." suffix=".txt"
                pattern="%h %l %u %t &quot;%r&quot; %s %b" resolveHosts="false"/>
 	
-	<Valve className="mod_cfml.core" loggingEnabled="false" waitForContext="3" />	
+	<!-- visit modcfml.org for details on mod_cfml configuration options -->
+	<Valve className="mod_cfml.core"
+		loggingEnabled="false"
+		waitForContext="3"
+		maxContexts="200"
+		timeBetweenContexts="30000"
+		/>	
       </Host>
 
       <Host name="localhost" appBase="webapps">

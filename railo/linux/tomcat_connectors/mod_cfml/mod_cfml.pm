@@ -1,6 +1,6 @@
 ##############################################################################
 # package:		mod_cfml.pm
-# version:		1.0.8
+# version:		1.0.13
 # author:		Jordan Michaels (jordan@viviotech.net)
 # website:		http://www.modcfml.org/
 # license:		LGPL 3.0
@@ -108,9 +108,10 @@ sub handler {
 
 	# check for a default document request
 	if ( !$FoundHandlerPattern && chop($myURI) eq "/" ) {
-
-		$r->log->notice(
-			"[mod_cfml] Pattern Match TURE: Default Document Request Found.");
+		if ( $LogHandlers eq 'true' ) {
+			$r->log->notice(
+				"[mod_cfml] Pattern Match TURE: Default Document Request Found.");
+		}
 		$FoundHandlerPattern = 1;
 
 	}

@@ -18,10 +18,16 @@
 #
 # Usage:        Run "configure_service.sh --help" for complete usage info
 #
+# History:	1.0 - Initial Release
+#		1.1 - Added Runlevel 2 to default Ubuntu start
 ###############################################################################
 
-version=1.0
+version=1.1
 progname=$(basename $0)
+basedir=$( cd "$( dirname "$0" )" && pwd );
+
+# switch the subshell to the basedir so all relative dirs resolve
+cd $basedir;
 
 # ensure we're running as root
 if [ ! $(id -u) = "0" ]; then
@@ -340,7 +346,7 @@ function install_railoCTL {
 		chmod 755 /etc/init.d/railo_ctl
 
 		# install railo_ctl service
-		update-rc.d railo_ctl start 10 3 4 5 . stop 10 0 .
+		update-rc.d railo_ctl start 10 2 3 4 5 . stop 10 0 .
 	fi
 }
 
@@ -380,23 +386,23 @@ case $myMode in
         "install")
         # run install mode functions
 	# print_version;
-	echo "############################";
-	echo "# Installing Railo Service #";
-	echo "############################";
-	install_railoCTL;
-        echo "############################";
-        echo "#  Installation Complete   #";
-        echo "############################";
+	echo "";
+	echo "## Installing Railo Service ##";
+	echo "";
+	install_railoCTL
+	echo "";
+        echo "##  Installation Complete   ##";
+	echo "";
         ;;
         "remove")
         # run test mode functions
 	# print_version;
-        echo "############################";
-        echo "#  Removing Railo Service  #";
-        echo "############################";
+	echo "";
+        echo "##  Removing Railo Service  ##";
+	echo "";
 	remove_railoCTL;
-        echo "############################";
-        echo "# Service Removal Complete #";
-        echo "############################";
+	echo "";
+        echo "## Service Removal Complete ##";
+	echo "";
         ;;
 esac

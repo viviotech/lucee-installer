@@ -1,1 +1,4 @@
-﻿<!--- Stuff --->
+﻿component {
+
+	this.Name = "RAILO_WORLD";
+}

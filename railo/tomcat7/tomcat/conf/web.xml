@@ -227,6 +227,7 @@
   <!--   xpoweredBy          Determines whether X-Powered-By response       -->
   <!--                       header is added by generated servlet.  [false] -->
 
+<!--
     <servlet>
         <servlet-name>jsp</servlet-name>
         <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
@@ -240,51 +241,78 @@
         </init-param>
         <load-on-startup>3</load-on-startup>
     </servlet>
+-->
 
-  <!-- ===================================================================  -->
-  <!-- Invoke the Railo Servlet                                             -->
-  <!-- ===================================================================  -->
+  <!-- ===================================================================== -->
+  <!-- Railo CFML Servlet - this is the main Railo servlet                   -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <servlet id="Railo">
+    <description>Railo CFML Engine</description>
+    <servlet-name>CFMLServlet</servlet-name>    
+    <servlet-class>railo.loader.servlet.CFMLServlet</servlet-class>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- to specify the location of the Railo Server config and libraries,   -->
+    <!-- uncomment the init-param below.  make sure that the param-value     -->
+    <!-- points to a valid folder, and that the process that runs Railo has  -->
+    <!-- write permissions to that folder.  leave commented for defaults.    -->
+    <!--
+    <init-param>
+      <param-name>railo-server-directory</param-name>
+      <param-value>/var/Railo/config/server/</param-value>
+      <description>Railo Server configuration directory (for Server-wide configurations, settings, and libraries)</description>
+    </init-param>
+    !-->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- to specify the location of the Web Contexts' config and libraries,  -->
+    <!-- uncomment the init-param below.  make sure that the param-value     -->
+    <!-- points to a valid folder, and that the process that runs Railo has  -->
+    <!-- write permissions to that folder.  the {web-context-label} can be   -->
+    <!-- set in Railo Server Admin homepage.  leave commented for defaults.  -->
+    <!--
+    <init-param>
+      <param-name>railo-web-directory</param-name>
+      <param-value>/var/Railo/config/web/{web-context-label}/</param-value> 
+      <description>Railo Web Directory (for Website-specific configurations, settings, and libraries)</description>
+    </init-param>
+    !-->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
 
-	<servlet>
-	    <servlet-name>GlobalCFMLServlet</servlet-name>
-	    <description>CFML runtime Engine</description>
-	    <servlet-class>railo.loader.servlet.CFMLServlet</servlet-class>   
-	    <init-param>
-	        <param-name>railo-web-directory</param-name> 
-	        <param-value>{web-root-directory}/WEB-INF/railo/</param-value> 
-	        <description>Railo Web Directory directory</description> 
-	    </init-param>
-	    <!-- init-param>
-	        <param-name>railo-server-directory</param-name>
-	        <param-value>./</param-value>
-	        <description>directory where railo root directory is stored</description>
-	    </init-param -->
-	    <load-on-startup>1</load-on-startup>
-	</servlet>
+  <!-- ===================================================================== -->
+  <!-- Railo REST Servlet - handles Railo's RESTful web services             -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <servlet id="RestServlet">
+    <description>Railo Servlet for RESTful services</description>
+    <servlet-name>RestServlet</servlet-name>    
+    <servlet-class>railo.loader.servlet.RestServlet</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
 
-	<servlet>
-	    <servlet-name>GlobalAMFServlet</servlet-name>
-	    <description>AMF Servlet for flash remoting</description>
-	    <servlet-class>railo.loader.servlet.AMFServlet</servlet-class>
-	    <load-on-startup>2</load-on-startup>
-	</servlet>
+  <!-- ===================================================================== -->
+  <!-- Railo MessageBroker Servlet - Flex Gateway                            -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- * ATTENTION - ATENCION - ACHTUNG  -  ATTENTION - ATENCION - ACHTUNG * -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- messageBrokerId must be unique for each defintion of the MessageBroker-->
+  <!-- Servlet.  if you use the MessageBroker Servlet and define it in more  -->
+  <!-- than one xml file, you must uncomment the messageBrokerId init-param  -->
+  <!-- and set a different value in each definition.                         -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <servlet id="MessageBrokerServlet">
+    <description>Railo Servlet for Flex Gateway</description>
+    <servlet-name>MessageBrokerServlet</servlet-name>
+    <servlet-class>flex.messaging.MessageBrokerServlet</servlet-class>
+    <!-- init-param>
+      <param-name>services.configuration.file</param-name>
+      <param-value>/WEB-INF/flex/services-config.xml</param-value>
+    </init-param !-->
+    <!-- init-param>
+      <param-name>messageBrokerId</param-name>
+      <param-value>_default_</param-value>
+    </init-param !-->
+    <!-- load-on-startup>2</load-on-startup !-->
+  </servlet>
 
-	<servlet>
-	    <servlet-name>GlobalRestServlet</servlet-name>
-	    <description>Servlet to access REST service</description>
-	    <servlet-class>railo.loader.servlet.RestServlet</servlet-class>
-	    <init-param>
-		<param-name>railo-web-directory</param-name> 
-		<param-value>{web-root-directory}/WEB-INF/railo/</param-value> 
-		<description>Railo Web Directory directory</description> 
-	    </init-param>	
-	    <!-- init-param>
-		<param-name>railo-server-directory</param-name>
-		<param-value>./</param-value>
-		<description>directory where railo root directory is stored</description>
-	    </init-param -->
-	    <load-on-startup>1</load-on-startup>
-	</servlet>
 
   <!-- NOTE: An SSI Filter is also available as an alternative SSI          -->
   <!-- implementation. Use either the Servlet or the Filter but NOT both.   -->
@@ -406,6 +434,7 @@
     </servlet-mapping>
 
     <!-- The mappings for the JSP servlet -->
+<!--
     <servlet-mapping>
         <servlet-name>jsp</servlet-name>
         <url-pattern>*.jsp</url-pattern>
@@ -415,31 +444,31 @@
         <servlet-name>jsp</servlet-name>
         <url-pattern>*.jspx</url-pattern>
     </servlet-mapping>
-
+-->
     
     <!-- Mappings for the Railo servlet -->
     <servlet-mapping>
-        <servlet-name>GlobalCFMLServlet</servlet-name>
+        <servlet-name>CFMLServlet</servlet-name>
         <url-pattern>*.cfm</url-pattern>
         <url-pattern>*.cfml</url-pattern>
         <url-pattern>*.cfc</url-pattern>
 	<!-- Basic SES Mappings -->
-        <url-pattern>/index.cfm/*</url-pattern>
-        <url-pattern>/default.cfm/*</url-pattern>
-        <url-pattern>/post.cfm/*</url-pattern>
-        <url-pattern>/archive.cfm/*</url-pattern>
-        <url-pattern>/blog.cfm/*</url-pattern>
-        <url-pattern>/page.cfm/*</url-pattern>
-        <url-pattern>/rewrite.cfm/*</url-pattern>
+	<url-pattern>/index.cfc/*</url-pattern>
+	<url-pattern>/index.cfm/*</url-pattern>
+	<url-pattern>/index.cfml/*</url-pattern>
     </servlet-mapping>
-    <!-- mappings for remoting with Railo -->
+
+    <!-- Mapping for Flex Gateway Servlet -->
     <servlet-mapping>
-        <servlet-name>GlobalAMFServlet</servlet-name>
-        <url-pattern>/flashservices/gateway/*</url-pattern>
+	<servlet-name>MessageBrokerServlet</servlet-name>
+	<url-pattern>/flex2gateway/*</url-pattern>
+	<url-pattern>/flashservices/gateway/*</url-pattern>
+	<url-pattern>/messagebroker/*</url-pattern>
     </servlet-mapping>
+
     <!-- mapping for Railo's REST servlet -->
     <servlet-mapping>
-        <servlet-name>GlobalRestServlet</servlet-name>
+        <servlet-name>RestServlet</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 
@@ -4247,7 +4276,7 @@
         <welcome-file>index.cfml</welcome-file>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.htm</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
+        <!-- <welcome-file>index.jsp</welcome-file> -->
     </welcome-file-list>
 
 </web-app>

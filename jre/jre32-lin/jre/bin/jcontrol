@@ -3,7 +3,7 @@
 # Copyright (c) 2006, 2011, Oracle and/or its affiliates. All rights reserved.
 # ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
 #
-# Shell Script to run the Java(tm) Plug-in control panel.
+# Shell Script to run the Java Plug-in control panel.
 #
 # Parse the command-line options
 # -r means make associate with the container (i.e browser)

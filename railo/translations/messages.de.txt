@@ -66,7 +66,8 @@ params.ApacheLogDirExplanation=Bitte geben Sie den Ordner ein den Apache zum spe
 params.installIISConnectorTitle=Installiere die IIS Verbindung?
 params.installIISConnectorDesc=Installiere die IIS Verbindung?
 params.installIISConnectorExplanation=Wollen Sie die IIS-Verbindung installieren? Wenn Sie sich nicht sicher sind, sollten sie die Verbindung installieren.
-params.bitTypeTitle=Wählen Sie die Bitzahl
-params.bitTypeDesc=Bitzahl
-params.bitTypeExplanation=Bitte überprüfen Sie die Bit-Typ den Sie installieren wollen; dieser ist normalerweise vom Ihrem Betriebssystem abhängig. Fahren sie ein 32-Bit oder ein 64-bit Betriebssystem?
+railopass.title=Railo Password
+railopass.explain=Please enter in the default passwords for the Railo Server Administrator and the Railo Web Administrators.
+railopass.desc=Railo Password
+railopass.desc.confirm=Railo Password (confirm)
 

@@ -80,7 +80,7 @@ set "EXECUTABLE=%CATALINA_HOME%\bin\tomcat7.exe"
 
 rem Set default Service name
 set SERVICE_NAME=Tomcat7
-set PR_DISPLAYNAME=Apache Tomcat Railo
+set PR_DISPLAYNAME=Railo Server
 
 if "x%1x" == "xx" goto displayUsage
 set SERVICE_CMD=%1
@@ -90,7 +90,7 @@ if "x%1x" == "xx" goto checkServiceCmd
 if "x%1x" == "x/userx" goto runAsUser
 if "x%1x" == "x--userx" goto runAsUser
 set SERVICE_NAME=%1
-set PR_DISPLAYNAME=Apache Tomcat %1
+set PR_DISPLAYNAME=%1 Server
 shift
 if "x%1x" == "xx" goto checkServiceCmd
 goto checkUser
@@ -163,7 +163,7 @@ rem More extra parameters
 set "PR_LOGPATH=%CATALINA_BASE%\logs"
 set PR_STDOUTPUT=auto
 set PR_STDERROR=auto
-"%EXECUTABLE%" //US//%SERVICE_NAME% ++JvmOptions "-Djava.io.tmpdir=%CATALINA_BASE%\temp;-Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager;-Djava.util.logging.config.file=%CATALINA_BASE%\conf\logging.properties" --JvmMs 128 --JvmMx 256
+"%EXECUTABLE%" //US//%SERVICE_NAME% ++JvmOptions "-Djava.io.tmpdir=%CATALINA_BASE%\temp;-Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager;-Djava.util.logging.config.file=%CATALINA_BASE%\conf\logging.properties;-javaagent:@@installdir@@\lib\railo-inst.jar" --JvmMs 128 --JvmMx 256
 echo The service '%SERVICE_NAME%' has been installed.
 
 :end

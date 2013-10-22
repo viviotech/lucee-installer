@@ -174,7 +174,7 @@ function rebuildControlScript {
         TEMP=`echo "# Provides:          railo_ctl" >> $TomcatControlScript`;
         TEMP=`echo "# Required-Start:    \\$network " >> $TomcatControlScript`;
         TEMP=`echo "# Required-Stop:     \\$network " >> $TomcatControlScript`;
-        TEMP=`echo "# Default-Start:     3 4 5" >> $TomcatControlScript`;
+        TEMP=`echo "# Default-Start:     2 3 4 5" >> $TomcatControlScript`;
         TEMP=`echo "# Default-Stop:      0" >> $TomcatControlScript`;
         TEMP=`echo "# Short-Description: Tomcat/Railo Control Script" >> $TomcatControlScript`;
         TEMP=`echo "# Description:       This is the control script that starts and stops Tomcat which contains a global install of the Railo servlet." >> $TomcatControlScript`;

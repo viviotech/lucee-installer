@@ -33,11 +33,6 @@ shortCuts.TomcatHostEntryName=Configurazione dell' host IN Tomcat.
 shortCuts.OpenRailoURL=Aprire ora la schermata di benvenuto di Railo?
 uninstall.stopRailoService=Spegnimento del servizio Railo.
 uninstall.removeRailoService=Rimozione del servizio Railo.
-tomcat.title=Login dell'amministratore di Tomcat.
-tomcat.explanation=Tomcat include un'interfaccia web per gestire alcuni aspetti del tuo server Tomcat. Inserisci username e password che userai per accedere all'interfaccia web di amministrazione.
-tomcat.tomcatUser=Username Tomcat
-tomcat.tomcatPass=Password Tomcat
-tomcat.tomcatPassConf=Ripeti per conferma la Password Tomcat
 tomcat.SystemUserTitle=Utente di sistema Tomcat
 tomcat.SystemUserExplanation=Digita il tipo di utente per Tomcat. In modalità "root" o "Amministratore" sotto Windows non si avranno problemi di accesso alle risorse, mentre in modalità non-root il sistema aggiungerà un ulteriore livello di sicurezza. Se si sceglie di lanciare il servizio come utente non-root, si raccomanda di usare un nome utente semplice da identificare e ricordare, es. "railo" oppure "cfml.
 tomcatPorts.title=Porte Tomcat
@@ -66,9 +61,10 @@ params.ApacheLogDirExplanation=Indica la cartella in cui Apache registra i files
 params.installIISConnectorTitle=Installare il Connector per IIS?
 params.installIISConnectorDesc=Installare il Connector per IIS?
 params.installIISConnectorExplanation=Vuoi installare  il Connector petr IIS? Se non si è sicuri lasciare la check box selezionata.
-params.bitTypeTitl e=Selezionare il tipo di sistema operativo(32 o 64 bit).
-params.bitTypeDesc=Tipo di sistema operativo(32 o 64 bit).
-params.bitTypeExplanation=Verificare il tipo di sistema operativo su cui vuoi effettuare l'installazione. Stai utilizzando un sistema operativo a 32 o a 64 bit?
+railopass.title=Railo Password
+railopass.explain=Please enter in the default passwords for the Railo Server Administrator and the Railo Web Administrators.
+railopass.desc=Railo Password
+railopass.desc.confirm=Railo Password (confirm)
 
 
 

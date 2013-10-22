@@ -1,7 +1,7 @@
 <project>
     <shortName>railo</shortName>
     <fullName>Railo</fullName>
-    <version>4.0.2.002-pl1</version>
+    <version>4.1.1.009-pl0</version>
     <licenseFile>license.txt</licenseFile>
     <leftImage>railo4-sidebar.png</leftImage>
     <logoImage>railo_logo.png</logoImage>
@@ -109,22 +109,6 @@
                 </runProgram>
                 <substitute>
                     <encoding>utf-8</encoding>
-                    <explanation>${msg(postInstall.CreateTomcatUserFile)}</explanation>
-                    <files>${installdir}/tomcat/conf/tomcat-users.xml</files>
-                    <type>exact</type>
-                    <substitutionList>
-                        <substitution>
-                            <pattern>@@myTomcatAdminUsername@@</pattern>
-                            <value>${tomcatuser}</value>
-                        </substitution>
-                        <substitution>
-                            <pattern>@@myTomcatAdminPassword@@</pattern>
-                            <value>${tomcatpass}</value>
-                        </substitution>
-                    </substitutionList>
-                </substitute>
-                <substitute>
-                    <encoding>utf-8</encoding>
                     <explanation>${msg(postInstall.CreateControlScript)}</explanation>
                     <files>${installdir}/railo_ctl</files>
                     <type>exact</type>
@@ -151,7 +135,7 @@
                 </changePermissions>
                 <runProgram>
                     <program>${installdir}/sys/service_config.sh</program>
-                    <programArguments>-i</programArguments>
+                    <programArguments>-i --path=${installdir}/railo_ctl</programArguments>
                     <ruleList>
                         <isTrue>
                             <value>${startatboot}</value>
@@ -268,70 +252,91 @@
                         <createDirectory>
                             <path>${installdir}/jdk/</path>
                         </createDirectory>
-                        <runProgram>
-                            <explanation>${msg(postInstall.installingJRE)}</explanation>
-                            <program>cp</program>
-                            <programArguments>-R ${installdir}/jre32-lin/* ${installdir}/jdk/</programArguments>
-                            <progressText>Installing ${bittype}-bit JRE</progressText>
-                            <useMSDOSPath>0</useMSDOSPath>
-                            <ruleList>
-                                <platformTest>
-                                    <type>linux</type>
-                                </platformTest>
-                                <compareValues>
-                                    <logic>equals</logic>
-                                    <value1>${bittype}</value1>
-                                    <value2>32</value2>
-                                </compareValues>
-                            </ruleList>
-                        </runProgram>
-                        <runProgram>
-                            <program>xcopy</program>
-                            <programArguments>/E /Y "${installdir}\jre32-win\*" "${installdir}\"</programArguments>
-                            <progressText>Installing ${bittype}-bit JRE</progressText>
-                            <ruleList>
-                                <platformTest>
-                                    <type>windows</type>
-                                </platformTest>
-                                <compareValues>
-                                    <logic>equals</logic>
-                                    <value1>${bittype}</value1>
-                                    <value2>32</value2>
-                                </compareValues>
-                            </ruleList>
-                        </runProgram>
-                        <runProgram>
-                            <explanation>${msg(postInstall.installingJRE)}</explanation>
-                            <program>cp</program>
-                            <programArguments>-R ${installdir}/jre64-lin/* ${installdir}/jdk/</programArguments>
-                            <progressText>Installing ${bittype}-bit JRE</progressText>
-                            <useMSDOSPath>0</useMSDOSPath>
-                            <ruleList>
-                                <platformTest>
-                                    <type>linux</type>
-                                </platformTest>
-                                <compareValues>
-                                    <logic>equals</logic>
-                                    <value1>${bittype}</value1>
-                                    <value2>64</value2>
-                                </compareValues>
-                            </ruleList>
-                        </runProgram>
-                        <runProgram>
-                            <program>xcopy</program>
-                            <programArguments>/E /Y "${installdir}\jre64-win\*" "${installdir}\"</programArguments>
-                            <progressText>Installing ${bittype}-bit JRE</progressText>
+                        <actionGroup>
+                            <actionList>
+                                <writeFile>
+                                    <path>${installdir}\xcopy_script.bat</path>
+                                    <text>xcopy /E /Y "${installdir}\jre32-win\*" "${installdir}\"
+rmdir "${installdir}\jre64-win\" /s /q
+rmdir "${installdir}\jre32-win\" /s /q</text>
+                                    <ruleList>
+                                        <platformTest>
+                                            <type>windows-x86</type>
+                                        </platformTest>
+                                    </ruleList>
+                                </writeFile>
+                                <writeFile>
+                                    <path>${installdir}\xcopy_script.bat</path>
+                                    <text>xcopy /E /Y "${installdir}\jre64-win\*" "${installdir}\"
+rmdir "${installdir}\jre64-win\" /s /q
+rmdir "${installdir}\jre32-win\" /s /q</text>
+                                    <ruleList>
+                                        <platformTest>
+                                            <type>windows-x64</type>
+                                        </platformTest>
+                                    </ruleList>
+                                </writeFile>
+                                <runProgram>
+                                    <program>${installdir}\xcopy_script.bat</program>
+                                    <programArguments></programArguments>
+                                </runProgram>
+                                <deleteFile>
+                                    <path>${installdir}\xcopy_script.bat</path>
+                                </deleteFile>
+                            </actionList>
                             <ruleList>
                                 <platformTest>
                                     <type>windows</type>
                                 </platformTest>
-                                <compareValues>
-                                    <logic>equals</logic>
-                                    <value1>${bittype}</value1>
-                                    <value2>64</value2>
-                                </compareValues>
                             </ruleList>
-                        </runProgram>
+                        </actionGroup>
+                        <actionGroup>
+                            <actionList>
+                                <runProgram>
+                                    <explanation>${msg(postInstall.installingJRE)}</explanation>
+                                    <program>cp</program>
+                                    <programArguments>-R ${installdir}/jre32-lin/* ${installdir}/jdk/</programArguments>
+                                    <progressText>Installing ${bittype}-bit JRE</progressText>
+                                    <useMSDOSPath>0</useMSDOSPath>
+                                    <ruleList>
+                                        <compareValues>
+                                            <logic>equals</logic>
+                                            <value1>${bittype}</value1>
+                                            <value2>32</value2>
+                                        </compareValues>
+                                    </ruleList>
+                                </runProgram>
+                                <runProgram>
+                                    <explanation>${msg(postInstall.installingJRE)}</explanation>
+                                    <program>cp</program>
+                                    <programArguments>-R ${installdir}/jre64-lin/* ${installdir}/jdk/</programArguments>
+                                    <progressText>Installing ${bittype}-bit JRE</progressText>
+                                    <useMSDOSPath>0</useMSDOSPath>
+                                    <ruleList>
+                                        <compareValues>
+                                            <logic>equals</logic>
+                                            <value1>${bittype}</value1>
+                                            <value2>64</value2>
+                                        </compareValues>
+                                    </ruleList>
+                                </runProgram>
+                                <runProgram>
+                                    <program>rm</program>
+                                    <programArguments>-rf ${installdir}/jre64-lin/</programArguments>
+                                    <useMSDOSPath>0</useMSDOSPath>
+                                </runProgram>
+                                <runProgram>
+                                    <program>rm</program>
+                                    <programArguments>-rf ${installdir}/jre32-lin/</programArguments>
+                                    <useMSDOSPath>0</useMSDOSPath>
+                                </runProgram>
+                            </actionList>
+                            <ruleList>
+                                <platformTest>
+                                    <type>linux</type>
+                                </platformTest>
+                            </ruleList>
+                        </actionGroup>
                         <wait>
                             <ms>2000</ms>
                         </wait>
@@ -426,70 +431,82 @@
                                 </isTrue>
                             </ruleList>
                         </runProgram>
-
-	<!--
-    <registrySet>
-        <key>HKEY_LOCAL_MACHINE\SOFTWARE\Apache Software Foundation\Procrun 2.0\Railo\Parameters\Java</key>
-        <name>Jvm</name>
-        <type>REG_SZ</type>
-        <value>${installdir}\jdk\bin\client\jvm.dll</value>
-        <ruleList>
-            <platformTest>
-                <type>windows</type>
-            </platformTest>
-            <windowsServiceTest>
-                <condition>exists</condition>
-                <service>Railo</service>
-            </windowsServiceTest>
-        </ruleList>
-    </registrySet>
-    <registrySet>
-        <key>HKEY_LOCAL_MACHINE\SOFTWARE\Apache Software Foundation\Procrun 2.0\Railo\Parameters\Java</key>
-        <name>JvmMs</name>
-        <type>REG_DWORD</type>
-        <value>128</value>
-        <ruleList>
-            <platformTest>
-                <type>windows</type>
-            </platformTest>
-            <windowsServiceTest>
-                <condition>exists</condition>
-                <service>Railo</service>
-            </windowsServiceTest>
-        </ruleList>
-    </registrySet>
-    <registrySet>
-        <key>HKEY_LOCAL_MACHINE\SOFTWARE\Apache Software Foundation\Procrun 2.0\Railo\Parameters\Java</key>
-        <name>JvmMx</name>
-        <type>REG_DWORD</type>
-        <value>256</value>
-        <ruleList>
-            <platformTest>
-                <type>windows</type>
-            </platformTest>
-            <windowsServiceTest>
-                <condition>exists</condition>
-                <service>Railo</service>
-            </windowsServiceTest>
-        </ruleList>
-    </registrySet>
-    <registrySet>
-        <key>HKEY_LOCAL_MACHINE\SOFTWARE\Apache Software Foundation\Procrun 2.0\Railo\Parameters\Java</key>
-        <name>Options</name>
-        <type>REG_MULTI_SZ</type>
-        <value>-XX:MaxPermSize=64m</value>
-        <ruleList>
-            <platformTest>
-                <type>windows</type>
-            </platformTest>
-            <windowsServiceTest>
-                <condition>exists</condition>
-                <service>Railo</service>
-            </windowsServiceTest>
-        </ruleList>
-    </registrySet>
--->
-	<substitute>
+                        <registrySet>
+                            <key>HKEY_LOCAL_MACHINE\SOFTWARE\Apache Software Foundation\Procrun 2.0\Railo\Parameters\Java</key>
+                            <name>Jvm</name>
+                            <type>REG_SZ</type>
+                            <value>${installdir}\jdk\bin\client\jvm.dll</value>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows-x86</type>
+                                </platformTest>
+                                <windowsServiceTest>
+                                    <condition>exists</condition>
+                                    <service>Railo</service>
+                                </windowsServiceTest>
+                            </ruleList>
+                        </registrySet>
+                        <registrySet>
+                            <key>HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Apache Software Foundation\Procrun 2.0\Railo\Parameters\Java</key>
+                            <name>Jvm</name>
+                            <type>REG_SZ</type>
+                            <value>${installdir}\jdk\jre\bin\server\jvm.dll</value>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows-x64</type>
+                                </platformTest>
+                                <windowsServiceTest>
+                                    <condition>exists</condition>
+                                    <service>Railo</service>
+                                </windowsServiceTest>
+                            </ruleList>
+                        </registrySet>
+                        <registrySet>
+                            <key>HKEY_LOCAL_MACHINE\SOFTWARE\Apache Software Foundation\Procrun 2.0\Railo\Parameters\Java</key>
+                            <name>JvmMs</name>
+                            <type>REG_DWORD</type>
+                            <value>128</value>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                                <windowsServiceTest>
+                                    <condition>exists</condition>
+                                    <service>Railo</service>
+                                </windowsServiceTest>
+                            </ruleList>
+                        </registrySet>
+                        <registrySet>
+                            <key>HKEY_LOCAL_MACHINE\SOFTWARE\Apache Software Foundation\Procrun 2.0\Railo\Parameters\Java</key>
+                            <name>JvmMx</name>
+                            <type>REG_DWORD</type>
+                            <value>256</value>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                                <windowsServiceTest>
+                                    <condition>exists</condition>
+                                    <service>Railo</service>
+                                </windowsServiceTest>
+                            </ruleList>
+                        </registrySet>
+                        <registrySet>
+                            <key>HKEY_LOCAL_MACHINE\SOFTWARE\Apache Software Foundation\Procrun 2.0\Railo\Parameters\Java</key>
+                            <name>Options</name>
+                            <type>REG_MULTI_SZ</type>
+                            <value>-XX:MaxPermSize=64m</value>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                                <windowsServiceTest>
+                                    <condition>exists</condition>
+                                    <service>Railo</service>
+                                </windowsServiceTest>
+                            </ruleList>
+                        </registrySet>
+                        <substitute>
                             <files>${installdir}\AJP13\installer.settings</files>
                             <type>exact</type>
                             <substitutionList>
@@ -561,11 +578,14 @@
                                 </portTest>
                             </ruleList>
                         </break>
+                        <logMessage>
+                            <text>ElapsedTime: ${elapsedTime}</text>
+                        </logMessage>
                         <wait>
-                            <ms>5000</ms>
+                            <ms>1000</ms>
                         </wait>
                         <mathExpression>
-                            <text>${elapsedTime}+5000</text>
+                            <text>${elapsedTime}+1000</text>
                             <variable>elapsedTime</variable>
                         </mathExpression>
                         <break>
@@ -579,6 +599,20 @@
                         </break>
                     </actionList>
                 </while>
+                <showWarning>
+                    <text>${msg(warnings.tomcatStartTimeout)}</text>
+                    <ruleList>
+                        <compareValues>
+                            <logic>equals</logic>
+                            <value1>${elapsedTime}</value1>
+                            <value2>30000</value2>
+                        </compareValues>
+                        <portTest>
+                            <condition>can_bind</condition>
+                            <port>${tomcatport}</port>
+                        </portTest>
+                    </ruleList>
+                </showWarning>
                 <httpPost>
                     <filename>${installdir}/tomcat/logs/server_post_result.txt</filename>
                     <url>http://127.0.0.1:${tomcatport}/railo-context/admin/server.cfm</url>
@@ -590,11 +624,11 @@
                     <queryParameterList>
                         <queryParameter>
                             <name>new_password</name>
-                            <value>${tomcatpass}</value>
+                            <value>${railopass}</value>
                         </queryParameter>
                         <queryParameter>
                             <name>new_password_re</name>
-                            <value>${tomcatpass}</value>
+                            <value>${railopass}</value>
                         </queryParameter>
                     </queryParameterList>
                     <ruleList>
@@ -615,11 +649,11 @@
                     <queryParameterList>
                         <queryParameter>
                             <name>new_password</name>
-                            <value>${tomcatpass}</value>
+                            <value>${railopass}</value>
                         </queryParameter>
                         <queryParameter>
                             <name>new_password_re</name>
-                            <value>${tomcatpass}</value>
+                            <value>${railopass}</value>
                         </queryParameter>
                     </queryParameterList>
                     <ruleList>
@@ -629,16 +663,6 @@
                         </portTest>
                     </ruleList>
                 </httpPost>
-                <showWarning>
-                    <text>${msg(warnings.tomcatStartTimeout)}</text>
-                    <ruleList>
-                        <compareValues>
-                            <logic>greater_or_equal</logic>
-                            <value1>${elapsedTime}</value1>
-                            <value2>30000</value2>
-                        </compareValues>
-                    </ruleList>
-                </showWarning>
                 <actionGroup>
                     <progressText>${msg(postInstall.configuringApache)}</progressText>
                     <actionList>
@@ -1039,7 +1063,7 @@
             </ruleList>
         </runProgram>
     </preUninstallationActionList>
-    <allowedLanguages>en de es fr it pt_BR ro zh_CN zh_TW pl nl</allowedLanguages>
+    <allowedLanguages>zh_CN zh_TW nl en fr de it pl  pt_BR ro es</allowedLanguages>
     <compressionAlgorithm>lzma</compressionAlgorithm>
     <enableRollback>1</enableRollback>
     <enableTimestamp>1</enableTimestamp>
@@ -1051,13 +1075,8 @@
     <slideShowTiming>20</slideShowTiming>
     <vendor>Vivio Technologies</vendor>
     <windows64bitMode>1</windows64bitMode>
-    <windowsExecutableIcon>../railo_installer_files/railo.ico</windowsExecutableIcon>
+    <windowsExecutableIcon>railo.ico</windowsExecutableIcon>
     <customLanguageFileList>
-        <language>
-            <code>en</code>
-            <encoding>utf-8</encoding>
-            <file>translations/messages.en.txt</file>
-        </language>
         <language>
             <code>zh_CN</code>
             <encoding>utf-8</encoding>
@@ -1067,6 +1086,21 @@
             <code>zh_TW</code>
             <encoding>utf-8</encoding>
             <file>translations/messages.zh_TW.txt</file>
+        </language>
+        <language>
+            <code>nl</code>
+            <encoding>utf-8</encoding>
+            <file>translations/messages.nl.txt</file>
+        </language>
+        <language>
+            <code>en</code>
+            <encoding>utf-8</encoding>
+            <file>translations/messages.en.txt</file>
+        </language>
+        <language>
+            <code>fr</code>
+            <encoding>utf-8</encoding>
+            <file>translations/messages.fr.txt</file>
         </language>
         <language>
             <code>de</code>
@@ -1079,24 +1113,14 @@
             <file>translations/messages.it.txt</file>
         </language>
         <language>
-            <code>pt_BR</code>
-            <encoding>utf-8</encoding>
-            <file>translations/messages.pt_BR.txt</file>
-        </language>
-        <language>
             <code>pl</code>
             <encoding>utf-8</encoding>
             <file>translations/messages.pl.txt</file>
         </language>
         <language>
-            <code>es</code>
+            <code>pt_BR</code>
             <encoding>utf-8</encoding>
-            <file>translations/messages.es.txt</file>
-        </language>
-        <language>
-            <code>fr</code>
-            <encoding>utf-8</encoding>
-            <file>translations/messages.fr.txt</file>
+            <file>translations/messages.pt_BR.txt</file>
         </language>
         <language>
             <code>ro</code>
@@ -1104,9 +1128,9 @@
             <file>translations/messages.ro.txt</file>
         </language>
         <language>
-            <code>nl</code>
+            <code>es</code>
             <encoding>utf-8</encoding>
-            <file>translations/messages.nl.txt</file>
+            <file>translations/messages.es.txt</file>
         </language>
     </customLanguageFileList>
     <finalPageActionList>
@@ -1135,46 +1159,29 @@
             <mustExist>0</mustExist>
             <width>30</width>
         </directoryParameter>
-        <parameterGroup>
-            <name>tomcatlogin</name>
-            <title>${msg(tomcat.title)}</title>
-            <explanation>${msg(tomcat.explanation)}</explanation>
+        <passwordParameter>
+            <name>railopass</name>
+            <title>${msg(railopass.title)}</title>
+            <description>${msg(railopass.desc)}</description>
+            <explanation>${msg(railopass.explain)}</explanation>
             <value></value>
             <default></default>
-            <parameterList>
-                <stringParameter>
-                    <name>tomcatuser</name>
-                    <description>${msg(tomcat.tomcatUser)}:</description>
-                    <explanation></explanation>
-                    <value></value>
-                    <default>admin</default>
-                    <allowEmptyValue>0</allowEmptyValue>
-                    <width>30</width>
-                </stringParameter>
-                <passwordParameter>
-                    <name>tomcatpass</name>
-                    <description>${msg(tomcat.tomcatPass)}:</description>
-                    <explanation></explanation>
-                    <value></value>
-                    <default></default>
-                    <allowEmptyValue>0</allowEmptyValue>
-                    <descriptionRetype>${msg(tomcat.tomcatPassConf)}: </descriptionRetype>
-                    <width>20</width>
-                    <validationActionList>
-                        <throwError>
-                            <text>${msg(warnings.passwordLengthSix)}</text>
-                            <ruleList>
-                                <compareTextLength>
-                                    <length>6</length>
-                                    <logic>less</logic>
-                                    <text>${tomcatpass}</text>
-                                </compareTextLength>
-                            </ruleList>
-                        </throwError>
-                    </validationActionList>
-                </passwordParameter>
-            </parameterList>
-        </parameterGroup>
+            <allowEmptyValue>0</allowEmptyValue>
+            <descriptionRetype>${msg(railopass.desc.confirm)}</descriptionRetype>
+            <width>20</width>
+            <validationActionList>
+                <throwError>
+                    <text>${msg(warnings.passwordLengthSix)}</text>
+                    <ruleList>
+                        <compareTextLength>
+                            <length>6</length>
+                            <logic>less</logic>
+                            <text>${railopass}</text>
+                        </compareTextLength>
+                    </ruleList>
+                </throwError>
+            </validationActionList>
+        </passwordParameter>
         <parameterGroup>
             <name>tomcatportnumbers</name>
             <title>${msg(tomcatPorts.title)}</title>
@@ -1431,7 +1438,6 @@
             <displayType>combobox</displayType>
             <insertAfter>apachever</insertAfter>
             <ordering>default</ordering>
-            <ruleEvaluationLogic>or</ruleEvaluationLogic>
             <width>30</width>
             <optionList>
                 <option>
@@ -1448,12 +1454,22 @@
                 </option>
             </optionList>
             <ruleList>
-                <platformTest>
-                    <type>linux-x64</type>
-                </platformTest>
-                <platformTest>
-                    <type>windows-x64</type>
-                </platformTest>
+                <compareValues>
+                    <logic>equals</logic>
+                    <value1>1</value1>
+                    <value2>2</value2>
+                </compareValues>
+                <ruleGroup>
+                    <ruleEvaluationLogic>or</ruleEvaluationLogic>
+                    <ruleList>
+                        <platformTest>
+                            <type>windows-x64</type>
+                        </platformTest>
+                        <platformTest>
+                            <type>linux-x64</type>
+                        </platformTest>
+                    </ruleList>
+                </ruleGroup>
             </ruleList>
         </choiceParameter>
     </parameterList>
@@ -1470,10 +1486,10 @@
             <path>railo4_community_ad.png</path>
         </slideShowImage>
         <slideShowImage>
-            <path>railo4_professional_ad.png</path>
+            <path>railo.io.beta.png</path>
         </slideShowImage>
         <slideShowImage>
-            <path>railo-ads-fr.png</path>
+            <path>railo4_professional_ad.png</path>
         </slideShowImage>
     </slideShowImageList>
 </project>

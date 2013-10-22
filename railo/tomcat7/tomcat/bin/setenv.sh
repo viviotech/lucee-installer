@@ -3,9 +3,9 @@
 # -Xmx<size> set maximum Java heap size
 # -Xss<size> set java thread stack size
 # -XX:MaxPermSize sets the java PermGen size
-JAVA_OPTS="-Xms128m -Xmx256m -XX:MaxPermSize=64m ";   # memory settings
+JAVA_OPTS="-Xms256m -Xmx512m -XX:MaxPermSize=128m -javaagent:lib/railo-inst.jar";   # memory settings
 
-# needed by FR
-# LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/opt/railo/fusionreactor/etc/lib
+# additional JVM arguments can be added to the above line as needed, such as
+# custom Garbage Collection arguments.
 
 export JAVA_OPTS;
