@@ -129,6 +129,16 @@
               </packing>
 	    </child>
 
+            <child>
+              <object class="GtkCheckButton" id="always_button">
+                  <property name="label">always</property>
+              </object>
+	      <packing>
+		<property name="x">10</property>
+		<property name="y">175</property>
+              </packing>
+            </child>
+
 	    <child>
 	      <object class="GtkLabel" id="info_label">
 		<property name="label">info</property>

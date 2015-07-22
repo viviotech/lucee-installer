@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
  * ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 
@@ -17,14 +17,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-    /*
-     * AccessBridge versioning
-     */
-#define ACCESS_BRIDGE_VERSION  L"AccessBridge 2.0.2"
-#define JAVA_ACCESS_BRIDGE_VERSION      ACCESS_BRIDGE_VERSION
-#define WINDOW_ACCESS_BRIDGE_VERSION    ACCESS_BRIDGE_VERSION
-
 
 #ifdef ACCESSBRIDGE_ARCH_LEGACY
 typedef jobject JOBJECT64;
@@ -633,9 +625,9 @@ typedef long ABHWND64;
 
     // AccessibleText packages
     typedef struct AccessibleTextInfoTag {
-        jint charCount;                                         // # of characters in this text object
-        jint caretIndex;                                        // index of caret
-        jint indexAtPoint;                                      // index at the passsed in point
+        jint charCount;                 // # of characters in this text object
+        jint caretIndex;                // index of caret
+        jint indexAtPoint;              // index at the passsed in point
     } AccessibleTextInfo;
 
     typedef struct AccessibleTextItemsInfoTag {
@@ -651,10 +643,10 @@ typedef long ABHWND64;
     } AccessibleTextSelectionInfo;
 
     typedef struct AccessibleTextRectInfoTag {
-        jint x;                                                 // bounding rect of char at index
-        jint y;                                                 // "
-        jint width;                                             // "
-        jint height;                                            // "
+        jint x;                     // bounding rect of char at index
+        jint y;                     // "
+        jint width;                 // "
+        jint height;                // "
     } AccessibleTextRectInfo;
 
     // standard attributes for text; note: tabstops are not supported
@@ -852,8 +844,8 @@ typedef long ABHWND64;
 
     // table information
     typedef struct AccessibleTableInfoTag {
-        JOBJECT64 caption;      // AccesibleContext
-    JOBJECT64 summary;  // AccessibleContext
+        JOBJECT64 caption;  // AccesibleContext
+        JOBJECT64 summary;  // AccessibleContext
         jint rowCount;
         jint columnCount;
         JOBJECT64 accessibleContext;
@@ -1081,7 +1073,7 @@ typedef long ABHWND64;
      ******************************************************
      */
 
-#define MAX_KEY_BINDINGS        8
+#define MAX_KEY_BINDINGS        10
 
     // keyboard character modifiers
 #define ACCESSIBLE_SHIFT_KEYSTROKE              1
@@ -1092,6 +1084,25 @@ typedef long ABHWND64;
 #define ACCESSIBLE_BUTTON1_KEYSTROKE            32
 #define ACCESSIBLE_BUTTON2_KEYSTROKE            64
 #define ACCESSIBLE_BUTTON3_KEYSTROKE            128
+#define ACCESSIBLE_FKEY_KEYSTROKE               256  // F key pressed, character contains 1-24
+#define ACCESSIBLE_CONTROLCODE_KEYSTROKE        512  // Control code key pressed, character contains control code.
+
+// The supported control code keys are:
+#define ACCESSIBLE_VK_BACK_SPACE    8
+#define ACCESSIBLE_VK_DELETE        127
+#define ACCESSIBLE_VK_DOWN          40
+#define ACCESSIBLE_VK_END           35
+#define ACCESSIBLE_VK_HOME          36
+#define ACCESSIBLE_VK_INSERT        155
+#define ACCESSIBLE_VK_KP_DOWN       225
+#define ACCESSIBLE_VK_KP_LEFT       226
+#define ACCESSIBLE_VK_KP_RIGHT      227
+#define ACCESSIBLE_VK_KP_UP         224
+#define ACCESSIBLE_VK_LEFT          37
+#define ACCESSIBLE_VK_PAGE_DOWN     34
+#define ACCESSIBLE_VK_PAGE_UP       33
+#define ACCESSIBLE_VK_RIGHT         39
+#define ACCESSIBLE_VK_UP            38
 
     // a key binding associates with a component
     typedef struct AccessibleKeyBindingInfoTag {
@@ -1174,11 +1185,11 @@ typedef long ABHWND64;
 
     // struct for sending an message to do one or more actions
     typedef struct DoAccessibleActionsPackageTag {
-        long vmID;                                              // the virtual machine ID
-        JOBJECT64 accessibleContext;            // component to do the action
-        AccessibleActionsToDo actionsToDo;// the accessible actions to do
-        BOOL rResult;                   // action return value
-        jint failure;                                   // index of action that failed if rResult is FALSE
+        long vmID;                         // the virtual machine ID
+        JOBJECT64 accessibleContext;       // component to do the action
+        AccessibleActionsToDo actionsToDo; // the accessible actions to do
+        BOOL rResult;                      // action return value
+        jint failure;                      // index of action that failed if rResult is FALSE
     } DoAccessibleActionsPackage;
 
     /**
@@ -1254,7 +1265,7 @@ typedef long ABHWND64;
 
     typedef struct SetTextContentsPackageTag {
         long vmID;
-        JOBJECT64 accessibleContext;            // the text field
+        JOBJECT64 accessibleContext;    // the text field
         wchar_t text[MAX_STRING_SIZE];  // the text
         BOOL rResult;
     } SetTextContentsPackage;
@@ -1336,7 +1347,7 @@ typedef long ABHWND64;
     typedef struct GetAccessibleSelectionFromContextPackageTag {
         long vmID;
         JOBJECT64 AccessibleContext;
-    jint index;
+        jint index;
         JOBJECT64 rAccessibleContext;
     } GetAccessibleSelectionFromContextPackage;
 
