@@ -89,7 +89,7 @@
     -->
 
     <!-- Define an AJP 1.3 Connector on port 8009 -->
-    <Connector port="@@tomcatajpport@@" protocol="AJP/1.3" redirectPort="8443" />
+    <Connector port="@@tomcatajpport@@" protocol="AJP/1.3" connectionTimeout="1200001" redirectPort="8443" />
 
 
     <!-- An Engine represents the entry point (within Catalina) that processes
