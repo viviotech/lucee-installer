@@ -358,31 +358,33 @@ function autodetectApacheVersion {
 function checkModCFMLInstalled {
 	echo -n "* Checking for pre-existing mod_cfml install...";
 
-	if [[ $myLinuxVersion == *RedHat*  ]]; then
-		# if it's redhat, see if the mod_cfml config is present in httpd.conf
-		myModCFMLFound=`cat ${myApacheConf} | grep -c mod_cfml`;
-
-	        if [[ "$myModCFMLFound" -gt "0" ]]; then
-	                echo "[FOUND]";
-	        else
-	                echo "[NOT FOUND]";
-                        echo "* [NOTICE] mod_cfml doesn't appear to be installed.";
-			echo "* Nothing to do.";
-                        exit 0;
-	        fi
-	elif [[ $myLinuxVersion == *Debian*  ]]; then
-		# if it's debian, we can use the a2query tool
-		a2query -q -m modmodcfml;
-		if [ $? -eq 0 ]; then
-			# exit code 0 means module was found
+        if [[ $myLinuxVersion == *Debian*  ]]; then
+                # if it's debian, we can use the a2query tool
+                a2query -q -m modmodcfml;
+                if [ $? -eq 0 ]; then
+                        # exit code 0 means module was found
                         echo "[FOUND]";
-		else
-			echo "[NOT FOUND]";
+                else
+                        echo "[NOT FOUND]";
                         echo "* [NOTICE] mod_cfml doesn't appear to be installed.";
                         echo "* Nothing to do.";
                         exit 0;
-                fi		
-	fi
+                fi
+        else
+                # if it's something else, default to RedHat and see if the mod_cfml config is present in httpd.conf
+                myLinuxVersion="RedHat";
+                myModCFMLFound=`cat ${myApacheConf} | grep -c mod_cfml`;
+
+                if [[ "$myModCFMLFound" -gt "0" ]]; then
+                        echo "[FOUND]";
+                else
+                        echo "[NOT FOUND]";
+                        echo "* [NOTICE] mod_cfml doesn't appear to be installed.";
+                        echo "* Nothing to do.";
+                        exit 0;
+                fi
+
+        fi
 }
 
 function removeModCFML {
@@ -423,7 +425,7 @@ function removeModCFML {
 		fi
 		
 		# remove loader
-		echo "* Removing mod_cfml loading config: ${baseapacheconf}/mods-available/modcfml.load...";
+		echo "* Removing mod_cfml load file: ${baseapacheconf}/mods-available/modcfml.load...";
 		rm -rf "${baseapacheconf}/mods-available/modcfml.load";
 		if [ ! $? -eq 0 ]; then
                         echo "* [FAIL] Unable to remove modcfml.load.";
@@ -431,7 +433,7 @@ function removeModCFML {
                 fi
 	
 		# remove config
-		echo "* Installing mod_cfml loading config: ${baseapacheconf}/mods-available/modcfml.conf...";
+		echo "* Removing mod_cfml config file: ${baseapacheconf}/mods-available/modcfml.conf...";
 		rm -rf "${baseapacheconf}/mods-available/modcfml.conf";
                 if [ ! $? -eq 0 ]; then
                         echo "* [FAIL] Unable to remove modcfml.conf.";

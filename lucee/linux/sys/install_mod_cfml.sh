@@ -393,20 +393,7 @@ function autodetectApacheVersion {
 function checkModCFMLAlreadyInstalled {
 	echo -n "* Checking for pre-existing mod_cfml install...";
 
-	if [[ $myLinuxVersion == *RedHat*  ]]; then
-		# if it's redhat, see if the mod_cfml config is present in httpd.conf
-		myModCFMLFound=`cat ${myApacheConf} | grep -c mod_cfml`;
-
-	        if [[ "$myModCFMLFound" -gt "0" ]]; then
-	                echo "[FOUND]";
-	                echo "* [NOTICE] mod_cfml looks like it is already installed.";
-	                echo "* If you get this message in error, Please remove all references to";
-			echo "* 'mod_cfml' in your Apache config and try again.";
-	                exit 0;
-	        else
-	                echo "[NOT FOUND]";
-	        fi
-	elif [[ $myLinuxVersion == *Debian*  ]]; then
+	if [[ $myLinuxVersion == *Debian*  ]]; then
 		# if it's debian, we can use the a2query tool
 		a2query -q -m modmodcfml;
 		if [ $? -eq 0 ]; then
@@ -417,7 +404,22 @@ function checkModCFMLAlreadyInstalled {
                         exit 0;
 		else
 			echo "[NOT FOUND]";
-                fi		
+                fi
+	else
+                # if it's something else, default to RedHat and see if the mod_cfml config is present in httpd.conf
+		myLinuxVersion="RedHat";
+                myModCFMLFound=`cat ${myApacheConf} | grep -c mod_cfml`;
+
+                if [[ "$myModCFMLFound" -gt "0" ]]; then
+                        echo "[FOUND]";
+                        echo "* [NOTICE] mod_cfml looks like it is already installed.";
+                        echo "* If you get this message in error, Please remove all references to";
+                        echo "* 'mod_cfml' in your Apache config and try again.";
+                        exit 0;
+                else
+                        echo "[NOT FOUND]";
+                fi
+
 	fi
 }
 
@@ -483,7 +485,7 @@ function installModCFML {
 	        echo "" >> $myApacheConf;
 	        echo "LoadModule modcfml_module modules/mod_cfml.so" >> $myApacheConf;
 	        echo "CFMLHandlers \".cfm .cfc .cfml\"" >> $myApacheConf;
-	        echo "ModCFML_SharedKey \"${$mySecretKey}\"" >> $myApacheConf;
+	        echo "ModCFML_SharedKey \"${mySecretKey}\"" >> $myApacheConf;
 	        echo "LogHeaders false" >> $myApacheConf;
 	        echo "LogHandlers false" >> $myApacheConf;
 	        echo "LogAliases false" >> $myApacheConf;

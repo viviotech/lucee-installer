@@ -146,10 +146,6 @@
 		/>
       </Host>
 
-      <Host name="localhost" appBase="webapps">
-        <Context path="" docBase="@@systempath@@" />
-      </Host>
-
       <!--
         Add additional VIRTUALHOSTS by copying the following example config:
         REPLACE:

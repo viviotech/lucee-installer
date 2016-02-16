@@ -31,7 +31,7 @@ fi
 # make sure the first parameter was specified and assign it a variable name
 if [ -z $1 ]; then
 	echo "No Apache config file specified."
-	echo "Usage: ./remove_connector.sh /path/to/apache.conf";
+	echo "Usage: ./remove_mod_proxy.sh /path/to/apache.conf";
 	exit;
 else
 	myApacheConfigFile=$1;

@@ -459,7 +459,7 @@
 	<url-pattern>/index.cfml/*</url-pattern>
     </servlet-mapping>
 
-    <!-- mapping for Railo's REST servlet -->
+    <!-- mapping for Lucee's REST servlet -->
     <servlet-mapping>
         <servlet-name>RestServlet</servlet-name>
         <url-pattern>/rest/*</url-pattern>
