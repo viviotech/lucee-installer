@@ -1,14 +1,14 @@
 <project>
     <shortName>lucee</shortName>
     <fullName>Lucee</fullName>
-    <version>4.5.2.018-pl0</version>
+    <version>5.0.0.178-BETA-pl0</version>
     <licenseFile>license.txt</licenseFile>
     <leftImage>lucee-side.png</leftImage>
     <logoImage>lucee-logo.png</logoImage>
     <splashImage>splash.png</splashImage>
     <componentList>
         <component>
-            <name>railocore</name>
+            <name>luceecore</name>
             <description>luceecore</description>
             <canBeEdited>0</canBeEdited>
             <selected>1</selected>
@@ -469,26 +469,6 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
                                 </compareValues>
                             </ruleList>
                         </registrySet>
-                        <registrySet>
-                            <key>HKEY_LOCAL_MACHINE\SOFTWARE\Apache Software Foundation\Procrun 2.0\Lucee\Parameters\Java</key>
-                            <name>Options</name>
-                            <type>REG_MULTI_SZ</type>
-                            <value>-XX:MaxPermSize=64m</value>
-                            <ruleList>
-                                <platformTest>
-                                    <type>windows</type>
-                                </platformTest>
-                                <windowsServiceTest>
-                                    <condition>exists</condition>
-                                    <service>Lucee</service>
-                                </windowsServiceTest>
-                                <compareValues>
-                                    <logic>equals</logic>
-                                    <value1>1</value1>
-                                    <value2>2</value2>
-                                </compareValues>
-                            </ruleList>
-                        </registrySet>
                         <substitute>
                             <files>${installdir}\AJP13\installer.settings</files>
                             <type>exact</type>
@@ -611,11 +591,11 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
                     <queryParameterList>
                         <queryParameter>
                             <name>new_password</name>
-                            <value>${railopass}</value>
+                            <value>${luceepass}</value>
                         </queryParameter>
                         <queryParameter>
                             <name>new_password_re</name>
-                            <value>${railopass}</value>
+                            <value>${luceepass}</value>
                         </queryParameter>
                     </queryParameterList>
                     <ruleList>
@@ -636,11 +616,11 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
                     <queryParameterList>
                         <queryParameter>
                             <name>new_password</name>
-                            <value>${railopass}</value>
+                            <value>${luceepass}</value>
                         </queryParameter>
                         <queryParameter>
                             <name>new_password_re</name>
-                            <value>${railopass}</value>
+                            <value>${luceepass}</value>
                         </queryParameter>
                     </queryParameterList>
                     <ruleList>
@@ -1198,14 +1178,14 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
             <width>30</width>
         </directoryParameter>
         <passwordParameter>
-            <name>railopass</name>
-            <title>${msg(railopass.title)}</title>
-            <description>${msg(railopass.desc)}</description>
-            <explanation>${msg(railopass.explain)}</explanation>
+            <name>luceepass</name>
+            <title>${msg(luceepass.title)}</title>
+            <description>${msg(luceepass.desc)}</description>
+            <explanation>${msg(luceepass.explain)}</explanation>
             <value></value>
             <default></default>
             <allowEmptyValue>0</allowEmptyValue>
-            <descriptionRetype>${msg(railopass.desc.confirm)}</descriptionRetype>
+            <descriptionRetype>${msg(luceepass.desc.confirm)}</descriptionRetype>
             <width>20</width>
             <validationActionList>
                 <throwError>
@@ -1214,7 +1194,7 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
                         <compareTextLength>
                             <length>6</length>
                             <logic>less</logic>
-                            <text>${railopass}</text>
+                            <text>${luceepass}</text>
                         </compareTextLength>
                     </ruleList>
                 </throwError>

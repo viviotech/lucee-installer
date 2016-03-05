@@ -2,10 +2,10 @@
 #
 ###############################################################################
 #
-# Purpose:      This script is used to add and remove Linux services for Railo
+# Purpose:      This script is used to add and remove Linux services for Lucee
 #		on both RHEL/CentOS systems and Debian/Linux systems.
 #
-# Copyright:    Copyright (C) 2012-2015
+# Copyright:    Copyright (C) 2012-2016
 #               by Jordan Michaels (jordan@viviotech.net)
 #
 # License:      LGPL 3.0
@@ -20,9 +20,10 @@
 #
 # History:	1.0 - Initial Release
 #		1.1 - Added Runlevel 2 to default Ubuntu start
+#		1.2 - Added defaulting to redhat system for compatibility
 ###############################################################################
 
-version=1.1
+version=1.2
 progname=$(basename $0)
 basedir=$( cd "$( dirname "$0" )" && pwd );
 
@@ -45,9 +46,9 @@ Usage: $0 OPTIONS
 OPTIONS:
  -v --version		print installer script version
  -h --help		print this help message
- -i --install		enables Railo to start at boot
- -r --remove		removes the railo_ctl file from init.d and removes it
- -p --path		path to railo_ctl (will attempt to find if not specified)
+ -i --install		enables Lucee to start at boot
+ -r --remove		removes the lucee_ctl file from init.d and removes it
+ -p --path		path to lucee_ctl (will attempt to find if not specified)
 
 Examples:
 
@@ -59,9 +60,9 @@ To remove the service, here's the longer example
 
     # $0 --remove
 
-If you have the railo_ctl file in an unusual place or if you're running this
+If you have the lucee_ctl file in an unusual place or if you're running this
 script from an unusual place, you will need to tell the script where to find
-the railo_ctl script. You can do that with:
+the lucee_ctl script. You can do that with:
 
     # $0 --install --path /path/to/lucee_ctl
 
@@ -74,7 +75,7 @@ function print_version {
 cat << EOF
 
 $progname v. $version
-Copyright (C) 2012-2013 Jordan Michaels (jordan@viviotech.net)
+Copyright (C) 2012-2016 Jordan Michaels (jordan@viviotech.net)
 Licensed under LGPL 3.0
 http://www.opensource.org/licenses/lgpl-3.0.html
 
@@ -147,8 +148,8 @@ function test_input {
 		exit 1;
 	fi
 	
-	# test to make sure we have a present and executable railo_ctl script
-	# only test for railo_ctl if we're doing a removal; otherwise not needed
+	# test to make sure we have a present and executable lucee_ctl script
+	# only test for lucee_ctl if we're doing a removal; otherwise not needed
 	if [[ $myMode == "install" ]]; then
 	if [[ -z $myPath ]] || [[ ! -x $myPath ]]; then
 		echo "* [ERROR]: $myPath is not found or not executable.";
@@ -159,7 +160,7 @@ function test_input {
 }
 
 function autodetectPath {
-	echo -n "* [INFO] Attempting to autodetect railo_ctl script location...";
+	echo -n "* [INFO] Attempting to autodetect lucee_ctl script location...";
 	
 	# create a var to track if we found the file or not in our upcoming tests
 	local myFileFound=0;
@@ -334,19 +335,29 @@ function install_luceeCTL {
                 cp $myPath /etc/init.d/lucee_ctl
                 chmod 755 /etc/init.d/lucee_ctl
 
-		# install the railo_ctl service
+		# install the lucee_ctl service
 		chkconfig lucee_ctl on
 		
 	elif [[ $myLinuxVersion == *Debian*  ]]; then
 		echo "* [INFO]: Detected Debian-based build.";
 		test_updateRCD;
 		
-		# copy railo_ctl to /etc/init.d/
+		# copy lucee_ctl to /etc/init.d/
 		cp $myPath /etc/init.d/lucee_ctl
 		chmod 755 /etc/init.d/lucee_ctl
 
-		# install railo_ctl service
+		# install lucee_ctl service
 		update-rc.d lucee_ctl start 10 2 3 4 5 . stop 10 0 .
+	else
+		echo "* [INFO]: Unable to detect OS, defaulting to RedHat.";
+                test_chkconfig;
+
+                # copy lucee_ctl to /etc/init.d/
+                cp $myPath /etc/init.d/lucee_ctl
+                chmod 755 /etc/init.d/lucee_ctl
+
+                # install the lucee_ctl service
+                chkconfig lucee_ctl on
 	fi
 }
 
@@ -366,8 +377,14 @@ function remove_luceeCTL {
                 echo "* [INFO]: Detected Debian-based build.";
                 test_updateRCD;
 
-                # install railo_ctl service
+                # install lucee_ctl service
                 update-rc.d -f lucee_ctl remove
+	else
+		echo "* [INFO]: Unable to detect OS, defaulting to RedHat.";
+                test_chkconfig;
+
+                # install the lucee_ctl service
+                chkconfig lucee_ctl off
         fi
 }
 
