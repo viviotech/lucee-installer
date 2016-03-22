@@ -1,7 +1,7 @@
 <project>
     <shortName>lucee</shortName>
     <fullName>Lucee</fullName>
-    <version>5.0.0.178-BETA-pl0</version>
+    <version>5.0.0.219-RC-pl0</version>
     <licenseFile>license.txt</licenseFile>
     <leftImage>lucee-side.png</leftImage>
     <logoImage>lucee-logo.png</logoImage>
@@ -302,8 +302,8 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
                     </actionList>
                 </actionGroup>
                 <actionGroup>
-                    <explanation>${msg(postInstall.configuringRailoTomcat)}</explanation>
-                    <progressText>${msg(postInstall.configuringRailoTomcat)}</progressText>
+                    <explanation>${msg(postInstall.configuringLuceeTomcat)}</explanation>
+                    <progressText>${msg(postInstall.configuringLuceeTomcat)}</progressText>
                     <ruleEvaluationLogic>or</ruleEvaluationLogic>
                     <actionList>
                         <substitute>
@@ -527,8 +527,8 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
                 <startWindowsService>
                     <delay>15000</delay>
                     <displayName></displayName>
-                    <explanation>${msg(postInstall.startingRailo)}</explanation>
-                    <progressText>${msg(postInstall.startingRailo)}</progressText>
+                    <explanation>${msg(postInstall.startingLucee)}</explanation>
+                    <progressText>${msg(postInstall.startingLucee)}</progressText>
                     <serviceName>Lucee</serviceName>
                 </startWindowsService>
                 <setInstallerVariable>
@@ -585,7 +585,7 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
                     <url>http://127.0.0.1:${tomcatport}/lucee/admin/server.cfm</url>
                     <onErrorActionList>
                         <logMessage>
-                            <text>${msg(warnings.setRailoServerPass)}</text>
+                            <text>${msg(warnings.setLuceeServerPass)}</text>
                         </logMessage>
                     </onErrorActionList>
                     <queryParameterList>
@@ -610,7 +610,7 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
                     <url>http://127.0.0.1:${tomcatport}/lucee/admin/web.cfm</url>
                     <onErrorActionList>
                         <logMessage>
-                            <text>${msg(warnings.setRailoWebPass)}</text>
+                            <text>${msg(warnings.setLuceeWebPass)}</text>
                         </logMessage>
                     </onErrorActionList>
                     <queryParameterList>
@@ -656,8 +656,8 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
             </postInstallationActionList>
             <startMenuShortcutList>
                 <startMenuShortcut>
-                    <comment>${msg(shortCuts.RailoComment)}</comment>
-                    <name>${msg(shortCuts.RailoName)}</name>
+                    <comment>${msg(shortCuts.LuceeComment)}</comment>
+                    <name>${msg(shortCuts.LuceeName)}</name>
                     <runAsAdmin>0</runAsAdmin>
                     <runInTerminal>0</runInTerminal>
                     <windowsExec>${installdir}\tomcat\bin\luceew.exe</windowsExec>
@@ -666,8 +666,8 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
                     <windowsPath>${installdir}</windowsPath>
                 </startMenuShortcut>
                 <startMenuShortcut>
-                    <comment>${msg(shortCuts.RemoveRailoComment)}</comment>
-                    <name>${msg(shortCuts.RemoveRailoName)}</name>
+                    <comment>${msg(shortCuts.RemoveLuceeComment)}</comment>
+                    <name>${msg(shortCuts.RemoveLuceeName)}</name>
                     <runAsAdmin>0</runAsAdmin>
                     <runInTerminal>0</runInTerminal>
                     <windowsExec>${installdir}\uninstall.exe</windowsExec>
@@ -676,8 +676,8 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
                     <windowsPath>${installdir}</windowsPath>
                 </startMenuShortcut>
                 <startMenuLinkShortcut>
-                    <comment>${msg(shortCuts.LaunchRailoAdminComment)}</comment>
-                    <name>${msg(shortCuts.LaunchRailoAdminName)}</name>
+                    <comment>${msg(shortCuts.LaunchLuceeAdminComment)}</comment>
+                    <name>${msg(shortCuts.LaunchLuceeAdminName)}</name>
                     <runAsAdmin>0</runAsAdmin>
                     <runInTerminal>0</runInTerminal>
                     <url>http://127.0.0.1:${tomcatport}/lucee/admin/server.cfm</url>
@@ -1026,7 +1026,7 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
         <stopWindowsService>
             <delay>15000</delay>
             <displayName></displayName>
-            <progressText>${msg(uninstall.stopRailoService)}</progressText>
+            <progressText>${msg(uninstall.stopLuceeService)}</progressText>
             <serviceName>Lucee</serviceName>
         </stopWindowsService>
         <runProgram>
@@ -1046,7 +1046,7 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
             <abortOnError>0</abortOnError>
             <program>${installdir}\tomcat\bin\service.bat</program>
             <programArguments>remove Lucee</programArguments>
-            <progressText>${msg(uninstall.removeRailoService)}</progressText>
+            <progressText>${msg(uninstall.removeLuceeService)}</progressText>
             <runAs>Administrator</runAs>
             <show>0</show>
             <ruleList>
@@ -1153,7 +1153,7 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
     </customLanguageFileList>
     <finalPageActionList>
         <launchBrowser>
-            <progressText>${msg(shortCuts.OpenRailoURL)}</progressText>
+            <progressText>${msg(shortCuts.OpenLuceeURL)}</progressText>
             <url>http://127.0.0.1:${tomcatport}/index.cfm</url>
             <ruleList>
                 <compareValues>
