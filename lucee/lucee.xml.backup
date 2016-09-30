@@ -1,7 +1,7 @@
 <project>
     <shortName>lucee</shortName>
     <fullName>Lucee</fullName>
-    <version>5.0.0.213-BETA-pl0</version>
+    <version>5.0.0.252-pl0</version>
     <licenseFile>license.txt</licenseFile>
     <leftImage>lucee-side.png</leftImage>
     <logoImage>lucee-logo.png</logoImage>

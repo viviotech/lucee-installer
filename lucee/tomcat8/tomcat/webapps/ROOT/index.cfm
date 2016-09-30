@@ -1,137 +1,123 @@
 <cfscript>
-	refURL="#CGI.CONTEXT_PATH#/lucee/doc.cfm";
-	wikiURL="https://bitbucket.org/lucee/lucee/wiki/Home";
-	bbURL="https://bitbucket.org/lucee/lucee";
-	adminURL="#CGI.CONTEXT_PATH#/lucee/admin.cfm";
-	webAdminURL="#CGI.CONTEXT_PATH#/lucee/admin/web.cfm";
-	serverAdminURL="#CGI.CONTEXT_PATH#/lucee/admin/server.cfm";
-	mailinglistURL="https://groups.google.com/forum/##!forum/lucee";
-	profURL="https://www.lucee.org/support.html";
-	issueURL="https://bitbucket.org/lucee/lucee/issues";
-
+        refURL="http://docs.lucee.org/reference.html";
+        githubURL="https://github.com/lucee/Lucee";
+        adminURL="#CGI.CONTEXT_PATH#/lucee/admin.cfm";
+        webAdminURL="#CGI.CONTEXT_PATH#/lucee/admin/web.cfm";
+        serverAdminURL="#CGI.CONTEXT_PATH#/lucee/admin/server.cfm";
+        mailinglistURL="https://groups.google.com/forum/##!forum/lucee";
+        profURL="http://lucee.org/support.html";
+        issueURL="https://bitbucket.org/lucee/lucee/issues";
+        newURL="http://docs.lucee.org/guides/lucee-5.html";
+        firststepsURL="http://docs.lucee.org/guides/getting-started/first-steps.html";
 </cfscript><!DOCTYPE html>
 <html>
-	<head>
-		<title>Rapid web development with Lucee!</title>
-		<link rel="stylesheet" type="text/css" href="/assets/css/lib/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800">
-		<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="/assets/css/lib/ie8.css"><![endif]-->
-		<link rel="stylesheet" type="text/css" href="/assets/css/core/_ed07b761.core.min.css">
-		<!--[if lt IE 9]>
-			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-	</head>
-	<body class="sub-page">
-		<div class="main-wrapper">
-			<!-- <header id="masthead" class="branding" role="banner">
-				<div class="container top-header">
-		            <h1 class="site-logo">
-		                <a href="/">
-		                    <img src="/assets/img/lucee-logo.png" alt="Lucee">
-		                </a>
-		            </h1>
+        <head>
+                <title>Rapid web development with Lucee!</title>
+                <link rel="stylesheet" type="text/css" href="/assets/css/lib/bootstrap.min.css">
+                <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800">
+                <!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="/assets/css/lib/ie8.css"><![endif]-->
+                <link rel="stylesheet" type="text/css" href="/assets/css/core/_ed07b761.core.min.css">
+                <!--[if lt IE 9]>
+                        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+                <![endif]-->
+        </head>
+        <body class="sub-page">
+                <div class="main-wrapper">
 
-
-			        Top Navigation
-			   		<nav role="navigation" class="main-navigation">
-					    <ul class="nav navbar-nav">
-				    	    <li><a href="/">Home</a></li>
-							<li class="active "><a href="http://lucee.dev1.pixl8-hosting.co.uk/supporters.html">Supporters</a></li>
-							<li class=""><a href="http://lucee.dev1.pixl8-hosting.co.uk/about.html">About</a></li>
-		    	    	</ul>
-					</nav>
-					<div class="clearfix"></div>
-		        </div>
-		 	</header> -->
-
-						
+        <section id="page-banner" class="page-banner">
+                <div class="container">
+                        <div class="banner-content">
+                                <cfoutput>
+                                <img src="/assets/img/lucee-logo.png" alt="Lucee">
+                                <h1>Welcome to your Lucee #ListFirst(server.lucee.version,'.')# Installation!</h1>
+                                <p class="lead-text">You are now successfully running Lucee #server.lucee.version# on your system!</p>
+                                </cfoutput>
+                        </div>
+                </div>
+        </section>
 
 
 
+        <section id="contents">
+
+                <div class="container full-width">
+                        <div class="row">
+
+                                <div class="col-md-8 main-content">
+
+                                        <div class="content-wrap">
+
+                                                <ul class="listing border-light">
+
+                                                        <cfoutput>
+
+                                                        <li class="listing-item thumb-large">
+                                                                <div class="listing-thumb">
+                                                                        <a href="#newURL#">
+                                                                                <img src="/assets/img/img-new.png" alt="">
+                                                                        </a>
+                                                                </div>
+
+
+                                                                <div class="listing-content">
+                                                                        <h2 class="title">
+                                                                                <a href="#newURL#">New in Lucee 5</a>
+                                                                        </h2>
+
+                                                                        <p>
+                                                                                Lucee 5 is the first major release of Lucee after forking from the Railo project. Lucee 5 is not about dazzling new features but about improving the core language and providing a complete architectural overhaul of the engine which brings Lucee and CFML as a language to a whole new level of awesome! <a href="#newURL#">Read More</a>
+                                                                        </p>
+
+                                                                </div>
+
+                                                                <div class="clearfix"></div>
+                                                        </li>
+
+                                                        <li class="listing-item thumb-large">
+                                                                <div class="listing-thumb">
+                                                                        <a href="#firststepsURL#">
+                                                                                <img src="/assets/img/img-first-steps.png" alt="">
+                                                                        </a>
+                                                                </div>
+
+
+                                                                <div class="listing-content">
+                                                                        <h2 class="title">
+                                                                                <a href="#firststepsURL#">First steps</a>
+                                                                        </h2>
+
+                                                                        <p>
+                                                                                If you are new to Lucee or the CFML language in general,  check our <a href="#firststepsURL#">First Steps</a> page in our docs. There you'll find a quick primer of the amazing and easy-to-learn CFML language. If you come from a deisgn-based background, CFML's tag-based language should make it easy to learn and use right away. If you're coming from another development language, the CFML script-based syntax may be more to your liking. Either way, it's a great place to get started on your journey with Lucee and CFML!</p>
+
+
+                                                                </div>
+
+                                                                <div class="clearfix"></div>
+                                                        </li>
 
 
 
+                                                        <li class="listing-item thumb-large">
+                                                                <div class="listing-thumb">
+                                                                        <a href="#refURL#">
+                                                                                <img src="/assets/img/img-code.png" alt="">
+                                                                        </a>
+                                                                </div>
 
 
+                                                                <div class="listing-content">
+                                                                        <h2 class="title">
+                                                                                <a href="#refURL#">Documentation</a>
+                                                                        </h2>
 
-	<section id="page-banner" class="page-banner">
-		<div class="container">
-			<div class="banner-content">
-				<cfoutput>
-				<img src="/assets/img/lucee-logo.png" alt="Lucee"> 
-				<h1>Welcome to your Lucee Installation!</h1>
-				<p class="lead-text">You are now successfully running Lucee #server.lucee.version# on your system!</p>
-				</cfoutput>
-			</div>
-		</div>
-	</section>
-	
+                                                                        <p>
+                                                                                Already a CFML coding master? Check out the Lucee Code Reference for quick access to all the tags and functions available in Lucee as well as how it differs from Adobe's ColdFusion Server. <a href="#refURL#">Read More</a>
+                                                                        </p>
 
+                                                                </div>
 
-	<section id="contents">
-
-		<div class="container full-width">
-			<div class="row">
-
-				<div class="col-md-8 main-content">
-
-					<div class="content-wrap">
-
-						
-						
-
-						<!--- <h1 class="blue">Important Notes</h1> --->
-
-
-						<ul class="listing border-light">
-
-
-							<cfoutput>
-							
-
-							<li class="listing-item thumb-large">
-								<div class="listing-thumb">
-									<a href="#wikiURL#">
-										<img src="/assets/img/img-first-steps.png" alt="">
-									</a>
-								</div>
-								
-
-								<div class="listing-content">
-									<h2 class="title">
-										<a href="#wikiURL#">First steps</a>
-									</h2>
-
-									<p>If you are new to Lucee, please check our <a href="#wikiURL#" target="_blank">Wiki</a> where you will find useful resources to get you started with Lucee including a Cookbook with a growing list of examples.</p>
-							
-
-								</div>
-								
-								<div class="clearfix"></div>
-							</li>
-
-							<li class="listing-item thumb-large">
-								<div class="listing-thumb">
-									<a href="#refURL#">
-										<img src="/assets/img/img-code.png" alt="">
-									</a>
-								</div>
-								
-
-								<div class="listing-content">
-									<h2 class="title">
-										<a href="#refURL#">Language Reference</a>
-									</h2>
-
-
-									<p>
-										Detailed Lucee language reference incorporating builtin functions,objects and tags.
-									</p>
-
-								</div>
-								
-								<div class="clearfix"></div>
-							</li>
+                                                                <div class="clearfix"></div>
+                                                        </li>
 
 							<li class="listing-item thumb-large">
 								<div class="listing-thumb">
@@ -146,9 +132,7 @@
 										<a href="#adminURL#	">Secure Administrators</a>
 									</h2>
 
-									<p>Warning! If you have installed Lucee on a public server you need to secure the <a href="#serverAdminURL#	">Server</a> and <a href="#webAdminURL#	">Web</a> admins OF EVERY CONTEXT with appropriate passwords or other access restrictions. 
-
-In addition you should set a default password in the Server admin for all web admins to be sure they are protected by default</p>
+									<p>Important! If you have installed Lucee on a public server you need make sure you secure the <a href="#serverAdminURL#">Server</a> and <a href="#webAdminURL#">Web</a> admins OF EVERY CONTEXT with passwords or other access restrictions. It is also recommended that you set a default password in the Server admin so that all web admins are protected by default.</p>
 
 
 								</div>
@@ -156,6 +140,7 @@ In addition you should set a default password in the Server admin for all web ad
 								<div class="clearfix"></div>
 
 							</li>
+
 						</cfoutput>
 						</ul>
 					</div>
@@ -186,8 +171,8 @@ In addition you should set a default password in the Server admin for all web ad
 								Get involved in the Lucee Project!<br />
 							- Engage with other Lucee community members via our <a href="#mailinglistURL#">mailing list</a><br />
 							- <a href="#issueURL#">Submitting</a> bugs and feature requests<br />
-							- <a href="#bbURL#">Contribute</a> to the code<br />
-							- <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LKLC7KH4JRQ8J&">Support</a> the project<br />
+							- <a href="#githubURL#">Contribute</a> to the code<br />
+							- Become a <a href="http://lucee.org/supporters/become-a-supporter.html">Lucee Supporter</a><br />
 							</p>
 							
 
@@ -195,11 +180,7 @@ In addition you should set a default password in the Server admin for all web ad
 
 							<!--- Prof Services --->
 							<p class="file-link"><a href="#profURL#">Professional Services</a></p>
-							<p>Whether you need installation support or are looking for other professional services. Access our directory of providers</p>
-
-
-
-
+							<p>Whether you need installation support or are looking for other professional services. Access our directory of providers <a href="#profURL#">HERE</a>.</p>
 
 						</div>
 						</cfoutput>
