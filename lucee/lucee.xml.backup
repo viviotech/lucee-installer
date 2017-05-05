@@ -1,7 +1,7 @@
 <project>
     <shortName>lucee</shortName>
     <fullName>Lucee</fullName>
-    <version>5.0.0.252-pl0</version>
+    <version>5.1.4.019-pl0</version>
     <licenseFile>license.txt</licenseFile>
     <leftImage>lucee-side.png</leftImage>
     <logoImage>lucee-logo.png</logoImage>
@@ -375,15 +375,29 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
                             </ruleList>
                         </actionGroup>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>${installdir}\tomcat\bin\service.bat</program>
                             <programArguments>install Lucee</programArguments>
                             <runAs>Administrator</runAs>
+                            <showMessageOnError>0</showMessageOnError>
+                            <onErrorActionList>
+                                <showInfo>
+                                    <text>The Lucee-Tomcat service intall failed to complete successfully. Please review the install.log file for details.</text>
+                                </showInfo>
+                            </onErrorActionList>
                         </runProgram>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>${installdir}\tomcat\bin\autostart.bat</program>
                             <programArguments></programArguments>
                             <runAs>Administrator</runAs>
                             <show>0</show>
+                            <showMessageOnError>0</showMessageOnError>
+                            <onErrorActionList>
+                                <showInfo>
+                                    <text>Autostart service failed. Please review install.log.</text>
+                                </showInfo>
+                            </onErrorActionList>
                             <ruleList>
                                 <isTrue>
                                     <value>${startatboot}</value>

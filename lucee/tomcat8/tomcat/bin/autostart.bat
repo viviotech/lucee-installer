@@ -33,6 +33,7 @@ set SERVICE_FILE=%1
 if not exist %SERVICE_FILE% goto fileError
 
 :fileError
+set /a errno=1
 echo That service file doesn't exist.
 goto end
 
@@ -41,10 +42,17 @@ rem set the tomcat/lucee service to start automatically
 set EXECUTABLE=%CATALINA_HOME%\bin\%SERVICE_FILE%
 set SERVICE_NAME=Lucee
 %EXECUTABLE% //US//%SERVICE_NAME% --Startup=auto
+if not errorlevel 1 goto installed
+set /a errno=1
+echo Failed to set %SERVICE_NAME% to autostart
+goto end
 
-rem let the user know we're good to go
+:installed
 echo the %SERVICE_NAME% Service will now start automatically after a reboot.	
+set /a errno=0
 goto end
 
 :end
 cd "%CURRENT_DIR%"
+rem echo errorlevel is %errno%
+exit /b %errno%

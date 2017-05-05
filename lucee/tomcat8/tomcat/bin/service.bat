@@ -31,8 +31,8 @@ setlocal
 set "SELF=%~dp0%service.bat"
 rem Guess CATALINA_HOME if not defined
 set "CURRENT_DIR=%cd%"
-set "JRE_HOME=@@installdir@@\jdk"
-rem set "JAVA_HOME=@@installdir@@\jdk"
+set "JRE_HOME=@@installdir@@\jdk\jre"
+set "JAVA_HOME=@@installdir@@\jdk"
 if not "%CATALINA_HOME%" == "" goto gotHome
 set "CATALINA_HOME=%cd%"
 if exist "%CATALINA_HOME%\bin\tomcat8.exe" goto okHome
@@ -117,9 +117,11 @@ echo Using CATALINA_BASE:    "%CATALINA_BASE%"
 "%EXECUTABLE%" //DS//%SERVICE_NAME% ^
     --LogPath "%CATALINA_BASE%\logs"
 if not errorlevel 1 goto removed
+set /a errno=1
 echo Failed removing '%SERVICE_NAME%' service
 goto end
 :removed
+set /a errno=0
 echo The service '%SERVICE_NAME%' has been removed
 goto end
 
@@ -166,10 +168,15 @@ if not "%CATALINA_HOME%" == "%CATALINA_BASE%" set "CLASSPATH=%CLASSPATH%;%CATALI
     --JvmMs 256 ^
     --JvmMx 512
 if not errorlevel 1 goto installed
+set /a errno=1
 echo Failed installing '%SERVICE_NAME%' service
 goto end
+
 :installed
 echo The service '%SERVICE_NAME%' has been installed.
+set /a errno=0
 
 :end
 cd "%CURRENT_DIR%"
+rem echo errorlevel is %errno%
+exit /b %errno%
