@@ -440,7 +440,6 @@ function installProxyCFML {
 		echo "<IfModule mod_proxy.c>" >> $myApacheConf;
                 echo "	ProxyPreserveHost On" >> $myApacheConf;
                 echo "	ProxyPassMatch ^/(.+\.cf[cm])(/.*)?$ http://127.0.0.1:${myHTTPPort}/\$1\$2" >> $myApacheConf;
-                echo "	ProxyPassMatch ^/(.+\.cfchart)(/.*)?$ http://127.0.0.1:${myHTTPPort}/\$1\$2" >> $myApacheConf;
                 echo "	ProxyPassMatch ^/(.+\.cfml)(/.*)?$ http://127.0.0.1:${myHTTPPort}/\$1\$2" >> $myApacheConf;
                 echo "	# optional mappings" >> $myApacheConf;
                 echo "	#ProxyPassMatch ^/flex2gateway/(.*)$ http://127.0.0.1:${myHTTPPort}/flex2gateway/\$1" >> $myApacheConf;
