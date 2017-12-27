@@ -1,7 +1,7 @@
 <project>
     <shortName>lucee</shortName>
     <fullName>Lucee</fullName>
-    <version>5.2.4.037-pl0</version>
+    <version>5.2.5.020-pl0</version>
     <licenseFile>license.txt</licenseFile>
     <leftImage>lucee-side.png</leftImage>
     <logoImage>lucee-logo.png</logoImage>
@@ -667,6 +667,30 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
                         </isTrue>
                     </ruleList>
                 </actionGroup>
+                <actionGroup>
+                    <progressText>Securing Lucee Web Admins</progressText>
+                    <actionList>
+                        <xmlFileGet>
+                            <attribute>hspw</attribute>
+                            <element>/cfLuceeConfiguration</element>
+                            <file>${installdir}/tomcat/lucee-server/context/lucee-server.xml</file>
+                            <variable>hspw</variable>
+                        </xmlFileGet>
+                        <xmlFileSet>
+                            <attribute>default-hspw</attribute>
+                            <element>/cfLuceeConfiguration</element>
+                            <file>${installdir}/tomcat/lucee-server/context/lucee-server.xml</file>
+                            <value>${hspw}</value>
+                            <ruleList>
+                                <compareValues>
+                                    <logic>does_not_equal</logic>
+                                    <value1>${hspw}</value1>
+                                    <value2></value2>
+                                </compareValues>
+                            </ruleList>
+                        </xmlFileSet>
+                    </actionList>
+                </actionGroup>
             </postInstallationActionList>
             <startMenuShortcutList>
                 <startMenuShortcut>
@@ -1015,6 +1039,10 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
             <length>64</length>
             <variable>secretkey</variable>
         </generateRandomValue>
+        <setInstallerVariable>
+            <name>hspw</name>
+            <value></value>
+        </setInstallerVariable>
     </initializationActionList>
     <preUninstallationActionList>
         <runProgram>
@@ -1190,6 +1218,22 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
             <mustBeWritable>1</mustBeWritable>
             <mustExist>0</mustExist>
             <width>30</width>
+            <validationActionList>
+                <showInfo>
+                    <text>The install directory you have chosen already exists.
+
+While upgrading previous installations of Lucee by reinstalling might work in some cases, this method of upgrading is not officially supported. Please create a backup copy of any previous Lucee installs before proceeding.</text>
+                    <ruleList>
+                        <fileExists>
+                            <path>${installdir}</path>
+                        </fileExists>
+                        <fileTest>
+                            <condition>is_directory</condition>
+                            <path>${installdir}</path>
+                        </fileTest>
+                    </ruleList>
+                </showInfo>
+            </validationActionList>
         </directoryParameter>
         <passwordParameter>
             <name>luceepass</name>
