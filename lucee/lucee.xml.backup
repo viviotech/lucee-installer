@@ -1,7 +1,7 @@
 <project>
     <shortName>lucee</shortName>
     <fullName>Lucee</fullName>
-    <version>5.2.5.020-pl0</version>
+    <version>5.2.7.062-pl0</version>
     <licenseFile>license.txt</licenseFile>
     <leftImage>lucee-side.png</leftImage>
     <logoImage>lucee-logo.png</logoImage>
@@ -667,18 +667,30 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
                         </isTrue>
                     </ruleList>
                 </actionGroup>
-                <xmlFileGet>
-                    <attribute>hspw</attribute>
-                    <element>//cfLuceeConfiguration/@hspw</element>
-                    <file>${installdir}/tomcat/lucee-server/context/lucee-server.xml</file>
-                    <variable>hspw</variable>
-                </xmlFileGet>
-                <xmlFileSet>
-                    <attribute>default-hspw</attribute>
-                    <element>//cfLuceeConfiguration/@default-hspw</element>
-                    <file>${installdir}/tomcat/lucee-server/context/lucee-server.xml</file>
-                    <value>${hspw}</value>
-                </xmlFileSet>
+                <actionGroup>
+                    <progressText>Securing Lucee Web Admins</progressText>
+                    <actionList>
+                        <xmlFileGet>
+                            <attribute>hspw</attribute>
+                            <element>/cfLuceeConfiguration</element>
+                            <file>${installdir}/tomcat/lucee-server/context/lucee-server.xml</file>
+                            <variable>hspw</variable>
+                        </xmlFileGet>
+                        <xmlFileSet>
+                            <attribute>default-hspw</attribute>
+                            <element>/cfLuceeConfiguration</element>
+                            <file>${installdir}/tomcat/lucee-server/context/lucee-server.xml</file>
+                            <value>${hspw}</value>
+                            <ruleList>
+                                <compareValues>
+                                    <logic>does_not_equal</logic>
+                                    <value1>${hspw}</value1>
+                                    <value2></value2>
+                                </compareValues>
+                            </ruleList>
+                        </xmlFileSet>
+                    </actionList>
+                </actionGroup>
             </postInstallationActionList>
             <startMenuShortcutList>
                 <startMenuShortcut>
@@ -1027,6 +1039,10 @@ rmdir "${installdir}\jre32-win\" /s /q</text>
             <length>64</length>
             <variable>secretkey</variable>
         </generateRandomValue>
+        <setInstallerVariable>
+            <name>hspw</name>
+            <value></value>
+        </setInstallerVariable>
     </initializationActionList>
     <preUninstallationActionList>
         <runProgram>

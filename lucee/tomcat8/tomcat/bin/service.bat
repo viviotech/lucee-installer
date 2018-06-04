@@ -31,7 +31,7 @@ setlocal
 set "SELF=%~dp0%service.bat"
 rem Guess CATALINA_HOME if not defined
 set "CURRENT_DIR=%cd%"
-set "JRE_HOME=@@installdir@@\jdk\jre"
+set "JRE_HOME=@@installdir@@\jdk"
 set "JAVA_HOME=@@installdir@@\jdk"
 if not "%CATALINA_HOME%" == "" goto gotHome
 set "CATALINA_HOME=%cd%"
@@ -55,12 +55,12 @@ echo Service will try to guess them from the registry.
 goto okJavaHome
 :gotJreHome
 if not exist "%JRE_HOME%\bin\java.exe" goto noJavaHome
-if not exist "%JRE_HOME%\bin\javaw.exe" goto noJavaHome
+rem if not exist "%JRE_HOME%\bin\javaw.exe" goto noJavaHome
 goto okJavaHome
 :gotJdkHome
 if not exist "%JAVA_HOME%\jre\bin\java.exe" goto noJavaHome
-if not exist "%JAVA_HOME%\jre\bin\javaw.exe" goto noJavaHome
-if not exist "%JAVA_HOME%\bin\javac.exe" goto noJavaHome
+rem if not exist "%JAVA_HOME%\jre\bin\javaw.exe" goto noJavaHome
+rem if not exist "%JAVA_HOME%\bin\javac.exe" goto noJavaHome
 if not "%JRE_HOME%" == "" goto okJavaHome
 set "JRE_HOME=%JAVA_HOME%\jre"
 goto okJavaHome

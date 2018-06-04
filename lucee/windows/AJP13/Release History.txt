@@ -34,6 +34,39 @@ If you were using a proxy or URL rewrite engine you would also benefit from:
 -----------------------------------------
 VERSION HISTORY:
 
+Version 1.0.36 Updates:
+* Upd: change TCP Read/Write timeout setting behavior. Now if these timeouts are not set, they default to infinite (they do not timeout).
+
+Version 1.0.35 Updates:
+* Fix: EventLog.SourceExists() requires security permissions causing exception
+* Upd: Do not record system events for invalid URL to physical path conversions
+* Upd: Encoding of redirected URL attributes when TomcatConnection Error
+* Add: additional error details for windows system events
+
+Version 1.0.34 Updates:
+* Fix: would not use redirect to remote clients when tomcat connection error occurred
+
+Version 1.0.33 Updates:
+* Fix: IIS will throw error code is 0x800704cd when flushing to a disconnected client
+
+Version 1.0.32 Updates:
+* Fix: connection pool did not reuse existing connection even when setting was set
+* Fix: remove thread contention for object collections under load causing extra 502 errors
+
+Version 1.0.31 Updates:
+* Fix: class type comparison failed in .net framework resulting in skipped terminator BonCodeAJP13.TomcatPackets.TomcatSendBodyChunk package. This looked like pages had stopped processing.
+
+Version 1.0.30 Updates:
+* Upd: reduce system flushing events and use IIS delayed buffer write to client when user has disabled flushing
+
+Version 1.0.29 Updates:
+* Add: additial stack trace to windows event log when we cannot write to logfiles
+* Add: AJP native flush detection. A correctly formated AJP flush packet will lead to flushing when any of the flush flags is enabled.
+
+Version 1.0.28 Updates:
+* Add: additial stack trace to windows event log
+* Upd: continue spooling data even after an unallowed header change has been attempted by servlet code
+
 Version 1.0.27 Updates:
 * Add: optional logging of connection issues to Windows log if a Log Source is available
 * Add: allways log full stack trace in log file when any type of logging is enabled

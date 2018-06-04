@@ -4,7 +4,7 @@
 # Purpose:	Changes the user that the CFML server runs as and creates custom
 #		control script based on that user.
 # Author:	Jordan Michaels (jordan@viviotech.net)
-# Copyright:	Jordan Michaels, 2010-2015, All rights reserved.
+# Copyright:	Jordan Michaels, 2010-2018, All rights reserved.
 #
 # Usage: 	change_user.sh [username] [install dir] [engine] [nobackup]
 #
